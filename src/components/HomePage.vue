@@ -97,17 +97,23 @@
               <span style="color: #000000;font-size: 16px;font-weight: 600;">关于</span>
             </div>
             <!-- 链接 -->
-            <ul style="padding:0; ">
+            <ul style="padding:0;margin-bottom: 0px;">
+              <!-- 工作室介绍 -->
+              <li style="list-style: none;margin-bottom: 16px;">
+                <a :href="HomePageUrl" style="text-decoration: none;">
+                  <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">工作室介绍</font>
+                </a>
+              </li>
               <!-- 价值观 -->
               <li style="list-style: none;margin-bottom: 16px;">
                 <a :href="HomePageUrl" style="text-decoration: none;">
                   <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">价值观</font>
                 </a>
               </li>
-              <!-- 品牌 -->
-              <li style="list-style: none;margin-bottom: 16px;">
+              <!-- 管理团队 -->
+              <li style="list-style: none;margin-bottom: 0px;">
                 <a :href="HomePageUrl" style="text-decoration: none;">
-                  <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">品牌</font>
+                  <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">管理团队</font>
                 </a>
               </li>
             </ul>
@@ -119,7 +125,7 @@
               <span style="color: #000000;font-size: 16px;font-weight: 600;">服务领域</span>
             </div>
             <!-- 链接 -->
-            <ul style="padding:0; ">
+            <ul style="padding:0;margin-bottom: 0px;">
               <!-- 官网定制 -->
               <li style="list-style: none;margin-bottom: 16px;">
                 <a :href="HomePageUrl" style="text-decoration: none;">
@@ -132,8 +138,14 @@
                   <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">服务程序开发</font>
                 </a>
               </li>
-              <!-- 区块链 -->
+              <!-- CMAPLE.CN论坛 -->
               <li style="list-style: none;margin-bottom: 16px;">
+                <a :href="HomePageUrl" style="text-decoration: none;">
+                  <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">CMAPLE.CN论坛</font>
+                </a>
+              </li>
+              <!-- 区块链 -->
+              <li style="list-style: none;margin-bottom: 0px;">
                 <a :href="HomePageUrl" style="text-decoration: none;">
                   <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">区块链</font>
                 </a>
@@ -147,7 +159,7 @@
               <span style="color: #000000;font-size: 16px;font-weight: 600;">联系我们</span>
             </div>
             <!-- 链接 -->
-            <ul style="padding:0; ">
+            <ul style="padding:0;margin-bottom: 0px;">
               <!-- 邮箱&地址 -->
               <li style="list-style: none;margin-bottom: 16px;">
                 <a :href="HomePageUrl" style="text-decoration: none;">
@@ -155,7 +167,7 @@
                 </a>
               </li>
               <!-- 留言 -->
-              <li style="list-style: none;margin-bottom: 16px;">
+              <li style="list-style: none;margin-bottom: 0px;">
                 <a :href="HomePageUrl" style="text-decoration: none;">
                   <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">留言</font>
                 </a>
@@ -169,11 +181,11 @@
               <span style="color: #000000;font-size: 16px;font-weight: 600;">加入我们</span>
             </div>
             <!-- 链接 -->
-            <ul style="padding:0; ">
-              <!-- 招聘岗位 -->
-              <li style="list-style: none;margin-bottom: 16px;">
+            <ul style="padding:0;margin-bottom: 0px;">
+              <!-- 加入CMAPLE.CN -->
+              <li style="list-style: none;margin-bottom: 0px;">
                 <a :href="HomePageUrl" style="text-decoration: none;">
-                  <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">招聘岗位</font>
+                  <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">加入CMAPLE.CN</font>
                 </a>
               </li>
             </ul>
@@ -181,16 +193,16 @@
           <!-- 加入我们 -->
           <div style="width: 34%;display: inline-block;vertical-align: top;text-align: right">
             <!-- 链接 -->
-            <ul style="padding:0; margin: 0;">
+            <ul style="padding:0;margin: 0px 0px 0px 0px;">
               <!-- cmaple@aliyun.com -->
-              <li style="list-style: none;margin-bottom: 40px;">
-                <font style="color: #666;font-size: 18px;text-transform: uppercase;font-weight: 900;">cmaple.cn</font>
+              <li style="list-style: none;margin-bottom: 80px;">
+                <font style="color: #666;font-size: 18px;text-transform: uppercase;font-weight: 900;">{{this.domain_Name}}</font>
               </li>
               <!-- 服务时间 -->
               <li style="list-style: none;margin-bottom: 6px;">
                 <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">服务时间</font>
               </li>
-              <li style="list-style: none;margin-bottom: 16px;">
+              <li style="list-style: none;margin-bottom: 0px;">
                 <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">周一至周日 08:00 - 18:00</font>
               </li>
             </ul>
@@ -205,11 +217,11 @@
       <div style="width: 100%;justify-content: flex-start;text-align: top;">
         <!-- 备案号 -->
         <div style="width: 50%;display: inline-block;vertical-align: top;text-align: left">
-          <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">{{this.beianhao}} - copyright</font>
+          <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">{{this.record_No}} - copyright</font>
         </div>
         <!-- 备案号 -->
         <div style="width: 49%;display: inline-block;vertical-align: top;text-align: right;">
-          <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">{{this.shangxianshijian}} cmaple.cn - all rights reserved</font>
+          <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">{{this.run_Time_Range}} {{this.domain_Name}} - all rights reserved</font>
         </div>
       </div>
     </div>
@@ -225,8 +237,9 @@ export default {
       pageheight:'',
       HomePageUrl:"/",
       homepageImgUrl:'../../static/background.jpg',
-      beianhao:'浙ICP备19041141号',
-      shangxianshijian:'@2019-2020',
+      record_No:'浙ICP备19041141号',
+      run_Time_Range:'@2019-2020',
+      domain_Name:'cmaple.cn',
     }
   },
    methods:{
@@ -353,6 +366,4 @@ export default {
     height: 1px;
     background-image: linear-gradient(to right, transparent, darkgrey, transparent);
 }
-
-  
 </style>
