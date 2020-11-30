@@ -82,14 +82,137 @@
             <img style="width: 100%;border-radius:20px;" src="../../static/homepage_about.jpg">
           </div>
         </div>
-        
       </div>
     </div>
+    <!-- 分割线 -->
+    <div class="divider div-transparent"></div>
     <!-- 页脚 - 导航栏 -->
     <div style="">
-      
+      <div style="width: 1024px;margin: 0 auto 0;padding: 40px 0 40px 0;">
+        <div style="width: 100%;justify-content: flex-start;text-align: left;">
+          <!-- 关于 -->
+          <div style="width: 16%;display: inline-block;vertical-align: top;">
+            <!-- 标题 -->
+            <div>
+              <span style="color: #000000;font-size: 16px;font-weight: 600;">关于</span>
+            </div>
+            <!-- 链接 -->
+            <ul style="padding:0; ">
+              <!-- 价值观 -->
+              <li style="list-style: none;margin-bottom: 16px;">
+                <a :href="HomePageUrl" style="text-decoration: none;">
+                  <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">价值观</font>
+                </a>
+              </li>
+              <!-- 品牌 -->
+              <li style="list-style: none;margin-bottom: 16px;">
+                <a :href="HomePageUrl" style="text-decoration: none;">
+                  <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">品牌</font>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- 服务领域 -->
+          <div style="width: 16%;display: inline-block;vertical-align: top;">
+            <!-- 标题 -->
+            <div>
+              <span style="color: #000000;font-size: 16px;font-weight: 600;">服务领域</span>
+            </div>
+            <!-- 链接 -->
+            <ul style="padding:0; ">
+              <!-- 官网定制 -->
+              <li style="list-style: none;margin-bottom: 16px;">
+                <a :href="HomePageUrl" style="text-decoration: none;">
+                  <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">官网定制</font>
+                </a>
+              </li>
+              <!-- 服务程序开发 -->
+              <li style="list-style: none;margin-bottom: 16px;">
+                <a :href="HomePageUrl" style="text-decoration: none;">
+                  <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">服务程序开发</font>
+                </a>
+              </li>
+              <!-- 区块链 -->
+              <li style="list-style: none;margin-bottom: 16px;">
+                <a :href="HomePageUrl" style="text-decoration: none;">
+                  <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">区块链</font>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- 联系我们 -->
+          <div style="width: 16%;display: inline-block;vertical-align: top;">
+            <!-- 标题 -->
+            <div>
+              <span style="color: #000000;font-size: 16px;font-weight: 600;">联系我们</span>
+            </div>
+            <!-- 链接 -->
+            <ul style="padding:0; ">
+              <!-- 邮箱&地址 -->
+              <li style="list-style: none;margin-bottom: 16px;">
+                <a :href="HomePageUrl" style="text-decoration: none;">
+                  <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">邮箱&地址</font>
+                </a>
+              </li>
+              <!-- 留言 -->
+              <li style="list-style: none;margin-bottom: 16px;">
+                <a :href="HomePageUrl" style="text-decoration: none;">
+                  <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">留言</font>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- 加入我们 -->
+          <div style="width: 16%;display: inline-block;vertical-align: top;">
+            <!-- 标题 -->
+            <div>
+              <span style="color: #000000;font-size: 16px;font-weight: 600;">加入我们</span>
+            </div>
+            <!-- 链接 -->
+            <ul style="padding:0; ">
+              <!-- 招聘岗位 -->
+              <li style="list-style: none;margin-bottom: 16px;">
+                <a :href="HomePageUrl" style="text-decoration: none;">
+                  <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">招聘岗位</font>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- 加入我们 -->
+          <div style="width: 34%;display: inline-block;vertical-align: top;text-align: right">
+            <!-- 链接 -->
+            <ul style="padding:0; margin: 0;">
+              <!-- cmaple@aliyun.com -->
+              <li style="list-style: none;margin-bottom: 40px;">
+                <font style="color: #666;font-size: 18px;text-transform: uppercase;font-weight: 900;">cmaple.cn</font>
+              </li>
+              <!-- 服务时间 -->
+              <li style="list-style: none;margin-bottom: 6px;">
+                <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">服务时间</font>
+              </li>
+              <li style="list-style: none;margin-bottom: 16px;">
+                <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">周一至周日 08:00 - 18:00</font>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
+    <!-- 分割线 -->
+    <div class="divider div-transparent"></div>
     <!-- 页脚 -->
+    <div style="width: 1024px;margin: 0 auto 0;padding: 10px 0 10px 0;">
+      <div style="width: 100%;justify-content: flex-start;text-align: top;">
+        <!-- 备案号 -->
+        <div style="width: 50%;display: inline-block;vertical-align: top;text-align: left">
+          <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">{{this.beianhao}} - copyright</font>
+        </div>
+        <!-- 备案号 -->
+        <div style="width: 49%;display: inline-block;vertical-align: top;text-align: right;">
+          <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">{{this.shangxianshijian}} cmaple.cn - all rights reserved</font>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -102,6 +225,8 @@ export default {
       pageheight:'',
       HomePageUrl:"/",
       homepageImgUrl:'../../static/background.jpg',
+      beianhao:'浙ICP备19041141号',
+      shangxianshijian:'@2019-2020',
     }
   },
    methods:{
@@ -212,5 +337,22 @@ export default {
     top: 8px;
     width: 30px;
   }
+  /* 分割线 */
+  .divider {
+    position: relative;
+    margin-top: 0px;
+    height: 1px;
+}
+.div-transparent:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    width: 80%;
+    height: 1px;
+    background-image: linear-gradient(to right, transparent, darkgrey, transparent);
+}
+
   
 </style>
