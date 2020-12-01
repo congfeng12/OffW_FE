@@ -4,7 +4,7 @@
     <div id="homepage_font" :style="{height:pageheight+'px'},{backgroundImage:'url('+homepageImgUrl+')'}">
       <!-- 官网LOGO -->
       <div style="width: 50px;height: 50px;float: left;margin: 10px 0px 0px 20px;">
-        <img style="width: 50px;" src="../../static/logo.png">
+        <img style="width: 40px;" src="../../static/logo.png">
       </div>
        <!-- 微信公众号等图标 -->
         <div style="width: 50px;height: 50px;float: right;margin: 20px 20px 0px 0px;">
@@ -219,7 +219,7 @@
         <div style="width: 50%;display: inline-block;vertical-align: top;text-align: left">
           <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">{{this.record_No}} - copyright</font>
         </div>
-        <!-- 备案号 -->
+        <!-- 运营时间及版权 -->
         <div style="width: 49%;display: inline-block;vertical-align: top;text-align: right;">
           <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">{{this.run_Time_Range}} {{this.domain_Name}} - all rights reserved</font>
         </div>
@@ -234,15 +234,22 @@ export default {
   data () {
     return {
       //msg: 'Welcome to Your Vue.js App'
+      // 页面高度
       pageheight:'',
+      //主页路由
       HomePageUrl:"/",
+      //主页图片
       homepageImgUrl:'../../static/background.jpg',
+      // 备案号
       record_No:'浙ICP备19041141号',
+      // 网站运营时间
       run_Time_Range:'@2019-2020',
+      // 网址地址
       domain_Name:'cmaple.cn',
     }
   },
    methods:{
+    // 获取当前浏览器页面高度
     getPageHeight(){
       this.pageheight = window.innerHeight;
     }
@@ -258,6 +265,7 @@ export default {
   destroyed(){
   },
   mounted(){
+    //页面高度赋值
     window.onresize = () =>{
       return(()=>{
         this.getPageHeight()
