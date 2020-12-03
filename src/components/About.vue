@@ -4,7 +4,7 @@
     <div id="homepage_font" :style="{height:pageheight+'px'},{backgroundImage:'url('+homepageImgUrl+')'}">
       <!-- 官网LOGO -->
       <div style="width: 50px;height: 50px;float: left;margin: 10px 0px 0px 20px;">
-         <a :href="HomePageUrl" style="text-decoration: none;">
+        <a :href="HomePageUrl" style="text-decoration: none;">
            <img style="width: 40px;" src="../../static/logo.png">
          </a>
       </div>
@@ -43,57 +43,21 @@
         </div>
         <!-- 约束宽度 -->
         <div style="width: 1024px;margin:0 auto 0;" :style="{height:pageheight - 50 +'px'}">
-          <!-- 标题 -->
-          <div style="width: 1024px;position: absolute;bottom: 48%;">
-            <font style="color: #FFF;font-size: 120px;font-weight: 900;letter-spacing: 0.08em;">CMAPLE.CN</font>
+          <!-- 关于标题 -->
+          <div style="width: 1024px;position: absolute;top: 38%;">
+            <font style="color: #FFF;font-size: 80px;font-weight: 900;letter-spacing: 0.08em;">关于CMAPLE.CN</font>
           </div>
-          <!-- 文字 -->
-          <div style="width: 1024px;position: absolute;bottom: 36%;">
-            <font style="color: #FFF;font-size: 80px;font-weight: 900;letter-spacing: 0.08em;">官网全新上线</font>
-          </div>
-          <!-- 文字超链接 -->
-          <div style="width: 1024px;height: 40px;position: absolute;bottom: 25%;">
-            <a :href="HomePageUrl" id = "main_font_a">
-              <font>了解更多</font>
-            </a>
-          </div>
-           <!-- 向下标记 -->
-          <div style="width: 1024px;height: 40px;  position: absolute;bottom: 10px;">
-            <a href="" title="">
-              <img id="bottom_img" src="../../static/bottom.png">
-            </a>
+          <!-- 关于说明 -->
+          <div style="width: 600px;position: absolute;top: 54%;left:50%;margin-left:-300px;">
+            <font style="color: #FFF;font-size: 20px;font-weight: 400;">
+              Iconfont-国内功能很强大且图标内容很丰富的矢量图标库,提供矢量图标下载、在线存储、格式转换等功能。阿里巴巴体验团队倾力打造,设计和前端开发的便捷工具
+            </font>
           </div>
         </div>
     </div>
-    <!-- 官网说明 - 描述网站和工作室的内容 -->
+    <!-- 说明 - 描述网站和工作室的内容 -->
     <div style="width: 100%;">
-      <!-- 限宽 -->
-      <div style="width: 1024px;margin: 0 auto 0;">
-        <!-- 关于CMAPLE.CN -->
-        <div style="width: 100%;display: inline-block;vertical-align: top;">
-          <div style="text-align: left;padding: 80px 0 0 0;">
-            <font style="font-size: 30px;font-weight: 600;">关于CMAPLE.CN</font> 
-          </div>
-          <div style="text-align: left;padding: 30px 80px 0px 0;">
-            <font style="">
-              CMAPLE.CN致力于让网站的搭建变的更加轻松快捷，让个人网站的普及成为可能。
-            </font>
-          </div>
-          <div style="text-align: left;padding: 20px 80px 0px 0;">
-            <font style="">
-              CMAPLE.CN主要业务范围也为网站搭建&第三方插件/程序的开发。我们将尝试简单快捷的图形化网站开发程序，但是如果我们的工作可以帮助其他人实现这一目标，我们也将认为我们的使命已经实现。
-            </font>
-          </div>
-          <div style="text-align: left;padding: 30px 0px 0px 0;">
-            <a :href="AboutPageUrl" id = "about_font_a">
-              <font>了解更多详细信息</font>
-            </a>
-          </div>
-          <div style="padding: 40px 0px 80px 0;">
-            <img style="width: 100%;border-radius:20px;" src="../../static/homepage_about.jpg">
-          </div>
-        </div>
-      </div>
+    
     </div>
     <!-- 分割线 -->
     <div class="divider div-transparent"></div>
@@ -252,7 +216,7 @@ export default {
       //关于页面路由
       AboutPageUrl:'/About',
       //主页图片
-      homepageImgUrl:'../../static/background.jpg',
+      homepageImgUrl:'../../static/about_background.jpg',
       // 备案号
       record_No:'浙ICP备19041141号',
       // 网站运营时间
