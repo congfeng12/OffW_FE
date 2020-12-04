@@ -124,19 +124,29 @@
           <font style="color: #000000;font-weight: 900;font-size: 40px;">管理团队</font>
         </div>
         <!-- 内容 -->
-        <div id="team_menu" v-for="item in teams">
-          <div style="padding: 12px 0 0 20px;">
+        <div v-if="this.teams && this.teams.length > 0">
+          <div id="team_menu" v-for="item in teams">
+            <div style="padding: 12px 0 0 20px;">
+              <!-- 名字 -->
+              <div style="">
+                <font style="font-size: 16px;color: #000000;font-weight: 900;">{{item.name}}</font>
+              </div>
+              <!-- 职位 -->
+              <div style="">
+                <font style="font-size: 12px;color: #000000;font-weight: 400;">{{item.position}}</font>
+              </div>
+              <!-- 贡献度 -->
+              <div style="">
+                <font style="font-size: 10px;color: #000000;font-weight: 600;">{{item.introduce}}</font>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="team_menu" v-else>
+          <div style="padding: 34px 0 0 100px;">
             <!-- 名字 -->
             <div style="">
-              <font style="font-size: 16px;color: #000000;font-weight: 900;">{{item.name}}</font>
-            </div>
-            <!-- 职位 -->
-            <div style="">
-              <font style="font-size: 12px;color: #000000;font-weight: 400;">{{item.position}}</font>
-            </div>
-            <!-- 贡献度 -->
-            <div style="">
-              <font style="font-size: 10px;color: #000000;font-weight: 600;">{{item.introduce}}</font>
+              <font style="font-size: 16px;color: #DCDFE6;font-weight: 900;">目前暂无管理团队</font>
             </div>
           </div>
         </div>
@@ -145,22 +155,32 @@
           <font style="color: #000000;font-weight: 700;font-size: 25px;">合作贡献</font>
         </div>
         <!-- 内容 -->
-         <div id="team_menu" v-for="contribution in contributions">
-            <div style="padding: 12px 0 0 20px;">
-              <!-- 名字 -->
-              <div style="">
-                <font style="font-size: 16px;color: #000000;font-weight: 900;">{{contribution.name}}</font>
-              </div>
-              <!-- 职位 -->
-              <div style="">
-                <font style="font-size: 12px;color: #000000;font-weight: 400;">{{contribution.position}}</font>
-              </div>
-              <!-- 贡献度 -->
-              <div style="">
-                <font style="font-size: 10px;color: #000000;font-weight: 600;">{{contribution.introduce}}</font>
+        <div v-if="this.contributions && this.contributions.length > 0">
+           <div id="team_menu" v-for="contribution in contributions">
+              <div style="padding: 12px 0 0 20px;">
+                <!-- 名字 -->
+                <div style="">
+                  <font style="font-size: 16px;color: #000000;font-weight: 900;">{{contribution.name}}</font>
+                </div>
+                <!-- 职位 -->
+                <div style="">
+                  <font style="font-size: 12px;color: #000000;font-weight: 400;">{{contribution.position}}</font>
+                </div>
+                <!-- 贡献度 -->
+                <div style="">
+                  <font style="font-size: 10px;color: #000000;font-weight: 600;">{{contribution.introduce}}</font>
+                </div>
               </div>
             </div>
           </div>
+          <div id="team_menu" v-else>
+          <div style="padding: 34px 0 0 90px;">
+            <!-- 名字 -->
+            <div style="">
+              <font style="font-size: 16px;color: #DCDFE6;font-weight: 900;">目前暂无合作贡献者</font>
+            </div>
+          </div>
+        </div>
           <!-- 投资者 -->
           <div style="margin-top: 40px;">
             <font style="color: #000000;font-weight: 700;font-size: 25px;">投资者</font>
