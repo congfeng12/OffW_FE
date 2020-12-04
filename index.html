@@ -5,8 +5,17 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>offw_fe</title>
   </head>
+  <!-- 引入搜狐接口获取客户端IP、地址 -->
+  <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
   <body style="margin:0; ">
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
+  <script type="text/javascript">
+      //清除旧的相关数据
+      localStorage.clear()
+      //读取并储存ip和登录地址
+      localStorage.setItem("cip",returnCitySN['cip']);
+      localStorage.setItem("cname",returnCitySN['cname']);
+  </script>
 </html>

@@ -207,7 +207,7 @@
             <ul style="padding:0;margin: 0px 0px 0px 0px;">
               <!-- cmaple@aliyun.com -->
               <li style="list-style: none;margin-bottom: 80px;">
-                <font style="color: #666;font-size: 18px;text-transform: uppercase;font-weight: 900;">{{this.domain_Name}}</font>
+                <font style="color: #666;font-size: 18px;text-transform: uppercase;font-weight: 900;">{{this.Domain_Name}}</font>
               </li>
               <!-- 服务时间 -->
               <li style="list-style: none;margin-bottom: 6px;">
@@ -228,11 +228,11 @@
       <div style="width: 100%;justify-content: flex-start;text-align: top;">
         <!-- 备案号 -->
         <div style="width: 50%;display: inline-block;vertical-align: top;text-align: left">
-          <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">{{this.record_No}} - copyright</font>
+          <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">{{this.Record_No}} - copyright</font>
         </div>
         <!-- 运营时间及版权 -->
         <div style="width: 49%;display: inline-block;vertical-align: top;text-align: right;">
-          <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">{{this.run_Time_Range}} {{this.domain_Name}} - all rights reserved</font>
+          <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">{{this.Run_Time_Range}} {{this.Domain_Name}} - all rights reserved</font>
         </div>
       </div>
     </div>
@@ -247,18 +247,18 @@ export default {
       //msg: 'Welcome to Your Vue.js App'
       // 页面高度
       pageheight:'',
+       // 备案号
+      Record_No:'',
+      // 网站运营时间
+      Run_Time_Range:'',
+      // 网址地址
+      Domain_Name:'',
       //主页路由
-      HomePageUrl:"/",
+      HomePageUrl:"",
       //关于页面路由
-      AboutPageUrl:'/About',
+      AboutPageUrl:'',
       //主页图片
       homepageImgUrl:'../../static/background.jpg',
-      // 备案号
-      record_No:'浙ICP备19041141号',
-      // 网站运营时间
-      run_Time_Range:'@2019-2020',
-      // 网址地址
-      domain_Name:'cmaple.cn',
     }
   },
    methods:{
@@ -269,10 +269,11 @@ export default {
   },
   created(){
     //页面地址列表
-    // this.HomePageUrl="/"
-    // this.AboutHZPageUrl="/about_HZ"
-    // this.AboutWHPageUrl="/about_WH"
-    // this.AboutPageUrl="/about"
+    this.Record_No=this.$Config.Record_No;
+    this.Run_Time_Range=this.$Config.Run_Time_Range;
+    this.Domain_Name=this.$Config.Domain_Name;
+    this.HomePageUrl=this.$Config.HomePageUrl;
+    this.AboutPageUrl=this.$Config.AboutPageUrl;
     //请求首页展示图片及内容路由
   },
   destroyed(){

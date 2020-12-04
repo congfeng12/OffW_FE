@@ -3,8 +3,12 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+//导入全局属性组建
+import Config from './ConfigAttributes.vue';
 
 Vue.config.productionTip = false
+//注册全局属性组件
+Vue.prototype.$Config = Config;
 
 /* eslint-disable no-new */
 new Vue({
