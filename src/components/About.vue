@@ -57,7 +57,74 @@
     </div>
     <!-- 说明 - 描述网站和工作室的内容 -->
     <div style="width: 100%;">
-    
+      <!-- 价值观 -->
+      <div style="width: 1024px;height: 300px;margin: 0 auto 0;justify-content: flex-start;text-align: top;padding: 30px 0 30px 0;">
+        <!-- 文字 -->
+        <div style="width: 60%;float: left;margin-top: 60px;">
+          <div style="width: 100%;height: auto;margin-bottom: 10px;text-align: left;">
+            <font style="color: #303133;font-size: 30px;font-weight: 700;">价值观</font>
+          </div>
+          <div style="width: 100%;height: auto;text-align: left;">
+            <font style="color: #303133;font-size: 16px;font-weight: 400;">
+              OpenAI的使命是确保通用人工智能 (Artificial General Intelligence, AGI)，即一种高度自主且在大多数具有经济价值的工作上超越人类的系统，将为全人类带来福祉。我们不仅希望直接建造出安全的、符合共同利益的通用人工智能，而且愿意帮助其它研究机构共同建造出这样的通用人工智能以达成我们的使命。为了达到这个目标，我们制订了如下原则：
+            </font>
+          </div>
+        </div>
+        <!-- 图片 -->
+        <div style="width: 19%;float: right;text-align: right;margin-top: 130px;">
+          <font style="color: #000000;font-size: 30px;font-weight: 900;">CMAPLE.CN</font>
+        </div>
+      </div>
+    </div>
+    <!-- 分割线 -->
+    <div class="divider div-transparent"></div>
+    <!-- 工作室介绍 -->
+    <div style="width: 100%;">
+      <!-- 限宽 -->
+      <div style="width: 1024px;margin: 0 auto 0;">
+        <!-- 标题 -->
+        <div style="text-align: left;padding: 60px 0 20px 0;">
+          <font style="color: #000000;font-weight: 900;font-size: 40px;">关于CMAPLE.CN工作室</font>
+        </div>
+        <!-- 内容 -->
+        <div style="width: 70%;text-align: left;padding: 0px 0 40px 0;">
+          <font id="about_font">
+            我们承诺在通用人工智能的开发过程中，将利用所有可获得的影响力，确保它可以造福全人类。我们将避免把人工智能或通用人工智能的技术置于损害人类或过度集中权力的事业中。
+          </font>
+        </div>
+        <div style="width: 70%;text-align: left;padding: 0px 0 40px 0;">
+          <font id="about_font">
+            我们的首要任务是对人类文明负责。我们预计需要调用大量资源来完成这一使命。同时，我们会积极行动以减少雇员和利益相关者间的利益冲突，确保大多数人可以受益。
+          </font>
+        </div>
+        <div style="width: 70%;text-align: left;padding: 0px 0 40px 0;">
+          <font id="about_font">
+            我们担心通用人工智能在发展后期将演变成一场激烈的竞赛，导致缺乏充足的时间进行安全防范。因此，如果一个与人类价值观相符、注重安全的项目领先于我们将近达成通用人工智能，我们承诺将停止竞赛，幷转而协助这个项目。我们会针对个别情况设计具体的合作方案。不过，一个典型的触发条件可能会是「这个项目在未来两年内能够成功研发通用人工智能的概率超过一半」。
+          </font>
+        </div>
+        <div style="text-align: left;padding: 0px 0px 40px 0;">
+          <a :href="AboutPageUrl" id = "about_font_a">
+            <font>了解更多详细信息</font>
+          </a>
+        </div>
+        <!-- 图片 -->
+        <div style="padding: 10px 0 20px 0;margin-bottom: 50px;">
+          <img style="width: 100%;border-radius:20px;" src="../../static/abuutpage_auout.jpg">
+        </div>
+      </div>
+    </div>
+    <!-- 分割线 -->
+    <div class="divider div-transparent"></div>
+    <!-- 管理团队 -->
+    <div style="width: 100%;"> 
+      <!-- 限宽 -->
+      <div style="width: 1024px;margin: 0 auto 0;padding: 50px 0 50px 0;text-align: left;">
+        <div id="team_menu" v-for="item in teams">
+          <div style="">
+            {{item.id}}
+          </div>
+        </div>
+      </div>
     </div>
     <!-- 分割线 -->
     <div class="divider div-transparent"></div>
@@ -73,16 +140,16 @@
             </div>
             <!-- 链接 -->
             <ul style="padding:0;margin-bottom: 0px;">
-              <!-- 工作室介绍 -->
-              <li style="list-style: none;margin-bottom: 16px;">
-                <a :href="AboutPageUrl" style="text-decoration: none;">
-                  <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">工作室介绍</font>
-                </a>
-              </li>
               <!-- 价值观 -->
               <li style="list-style: none;margin-bottom: 16px;">
                 <a :href="AboutPageUrl" style="text-decoration: none;">
                   <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">价值观</font>
+                </a>
+              </li>
+              <!-- 工作室介绍 -->
+              <li style="list-style: none;margin-bottom: 16px;">
+                <a :href="AboutPageUrl" style="text-decoration: none;">
+                  <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">工作室介绍</font>
                 </a>
               </li>
               <!-- 管理团队 -->
@@ -223,6 +290,18 @@ export default {
       run_Time_Range:'@2019-2020',
       // 网址地址
       domain_Name:'cmaple.cn',
+      teams:[
+        { 
+          //编号
+          id:1, 
+          // 头像图片
+          //职位
+          //贡献度
+          //个人介绍
+        },
+        
+
+      ],
     }
   },
    methods:{
@@ -350,5 +429,20 @@ export default {
     width: 80%;
     height: 1px;
     background-image: linear-gradient(to right, transparent, darkgrey, transparent);
+}
+/* 关于工作室描述文字 */
+#about_font{
+  font-size: 16px;
+  font-weight: 300;
+}
+/* 团队管理展示标签 */
+#team_menu{
+  border-radius:15px;
+  display: inline-block;
+  vertical-align: top;
+  width: 246px;
+  height: 400px;
+  box-shadow: 2px 2px 10px #DCDFE6;
+  margin:20px 10px 0 0;
 }
 </style>

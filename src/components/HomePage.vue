@@ -109,16 +109,16 @@
             </div>
             <!-- 链接 -->
             <ul style="padding:0;margin-bottom: 0px;">
-              <!-- 工作室介绍 -->
-              <li style="list-style: none;margin-bottom: 16px;">
-                <a :href="AboutPageUrl" style="text-decoration: none;">
-                  <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">工作室介绍</font>
-                </a>
-              </li>
               <!-- 价值观 -->
               <li style="list-style: none;margin-bottom: 16px;">
                 <a :href="AboutPageUrl" style="text-decoration: none;">
                   <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">价值观</font>
+                </a>
+              </li>
+              <!-- 工作室介绍 -->
+              <li style="list-style: none;margin-bottom: 16px;">
+                <a :href="AboutPageUrl" style="text-decoration: none;">
+                  <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">工作室介绍</font>
                 </a>
               </li>
               <!-- 管理团队 -->
