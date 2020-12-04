@@ -71,7 +71,7 @@
           </div>
         </div>
         <!-- 图片 -->
-        <div style="width: 19%;float: right;text-align: right;margin-top: 130px;">
+        <div class="select" style="width: 19%;float: right;text-align: right;margin-top: 130px;">
           <font style="color: #000000;font-size: 30px;font-weight: 900;">CMAPLE.CN</font>
         </div>
       </div>
@@ -119,11 +119,75 @@
     <div style="width: 100%;"> 
       <!-- 限宽 -->
       <div style="width: 1024px;margin: 0 auto 0;padding: 50px 0 50px 0;text-align: left;">
+        <!-- 标题 -->
+        <div>
+          <font style="color: #000000;font-weight: 900;font-size: 40px;">管理团队</font>
+        </div>
+        <!-- 内容 -->
         <div id="team_menu" v-for="item in teams">
-          <div style="">
-            {{item.id}}
+          <div style="padding: 12px 0 0 20px;">
+            <!-- 名字 -->
+            <div style="">
+              <font style="font-size: 16px;color: #000000;font-weight: 900;">{{item.name}}</font>
+            </div>
+            <!-- 职位 -->
+            <div style="">
+              <font style="font-size: 12px;color: #000000;font-weight: 400;">{{item.position}}</font>
+            </div>
+            <!-- 贡献度 -->
+            <div style="">
+              <font style="font-size: 10px;color: #000000;font-weight: 600;">{{item.introduce}}</font>
+            </div>
           </div>
         </div>
+        <!-- 合作贡献 -->
+        <div style="margin-top: 40px;">
+          <font style="color: #000000;font-weight: 700;font-size: 25px;">合作贡献</font>
+        </div>
+        <!-- 内容 -->
+         <div id="team_menu" v-for="contribution in contributions">
+            <div style="padding: 12px 0 0 20px;">
+              <!-- 名字 -->
+              <div style="">
+                <font style="font-size: 16px;color: #000000;font-weight: 900;">{{contribution.name}}</font>
+              </div>
+              <!-- 职位 -->
+              <div style="">
+                <font style="font-size: 12px;color: #000000;font-weight: 400;">{{contribution.position}}</font>
+              </div>
+              <!-- 贡献度 -->
+              <div style="">
+                <font style="font-size: 10px;color: #000000;font-weight: 600;">{{contribution.introduce}}</font>
+              </div>
+            </div>
+          </div>
+          <!-- 投资者 -->
+          <div style="margin-top: 40px;">
+            <font style="color: #000000;font-weight: 700;font-size: 25px;">投资者</font>
+          </div>
+          <!-- 内容 -->
+          <div  v-if="this.investments && this.investments.length > 0">
+             <div id="team_menu" v-for="investment in investments">
+              <div style="padding: 20px 0 0 20px;">
+                <!-- 名字 -->
+                <div style="">
+                  <font style="font-size: 16px;color: #000000;font-weight: 600;">{{investment.name}}</font>
+                </div>
+                <!-- 贡献度 -->
+                <div style="margin-top: 5px;">
+                  <font style="font-size: 10px;color: #000000;font-weight: 600;">{{investment.introduce}}</font>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="team_menu" v-else>
+            <div style="padding: 34px 0 0 100px;">
+              <!-- 名字 -->
+              <div style="">
+                <font style="font-size: 16px;color: #DCDFE6;font-weight: 900;">目前暂无投资者</font>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
     <!-- 分割线 -->
@@ -290,17 +354,62 @@ export default {
       run_Time_Range:'@2019-2020',
       // 网址地址
       domain_Name:'cmaple.cn',
+      // 管理团队
       teams:[
         { 
           //编号
           id:1, 
-          // 头像图片
+          //名称
+          name:'C-MAPLE',
           //职位
-          //贡献度
+          position:'创始人',
           //个人介绍
+          introduce:'CMAPLE.CN网站的创始人。',
         },
-        
-
+        { 
+          //编号
+          id:2, 
+          //名称
+          name:'EMMA',
+          //职位
+          position:'创始人',
+          //个人介绍
+          introduce:'CMAPLE.CN网站的创始人。',
+        },
+      ],
+      // 贡献
+      contributions:[
+        { 
+          //编号
+          id:1, 
+          //名称
+          name:'吴KangLi',
+          //职位
+          position:'前端工程师',
+          //个人介绍
+          introduce:'为网站提供了前端技术支持。',
+        },
+        { 
+          //编号
+          id:2, 
+          //名称
+          name:'颜ChengJie',
+          //职位
+          position:'前端工程师',
+          //个人介绍
+          introduce:'为网站提供了前端技术支持。',
+        },
+      ],
+      // 赞助
+      investments:[
+        // { 
+        //   //编号
+        //   id:1, 
+        //   //名称
+        //   name:'Microsoft，Reid Hoffman的慈善基金会',
+        //   //个人介绍
+        //   introduce:'为工作室提供赞助支持。',
+        // },
       ],
     }
   },
@@ -437,12 +546,23 @@ export default {
 }
 /* 团队管理展示标签 */
 #team_menu{
-  border-radius:15px;
+  border-radius:10px;
   display: inline-block;
   vertical-align: top;
-  width: 246px;
-  height: 400px;
+  width: 332px;
+  height: 90px;
   box-shadow: 2px 2px 10px #DCDFE6;
-  margin:20px 10px 0 0;
+  margin:30px 9px 0 0;
+  /* background-color: #F2F6FC; */
 }
+/* 无法选中属性 */
+.select{  
+    -webkit-user-select:none;  /*WebKit内核私有属性*/
+     -moz-user-select:none;    /*Firefox私有属性*/
+     -ms-user-select:none;     /*IE私有属性(IE10及以后)*/
+     -khtml-user-select:none;  /*KHTML内核私有属性*/
+     -o-user-select:none;      /*Opera私有属性*/
+     user-select:none;         /*CSS3属性*/
+}
+
 </style>
