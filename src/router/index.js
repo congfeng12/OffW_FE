@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import HomePage from '@/components/HomePage'
 import About from '@/components/About'
+import Service from '@/components/Service'
 
 Vue.use(Router)
 
@@ -17,6 +18,11 @@ export default new Router({
       path: '/About',
       name: 'About',
       component: About
+    },
+    {
+      path: '/Service',
+      name: 'Service',
+      component: Service
     },
   ],
   mode: 'history',

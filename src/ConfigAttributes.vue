@@ -14,6 +14,8 @@
     const HomePageUrl = '/'
     //关于
     const AboutPageUrl = '/About'
+    //服务领域
+    const ServicePageUrl = '/Service'
     //公共方法
     //保存cookie
     function setCookie (c_name, value, expiredays) {
@@ -46,6 +48,7 @@
       GitHubURL,
       HomePageUrl,
       AboutPageUrl,
+      ServicePageUrl,
       setCookie,
       getCookie,
       delCookie,

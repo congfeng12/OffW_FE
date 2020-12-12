@@ -30,7 +30,7 @@
             </div>
             <!-- 服务领域 -->
             <div style="float: right;padding: 4px 80px 0px 0px;">
-              <a :href="HomePageUrl" style="text-decoration: none;">
+              <a :href="ServicePageUrl" style="text-decoration: none;">
                 <font id = "menu_font">服务领域</font>
               </a>
             </div>
@@ -103,7 +103,7 @@
           </font>
         </div>
         <div style="text-align: left;padding: 0px 0px 40px 0;">
-          <a :href="AboutPageUrl" id = "about_font_a">
+          <a :href="ServicePageUrl" id = "about_font_a">
             <font>了解更多详细信息</font>
           </a>
         </div>
@@ -254,25 +254,25 @@
             <ul style="padding:0;margin-bottom: 0px;">
               <!-- 官网定制 -->
               <li style="list-style: none;margin-bottom: 16px;">
-                <a :href="HomePageUrl" style="text-decoration: none;">
+                <a :href="ServicePageUrl" style="text-decoration: none;">
                   <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">官网定制</font>
                 </a>
               </li>
               <!-- 服务程序开发 -->
               <li style="list-style: none;margin-bottom: 16px;">
-                <a :href="HomePageUrl" style="text-decoration: none;">
+                <a :href="ServicePageUrl" style="text-decoration: none;">
                   <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">服务程序开发</font>
                 </a>
               </li>
               <!-- CMAPLE.CN论坛 -->
               <li style="list-style: none;margin-bottom: 16px;">
-                <a :href="HomePageUrl" style="text-decoration: none;">
+                <a :href="ServicePageUrl" style="text-decoration: none;">
                   <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">CMAPLE.CN论坛</font>
                 </a>
               </li>
               <!-- 区块链 -->
               <li style="list-style: none;margin-bottom: 0px;">
-                <a :href="HomePageUrl" style="text-decoration: none;">
+                <a :href="ServicePageUrl" style="text-decoration: none;">
                   <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">区块链</font>
                 </a>
               </li>
@@ -372,6 +372,8 @@ export default {
       HomePageUrl:"",
       //关于页面路由
       AboutPageUrl:'',
+      //服务领域页面路由
+      ServicePageUrl : '',
       //主页图片
       aboutPageImgUrl:'../../static/about_background.jpg',
       
@@ -447,6 +449,7 @@ export default {
     this.Domain_Name=this.$Config.Domain_Name;
     this.HomePageUrl=this.$Config.HomePageUrl;
     this.AboutPageUrl=this.$Config.AboutPageUrl;
+    this.ServicePageUrl=this.$Config.ServicePageUrl;
     //请求首页展示图片及内容路由
     //console.log(localStorage.getItem("cip")+'/'+localStorage.getItem("cname"));
   },
