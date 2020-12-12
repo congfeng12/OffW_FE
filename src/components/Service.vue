@@ -61,7 +61,7 @@
       <div style="width: 1024px;margin: 0 auto 0;padding-top: 40px;padding-bottom: 40px;">
         <!-- 标题 -->
         <div style="text-align: left;">
-          <font style="color: #000000;font-weight: 900;font-size: 40px;">官网定制</font>
+          <font style="color: #000000;font-weight: 900;font-size: 35px;">官网定制</font>
         </div>
         <!-- Official website custom made -->
         <div style="text-align: left;">
@@ -110,49 +110,69 @@
       <div style="width: 1024px;margin: 0 auto 0;padding-top: 40px;padding-bottom: 40px;">
         <!-- 标题 -->
         <div style="text-align: left;">
-          <font style="color: #000000;font-weight: 900;font-size: 40px;">服务程序开发</font>
+          <font style="color: #000000;font-weight: 900;font-size: 35px;">服务程序开发</font>
         </div>
         <!-- Official website custom made -->
         <div style="text-align: left;padding-bottom: 40px;">
           <font style="color: #C0C4CC;font-weight: 200;font-size: 18px;">Service program development</font>
         </div>
         <!-- 内容表格 -->
-        <div v-if="this.Programs && this.Programs.length > 0">
+        <div v-if="Programs && Programs.length > 0">
            <div id="program_menu" v-for="Program in Programs" >
-            <a :href="Program.domain_name" target="_blank" style="text-decoration:none;">
-              <div style="width: 20%;display: inline-block;vertical-align: top;text-align: left;">
-                <font style="color: #000;font-size: 18px;font-weight: 800;">{{Program.title}} - {{Program.version}}</font>
+            <a :href="Program.domain_name" target="_blank" style="text-decoration:none;" >
+              <div style="width: 59%;display: inline-block;vertical-align: top;text-align: left;" class="a_hover">
+                <font>{{Program.title}} - {{Program.version}}</font>
               </div>
-              <div style="width: 20%;display: inline-block;vertical-align: top;text-align: left;">
-                <font style="color: #909399;font-size: 18px;font-weight: 400;">{{Program.uptime}}</font>
+              <div style="width: 20%;display: inline-block;vertical-align: top;text-align: right">
+                <font style="color: #909399;font-size: 16px;font-weight: 300;">{{Program.uptime}}</font>
               </div>
-              <div style="width: 59%;display: inline-block;vertical-align: top;text-align: right;">
-                <font style="color: #000;font-size: 18px;font-weight: 400;">{{Program.type}}</font>
+              <div style="width: 20%;display: inline-block;vertical-align: top;text-align: right;">
+                <font style="color: #606266;font-size: 16px;font-weight: 400;">{{Program.type}}</font>
               </div>
             </a>
             <!-- 分割线 -->
             <!-- !!!!!!! -->
-            <div style="padding:10px 0 10px 0;">
-             
-                <hr size="1px;" color="C0C4CC" />
-          
+            <div v-show="Program.id < Programs.length" style="padding:10px 0 10px 0;">
+              <hr size="1px;" color="C0C4CC" />
             </div>
-
-
-
-
-
           </div>
           
         </div>
         <div v-else>
           <div id="program_menu">暂无服务程序</div>
         </div>
+        <!-- 查看更多 -->
+        <div style="text-align: left;" v-show="Programs.length > 0">
+          <a :href="GitHubURL" id = "about_font_a" target="_blank">
+            <font>查看更多</font>
+          </a>
+        </div>
       </div>
     </div>
-
-
-
+    <!-- 分割线 -->
+    <div class="divider div-transparent"></div>
+    <!-- 论坛 -->
+    <div style="width: 100%;">
+      <!-- 限宽 -->
+      <div style="width: 1024px;margin: 0 auto 0;padding-top: 40px;padding-bottom: 40px;">
+        <!-- 标题 -->
+        <div style="text-align: left;">
+          <font style="color: #000000;font-weight: 900;font-size: 35px;">CMAPLE.CN论坛</font>
+        </div>
+        <!-- Official website custom made -->
+        <div style="text-align: left;padding-bottom: 40px;">
+          <font style="color: #C0C4CC;font-weight: 200;font-size: 18px;">CMAPLE.CN Forum</font>
+        </div>
+        <!-- 内容 -->
+        <a href="javascript:void(0)" @click="alertMessage (this,'warning','论坛暂未开放！')">
+          <div style="width: 100%;height: 200px;border-radius:10px;" :style="{backgroundImage:'url('+forumImgUrl+')'}"></div>
+        </a>
+        <!-- 说明 -->
+        <div style="text-align: left;padding-top: 20px;">
+          <font style="color: #606266;font-size: 12px;font-weight: 400;">全球最大中文IT社区，为IT专业技术人员提供最全面的信息传播和服务平台</font>
+        </div>
+      </div>
+    </div>
 
 
     <!-- 分割线 -->
@@ -216,11 +236,11 @@
                 </a>
               </li>
               <!-- 区块链 -->
-              <li style="list-style: none;margin-bottom: 0px;">
+            <!--   <li style="list-style: none;margin-bottom: 0px;">
                 <a :href="ServicePageUrl" style="text-decoration: none;">
                   <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">区块链</font>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </div>
           <!-- 联系我们 -->
@@ -313,6 +333,8 @@ export default {
       Run_Time_Range:'',
       // 网址地址
       Domain_Name:'',
+      //github
+      GitHubURL:'',
       //主页路由
       HomePageUrl:"",
       //关于页面路由
@@ -321,6 +343,8 @@ export default {
       ServicePageUrl : '',
       //主页图片
       serviceImgUrl:'../../static/service_background.jpg',
+      //论坛图片路径
+      forumImgUrl:'../../static/forum_img副本.jpg',
       //案例
       Cases:[
         {
@@ -354,7 +378,7 @@ export default {
         },
         {
           //id
-          id:1,
+          id:2,
           //标题
           title:'DLLP',
           //版本
@@ -368,7 +392,7 @@ export default {
         },
         {
           //id
-          id:1,
+          id:3,
           //标题
           title:'DLLP',
           //版本
@@ -382,7 +406,7 @@ export default {
         },
         {
           //id
-          id:1,
+          id:4,
           //标题
           title:'DLLP',
           //版本
@@ -396,7 +420,6 @@ export default {
         },
 
       ],
-      Programsnum:0,
       
     }
   },
@@ -404,18 +427,28 @@ export default {
     // 获取当前浏览器页面高度
     getPageHeight(){
       this.pageheight = window.innerHeight;
-    }
+    },
+    // 消息提示
+    alertMessage(th,action,msg){
+     this.$notify({
+        group: 'foo',
+        title: 'CMAPLE.CN论坛',
+        text: '论坛还在维护当中!',
+        position: 'top',
+        type: 'warn',
+      });
+    },
+
   },
   created(){
     //初始化静态参数
     this.Record_No=this.$Config.Record_No;
     this.Run_Time_Range=this.$Config.Run_Time_Range;
     this.Domain_Name=this.$Config.Domain_Name;
+    this.GitHubURL=this.$Config.GitHubURL;
     this.HomePageUrl=this.$Config.HomePageUrl;
     this.AboutPageUrl=this.$Config.AboutPageUrl;
     this.ServicePageUrl=this.$Config.ServicePageUrl;
-
-    this.Programsnum = thos.Programsnum.length;
     //请求首页展示图片及内容路由
     //console.log(localStorage.getItem("cip")+'/'+localStorage.getItem("cname"));
   },
@@ -430,7 +463,8 @@ export default {
         )()
       }
         this.getPageHeight()
-    }
+    },
+
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -517,50 +551,61 @@ export default {
   }
   /* 分割线 */
   .divider {
-    position: relative;
-    margin-top: 0px;
-    height: 1px;
-}
-.div-transparent:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 10%;
-    right: 10%;
-    width: 80%;
-    height: 1px;
-    background-image: linear-gradient(to right, transparent, darkgrey, transparent);
-}
-/* 关于工作室描述文字 */
-#about_font{
-  font-size: 16px;
-  font-weight: 300;
-}
-/* 团队管理展示标签 */
-#case_menu{
-  border-radius:10px;
-  display: inline-block;
-  vertical-align: top;
-  width: 332px;
-  height: 400px;
-  box-shadow: 2px 2px 10px #DCDFE6;
-  margin:30px 9px 0 0;
-  /* background-color: #F2F6FC; */
-}
-/* 服务程序展示标签 */
-#program_menu{
-  width: 100%;
-  height: 60px;
-  margin-top: 5px;
-}
-/* 无法选中属性 */
-.select{  
-    -webkit-user-select:none;  /*WebKit内核私有属性*/
-     -moz-user-select:none;    /*Firefox私有属性*/
-     -ms-user-select:none;     /*IE私有属性(IE10及以后)*/
-     -khtml-user-select:none;  /*KHTML内核私有属性*/
-     -o-user-select:none;      /*Opera私有属性*/
-     user-select:none;         /*CSS3属性*/
-}
+      position: relative;
+      margin-top: 0px;
+      height: 1px;
+  }
+  .div-transparent:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      width: 80%;
+      height: 1px;
+      background-image: linear-gradient(to right, transparent, darkgrey, transparent);
+  }
+  /* 关于工作室描述文字 */
+  #about_font{
+    font-size: 16px;
+    font-weight: 300;
+  }
+  /* 团队管理展示标签 */
+  #case_menu{
+    border-radius:10px;
+    display: inline-block;
+    vertical-align: top;
+    width: 332px;
+    height: 400px;
+    box-shadow: 2px 2px 10px #DCDFE6;
+    margin:30px 9px 0 0;
+    /* background-color: #F2F6FC; */
+  }
+  /* 服务程序展示标签 */
+  #program_menu{
+    width: 100%;
+    height: 60px;
+    margin-top: 5px;
+  }
+  /*  */
+  .a_hover{
+    color: #000;
+    font-size: 18px;
+    font-weight: 800;
+  }
+  .a_hover:hover{
+    color: #C0C4CC;
+    font-size: 18px;
+    font-weight: 800;
+  }
+  /* 无法选中属性 */
+  .select{  
+      -webkit-user-select:none;  /*WebKit内核私有属性*/
+       -moz-user-select:none;    /*Firefox私有属性*/
+       -ms-user-select:none;     /*IE私有属性(IE10及以后)*/
+       -khtml-user-select:none;  /*KHTML内核私有属性*/
+       -o-user-select:none;      /*Opera私有属性*/
+       user-select:none;         /*CSS3属性*/
+  }
 
 </style>

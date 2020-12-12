@@ -84,7 +84,7 @@
       <div style="width: 1024px;margin: 0 auto 0;">
         <!-- 标题 -->
         <div style="text-align: left;padding: 60px 0 20px 0;">
-          <font style="color: #000000;font-weight: 900;font-size: 40px;">关于CMAPLE.CN工作室</font>
+          <font style="color: #000000;font-weight: 900;font-size: 35px;">关于CMAPLE.CN工作室</font>
         </div>
         <!-- 内容 -->
         <div style="width: 70%;text-align: left;padding: 0px 0 40px 0;">
@@ -121,7 +121,7 @@
       <div style="width: 1024px;margin: 0 auto 0;padding: 50px 0 50px 0;text-align: left;">
         <!-- 标题 -->
         <div>
-          <font style="color: #000000;font-weight: 900;font-size: 40px;">管理团队</font>
+          <font style="color: #000000;font-weight: 900;font-size: 35px;">管理团队</font>
         </div>
         <!-- 内容 -->
         <div v-if="this.teams && this.teams.length > 0">
@@ -271,11 +271,11 @@
                 </a>
               </li>
               <!-- 区块链 -->
-              <li style="list-style: none;margin-bottom: 0px;">
+              <!-- <li style="list-style: none;margin-bottom: 0px;">
                 <a :href="ServicePageUrl" style="text-decoration: none;">
                   <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">区块链</font>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </div>
           <!-- 联系我们 -->

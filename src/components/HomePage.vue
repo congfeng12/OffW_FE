@@ -156,11 +156,11 @@
                 </a>
               </li>
               <!-- 区块链 -->
-              <li style="list-style: none;margin-bottom: 0px;">
+             <!--  <li style="list-style: none;margin-bottom: 0px;">
                 <a :href="ServicePageUrl" style="text-decoration: none;">
                   <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">区块链</font>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </div>
           <!-- 联系我们 -->
