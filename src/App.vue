@@ -1,17 +1,16 @@
 <template>
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
-    <router-view/>
-    <notifications group="foo" />
+    <router-view />
+    <notifications position="top center" group="foo" />
   </div>
 </template>
-
 <script>
 export default {
   name: 'App'
 }
-</script>
 
+</script>
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -21,4 +20,9 @@ export default {
   color: #2c3e50;
   /* margin-top: 60px; */
 }
+
+</style>
+<style scoped>
+/* 通知栏css效果 */
+
 </style>

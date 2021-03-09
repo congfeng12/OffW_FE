@@ -5,55 +5,49 @@
       <!-- 官网LOGO -->
       <div style="width: 50px;height: 50px;float: left;margin: 10px 0px 0px 20px;">
         <a :href="HomePageUrl" style="text-decoration: none;">
-           <img style="width: 40px;" src="../../static/logo.png">
-         </a>
+          <img style="width: 40px;" src="../../static/logo.png">
+        </a>
       </div>
-       <!-- 微信公众号等图标 -->
-        <div style="width: 50px;height: 50px;float: right;margin: 20px 20px 0px 0px;">
-          <!-- <a href="javascript:void(0)" @click="WeChartVisible = true"> -->
-            <img style="width: 30px;" src="../../static/wechat.png">
-          <!-- </a> -->
-        </div>
+      <!-- 微信公众号等图标 -->
+      <div style="width: 50px;height: 50px;float: right;margin: 20px 20px 0px 0px;">
+        <!-- <a href="javascript:void(0)" @click="WeChartVisible = true"> -->
+        <img style="width: 30px;" src="../../static/wechat.png" @mouseenter="mouseEnter" @mouseout="mouseOut">
+        <!-- </a> -->
+      </div>
       <!-- 导航栏 -->
       <div id="menu">
-            <!-- 加入我们 -->
-            <div style="float: right;padding: 4px 0px 0px 0px;">
-              <a :href="HomePageUrl" style="text-decoration: none;">
-                <font id = "menu_font">加入我们</font>
-              </a>
-            </div>
-            <!-- 联系我们 -->
-            <div style="float: right;padding: 4px 80px 0px 0px;">
-              <a :href="HomePageUrl" style="text-decoration: none;">
-                <font id = "menu_font">联系我们</font>
-              </a>
-            </div>
-            <!-- 服务领域 -->
-            <div style="float: right;padding: 4px 80px 0px 0px;">
-              <a :href="ServicePageUrl" style="text-decoration: none;">
-                <font id = "menu_font">服务领域</font>
-              </a>
-            </div>
-            <!-- 关于CMAPLE -->
-            <div style="float: right;padding: 4px 80px 0px 0px;">
-              <a :href="AboutPageUrl"  id = "menu_font" style="text-decoration: none;">
-                <font id = "menu_font">关于CMAPLE</font>
-              </a>
-            </div>
+        <!-- 联系我们 -->
+        <div style="float: right;padding: 4px 80px 0px 0px;">
+          <a :href="ContactPageUrl" style="text-decoration: none;">
+            <font id="menu_font">联系我们</font>
+          </a>
         </div>
-        <!-- 约束宽度 -->
-        <div style="width: 1024px;margin:0 auto 0;" :style="{height:pageheight - 50 +'px'}">
-          <!-- 关于标题 -->
-          <div style="width: 1024px;position: absolute;top: 38%;">
-            <font style="color: #FFFFFF;font-size: 80px;font-weight: 900;letter-spacing: 0.08em;">服务领域</font>
-          </div>
-          <!-- 关于说明 -->
-          <div style="width: 600px;position: absolute;top: 54%;left:50%;margin-left:-300px;">
-            <font style="color: #FFFFFF;font-size: 20px;font-weight: 400;">
-              Iconfont-国内功能很强大且图标内容很丰富的矢量图标库,提供矢量图标下载、在线存储、格式转换等功能。阿里巴巴体验团队倾力打造,设计和前端开发的便捷工具
-            </font>
-          </div>
+        <!-- 服务领域 -->
+        <div style="float: right;padding: 4px 80px 0px 0px;">
+          <a :href="ServicePageUrl" style="text-decoration: none;">
+            <font id="menu_font">服务领域</font>
+          </a>
         </div>
+        <!-- 关于CMAPLE -->
+        <div style="float: right;padding: 4px 80px 0px 0px;">
+          <a :href="AboutPageUrl" id="menu_font" style="text-decoration: none;">
+            <font id="menu_font">关于CMAPLE</font>
+          </a>
+        </div>
+      </div>
+      <!-- 约束宽度 -->
+      <div style="width: 1024px;margin:0 auto 0;" :style="{height:pageheight - 50 +'px'}">
+        <!-- 关于标题 -->
+        <div style="width: 1024px;position: absolute;top: 38%;">
+          <font style="color: #FFFFFF;font-size: 80px;font-weight: 900;letter-spacing: 0.08em;">服务领域</font>
+        </div>
+        <!-- 关于说明 -->
+        <div style="width: 600px;position: absolute;top: 54%;left:50%;margin-left:-300px;">
+          <font style="color: #FFFFFF;font-size: 20px;font-weight: 400;">
+            Iconfont-国内功能很强大且图标内容很丰富的矢量图标库,提供矢量图标下载、在线存储、格式转换等功能。阿里巴巴体验团队倾力打造,设计和前端开发的便捷工具
+          </font>
+        </div>
+      </div>
     </div>
     <!-- 官网定制 -->
     <div style="width: 100%;">
@@ -65,7 +59,7 @@
         </div>
         <!-- Official website custom made -->
         <div style="text-align: left;">
-          <font style="color: #C0C4CC;font-weight: 200;font-size: 18px;">Official website custom made</font>
+          <font style="color: #C0C4CC;font-weight: 200;font-size: 18px;">Official Website Custom Made</font>
         </div>
         <!-- 开发案例 -->
         <div style="text-align: left;margin-top: 30px;">
@@ -76,17 +70,17 @@
             <div id="case_menu" v-for="Case in Cases">
               <a :href="Case.domain_name" style="text-decoration:none;" target="_blank">
                 <div style="padding: 0px;">
-                 <!-- 图片 -->
-                 <!-- 图片添加动态效果 -->
-                 <div style="width: 332px;height: 320px;border-radius:10px 10px 0 0;background-size:cover;" :style="{backgroundImage:'url('+Case.imgurl+')'}"></div>
-                 <!-- 标题 -->
-                 <div style="padding: 15px 0 0 10px;">
-                   <font style="color: #303133;font-size: 18px;font-weight: 600;">{{Case.title}}</font>
-                 </div>
-                 <!-- 说明 -->
-                 <div style="padding: 5px 0 0 10px;">
-                   <font style="color: #303133;font-size: 14px;font-weight: 400;">{{Case.info}}</font>
-                 </div>
+                  <!-- 图片 -->
+                  <!-- 图片添加动态效果 -->
+                  <div style="width: 332px;height: 320px;border-radius:10px 10px 0 0;background-size:cover;" :style="{backgroundImage:'url('+Case.imgurl+')'}"></div>
+                  <!-- 标题 -->
+                  <div style="padding: 15px 0 0 10px;">
+                    <font style="color: #303133;font-size: 18px;font-weight: 600;">{{Case.title}}</font>
+                  </div>
+                  <!-- 说明 -->
+                  <div style="padding: 5px 0 0 10px;">
+                    <font style="color: #303133;font-size: 14px;font-weight: 400;">{{Case.info}}</font>
+                  </div>
                 </div>
               </a>
             </div>
@@ -114,12 +108,12 @@
         </div>
         <!-- Official website custom made -->
         <div style="text-align: left;padding-bottom: 40px;">
-          <font style="color: #C0C4CC;font-weight: 200;font-size: 18px;">Service program development</font>
+          <font style="color: #C0C4CC;font-weight: 200;font-size: 18px;">Service Program Development</font>
         </div>
         <!-- 内容表格 -->
         <div v-if="Programs && Programs.length > 0">
-           <div id="program_menu" v-for="Program in Programs" >
-            <a :href="Program.domain_name" target="_blank" style="text-decoration:none;" >
+          <div id="program_menu" v-for="Program in Programs">
+            <a :href="Program.domain_name" target="_blank" style="text-decoration:none;">
               <div style="width: 59%;display: inline-block;vertical-align: top;text-align: left;" class="a_hover">
                 <font>{{Program.title}} - {{Program.version}}</font>
               </div>
@@ -136,14 +130,13 @@
               <hr size="1px;" color="C0C4CC" />
             </div>
           </div>
-          
         </div>
         <div v-else>
           <div id="program_menu">暂无服务程序</div>
         </div>
         <!-- 查看更多 -->
         <div style="text-align: left;" v-show="Programs.length > 0">
-          <a :href="GitHubURL" id = "about_font_a" target="_blank">
+          <a :href="GitHubURL" id="about_font_a" target="_blank">
             <font>查看更多</font>
           </a>
         </div>
@@ -173,8 +166,6 @@
         </div>
       </div>
     </div>
-
-
     <!-- 分割线 -->
     <div class="divider div-transparent"></div>
     <!-- 页脚 - 导航栏 -->
@@ -235,16 +226,10 @@
                   <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">CMAPLE.CN论坛</font>
                 </a>
               </li>
-              <!-- 区块链 -->
-            <!--   <li style="list-style: none;margin-bottom: 0px;">
-                <a :href="ServicePageUrl" style="text-decoration: none;">
-                  <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">区块链</font>
-                </a>
-              </li> -->
             </ul>
           </div>
           <!-- 联系我们 -->
-          <div style="width: 16%;display: inline-block;vertical-align: top;">
+          <div style="width: 32%;display: inline-block;vertical-align: top;">
             <!-- 标题 -->
             <div>
               <span style="color: #000000;font-size: 16px;font-weight: 600;">联系我们</span>
@@ -253,30 +238,14 @@
             <ul style="padding:0;margin-bottom: 0px;">
               <!-- 邮箱&地址 -->
               <li style="list-style: none;margin-bottom: 16px;">
-                <a :href="HomePageUrl" style="text-decoration: none;">
-                  <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">邮箱&地址</font>
+                <a :href="ContactPageUrl" style="text-decoration: none;">
+                  <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">联系方式</font>
                 </a>
               </li>
               <!-- 留言 -->
               <li style="list-style: none;margin-bottom: 0px;">
-                <a :href="HomePageUrl" style="text-decoration: none;">
-                  <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">留言</font>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <!-- 加入我们 -->
-          <div style="width: 16%;display: inline-block;vertical-align: top;">
-            <!-- 标题 -->
-            <div>
-              <span style="color: #000000;font-size: 16px;font-weight: 600;">加入我们</span>
-            </div>
-            <!-- 链接 -->
-            <ul style="padding:0;margin-bottom: 0px;">
-              <!-- 加入CMAPLE.CN -->
-              <li style="list-style: none;margin-bottom: 0px;">
-                <a :href="HomePageUrl" style="text-decoration: none;">
-                  <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">加入CMAPLE.CN</font>
+                <a :href="ContactPageUrl" style="text-decoration: none;">
+                  <font style="color: #666;font-size: 12px;text-transform: uppercase;font-weight: 300;">加入我们</font>
                 </a>
               </li>
             </ul>
@@ -294,7 +263,7 @@
                 <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">服务时间</font>
               </li>
               <li style="list-style: none;margin-bottom: 0px;">
-                <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">周一至周日 08:00 - 18:00</font>
+                <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">周一至周五 08:00 - 18:00</font>
               </li>
             </ul>
           </div>
@@ -316,296 +285,283 @@
         </div>
       </div>
     </div>
+    <!-- 微信弹窗 -->
+    <div v-show="isActive" style="position: absolute;top: 70px;right: 70px;">
+      <img style="width: 300px;padding-left: 25px;" src="../../static/WechatIMG485.jpeg">
+    </div>
   </div>
 </template>
-
 <script>
 export default {
   //name: 'HelloWorld',
-  data () {
+  data() {
     return {
       //msg: 'Welcome to Your Vue.js App'
+      isActive: false,
       // 页面高度
-      pageheight:'',
-       // 备案号
-      Record_No:'',
+      pageheight: '',
+      // 备案号
+      Record_No: '',
       // 网站运营时间
-      Run_Time_Range:'',
+      Run_Time_Range: '',
       // 网址地址
-      Domain_Name:'',
+      Domain_Name: '',
       //github
-      GitHubURL:'',
+      GitHubURL: '',
       //主页路由
-      HomePageUrl:"",
+      HomePageUrl: "",
       //关于页面路由
-      AboutPageUrl:'',
+      AboutPageUrl: '',
       //服务领域页面路由
-      ServicePageUrl : '',
+      ServicePageUrl: '',
+      //联系我们页面路由
+      ContactPageUrl: '',
       //主页图片
-      serviceImgUrl:'../../static/service_background.jpg',
+      serviceImgUrl: '../../static/service_background.jpg',
       //论坛图片路径
-      forumImgUrl:'../../static/forum_img副本.jpg',
+      forumImgUrl: '../../static/forum_img副本.jpg',
       //案例
-      Cases:[
-        {
+      Cases: [{
           //id
-          id:1,
+          id: 1,
           //名称
-          title:'比格基地',
+          title: '比格基地',
           //图片
-          imgurl:'../../static/case_demo.png',
+          imgurl: '../../static/case_demo.jpg',
           //域名
-          domain_name:'https://www.bigbaser.com/',
+          domain_name: 'https://www.bigbaser.com/',
           //说明
-          info:'成为最具创业和创新精神的梦工厂'
-        },
-        
-      ],
-      Programs:[
-        {
-          //id
-          id:1,
-          //标题
-          title:'DLLP',
-          //版本
-          version:'1.0',
-          //类型
-          type:'深度神经网络',
-          //域名
-          domain_name:'https://github.com/congfeng12/dllp',
-          //开发时间
-          uptime:'2020-08-12'
-        },
-        {
-          //id
-          id:2,
-          //标题
-          title:'DLLP',
-          //版本
-          version:'1.0',
-          //类型
-          type:'深度神经网络',
-          //域名
-          domain_name:'https://github.com/congfeng12/dllp',
-          //开发时间
-          uptime:'2020-08-12'
-        },
-        {
-          //id
-          id:3,
-          //标题
-          title:'DLLP',
-          //版本
-          version:'1.0',
-          //类型
-          type:'深度神经网络',
-          //域名
-          domain_name:'https://github.com/congfeng12/dllp',
-          //开发时间
-          uptime:'2020-08-12'
-        },
-        {
-          //id
-          id:4,
-          //标题
-          title:'DLLP',
-          //版本
-          version:'1.0',
-          //类型
-          type:'深度神经网络',
-          //域名
-          domain_name:'https://github.com/congfeng12/dllp',
-          //开发时间
-          uptime:'2020-08-12'
+          info: '成为最具创业和创新精神的梦工厂'
         },
 
       ],
-      
+      Programs: [{
+          //id
+          id: 1,
+          //标题
+          title: 'DLLP',
+          //版本
+          version: '1.0',
+          //类型
+          type: '深度神经网络',
+          //域名
+          domain_name: 'https://github.com/congfeng12/dllp',
+          //开发时间
+          uptime: '2020-08-12'
+        },
+
+      ],
+
     }
   },
-   methods:{
+  methods: {
     // 获取当前浏览器页面高度
-    getPageHeight(){
+    getPageHeight() {
       this.pageheight = window.innerHeight;
     },
     // 消息提示
-    alertMessage(th,action,msg){
-     this.$notify({
+    alertMessage(th, action, msg) {
+      this.$notify({
         group: 'foo',
         title: 'CMAPLE.CN论坛',
-        text: '论坛还在维护当中!',
-        position: 'top',
+        text: '论坛暂未开放，系统维护中!',
         type: 'warn',
       });
     },
+    mouseEnter() { this.isActive = true },
+    mouseOut() { this.isActive = false },
 
   },
-  created(){
+  created() {
     //初始化静态参数
-    this.Record_No=this.$Config.Record_No;
-    this.Run_Time_Range=this.$Config.Run_Time_Range;
-    this.Domain_Name=this.$Config.Domain_Name;
-    this.GitHubURL=this.$Config.GitHubURL;
-    this.HomePageUrl=this.$Config.HomePageUrl;
-    this.AboutPageUrl=this.$Config.AboutPageUrl;
-    this.ServicePageUrl=this.$Config.ServicePageUrl;
+    this.Record_No = this.$Config.Record_No;
+    this.Run_Time_Range = this.$Config.Run_Time_Range;
+    this.Domain_Name = this.$Config.Domain_Name;
+    this.GitHubURL = this.$Config.GitHubURL;
+    this.HomePageUrl = this.$Config.HomePageUrl;
+    this.AboutPageUrl = this.$Config.AboutPageUrl;
+    this.ServicePageUrl = this.$Config.ServicePageUrl;
+    this.ContactPageUrl = this.$Config.ContactPageUrl;
     //请求首页展示图片及内容路由
     //console.log(localStorage.getItem("cip")+'/'+localStorage.getItem("cname"));
   },
-  destroyed(){
-  },
-  mounted(){
+  destroyed() {},
+  mounted() {
     //页面高度赋值
-    window.onresize = () =>{
-      return(()=>{
+    window.onresize = () => {
+      return (() => {
         this.getPageHeight()
-      }
-        )()
-      }
-        this.getPageHeight()
-    },
+      })()
+    }
+    this.getPageHeight()
+  },
 
 }
+
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  /* 官网页头展示 */
-  #homepage_font{
-    width: 100%;
-    background-size:cover;
-    background-color: #000000;
-  }
-  #menu{
-    width: 610px;
-    height: 30px;
-    margin:0 auto 0;
-    padding-top: 25px;
-  }
-  /* 导航栏字体 */
-  #menu_font{
-    color: #FFFFFF;
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    font-weight: 900;
-  }
-  /* 导航栏字体 鼠标悬浮之后 */
-  #menu_font:hover{
-    color: #FFFFFF;
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    font-weight: 900;
-  }
-  /* 主页展示内容链接 */
-  #main_font_a{
-    color: #409EFF;
-    font-size: 20px;
-    letter-spacing: 0.2em;
-    padding-bottom: 2px;
-    font-weight: 900;
-    text-decoration:none;
-  }
-   /* 主页展示内容链接 鼠标悬浮之后 */
-   #main_font_a:hover{
-    color: #409EFF;
-    font-size: 20px;
-    letter-spacing: 0.2em;
-    font-weight: 900;
-    border-bottom: 2px solid #409EFF;
-  }
-  /*  */
-  #about_font_a{
-    color: #409EFF;
-    font-size: 16px;
-    letter-spacing: 0.1em;
-    padding-bottom: 2px;
-    font-weight: 900;
-    text-decoration:none;
-  }
-  /*  */
-  #about_font_a:hover{
-   color: #409EFF;
-    font-size: 16px;
-    letter-spacing: 0.1em;
-    font-weight: 900;
-    border-bottom: 2px solid #409EFF;
-  }
-  /* 主页展示内容向下标记图标 */
-  #bottom_img{
-    position: absolute;
-    margin:0 auto;
-    left: 50px;
-    right: 50px;
-    top: 5px;
-    width: 30px;
-  }
-  /* 主页展示内容向下标记图标 鼠标悬浮之后 */
-   #bottom_img:hover{
-    position: absolute;
-    margin:0 auto;
-    left: 50px;
-    right: 50px;
-    top: 8px;
-    width: 30px;
-  }
-  /* 分割线 */
-  .divider {
-      position: relative;
-      margin-top: 0px;
-      height: 1px;
-  }
-  .div-transparent:before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 10%;
-      right: 10%;
-      width: 80%;
-      height: 1px;
-      background-image: linear-gradient(to right, transparent, darkgrey, transparent);
-  }
-  /* 关于工作室描述文字 */
-  #about_font{
-    font-size: 16px;
-    font-weight: 300;
-  }
-  /* 团队管理展示标签 */
-  #case_menu{
-    border-radius:10px;
-    display: inline-block;
-    vertical-align: top;
-    width: 332px;
-    height: 400px;
-    box-shadow: 2px 2px 10px #DCDFE6;
-    margin:30px 9px 0 0;
-    /* background-color: #F2F6FC; */
-  }
-  /* 服务程序展示标签 */
-  #program_menu{
-    width: 100%;
-    height: 60px;
-    margin-top: 5px;
-  }
-  /*  */
-  .a_hover{
-    color: #000;
-    font-size: 18px;
-    font-weight: 800;
-  }
-  .a_hover:hover{
-    color: #C0C4CC;
-    font-size: 18px;
-    font-weight: 800;
-  }
-  /* 无法选中属性 */
-  .select{  
-      -webkit-user-select:none;  /*WebKit内核私有属性*/
-       -moz-user-select:none;    /*Firefox私有属性*/
-       -ms-user-select:none;     /*IE私有属性(IE10及以后)*/
-       -khtml-user-select:none;  /*KHTML内核私有属性*/
-       -o-user-select:none;      /*Opera私有属性*/
-       user-select:none;         /*CSS3属性*/
-  }
+/* 官网页头展示 */
+#homepage_font {
+  width: 100%;
+  background-size: cover;
+  background-color: #000000;
+}
+
+#menu {
+  width: 610px;
+  height: 30px;
+  margin: 0 auto 0;
+  padding-top: 25px;
+}
+
+/* 导航栏字体 */
+#menu_font {
+  color: #FFFFFF;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 900;
+}
+
+/* 导航栏字体 鼠标悬浮之后 */
+#menu_font:hover {
+  color: #FFFFFF;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 900;
+}
+
+/* 主页展示内容链接 */
+#main_font_a {
+  color: #409EFF;
+  font-size: 20px;
+  letter-spacing: 0.2em;
+  padding-bottom: 2px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+/* 主页展示内容链接 鼠标悬浮之后 */
+#main_font_a:hover {
+  color: #409EFF;
+  font-size: 20px;
+  letter-spacing: 0.2em;
+  font-weight: 900;
+  border-bottom: 2px solid #409EFF;
+}
+
+/*  */
+#about_font_a {
+  color: #409EFF;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  padding-bottom: 2px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+/*  */
+#about_font_a:hover {
+  color: #409EFF;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  font-weight: 900;
+  border-bottom: 2px solid #409EFF;
+}
+
+/* 主页展示内容向下标记图标 */
+#bottom_img {
+  position: absolute;
+  margin: 0 auto;
+  left: 50px;
+  right: 50px;
+  top: 5px;
+  width: 30px;
+}
+
+/* 主页展示内容向下标记图标 鼠标悬浮之后 */
+#bottom_img:hover {
+  position: absolute;
+  margin: 0 auto;
+  left: 50px;
+  right: 50px;
+  top: 8px;
+  width: 30px;
+}
+
+/* 分割线 */
+.divider {
+  position: relative;
+  margin-top: 0px;
+  height: 1px;
+}
+
+.div-transparent:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  width: 80%;
+  height: 1px;
+  background-image: linear-gradient(to right, transparent, darkgrey, transparent);
+}
+
+/* 关于工作室描述文字 */
+#about_font {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+/* 团队管理展示标签 */
+#case_menu {
+  border-radius: 10px;
+  display: inline-block;
+  vertical-align: top;
+  width: 332px;
+  height: 400px;
+  box-shadow: 2px 2px 10px #DCDFE6;
+  margin: 30px 9px 0 0;
+  /* background-color: #F2F6FC; */
+}
+
+/* 服务程序展示标签 */
+#program_menu {
+  width: 100%;
+  height: 60px;
+  margin-top: 5px;
+}
+
+/*  */
+.a_hover {
+  color: #000;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.a_hover:hover {
+  color: #C0C4CC;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+/* 背景图放大 */
+/* 无法选中属性 */
+.select {
+  -webkit-user-select: none;
+  /*WebKit内核私有属性*/
+  -moz-user-select: none;
+  /*Firefox私有属性*/
+  -ms-user-select: none;
+  /*IE私有属性(IE10及以后)*/
+  -khtml-user-select: none;
+  /*KHTML内核私有属性*/
+  -o-user-select: none;
+  /*Opera私有属性*/
+  user-select: none;
+  /*CSS3属性*/
+}
 
 </style>

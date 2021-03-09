@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <!-- 官网首页展示头 - 覆盖整个打开的浏览器页面 -->
-    <div id="homepage_font" :style="{height:pageheight+'px'},{backgroundImage:'url('+aboutPageImgUrl+')'}">
+    <div id="homepage_font" :style="{height:pageheight+'px'},{backgroundImage:'url('+ContactImgUrl+')'}">
       <!-- 官网LOGO -->
       <div style="width: 50px;height: 50px;float: left;margin: 10px 0px 0px 20px;">
         <a :href="HomePageUrl" style="text-decoration: none;">
@@ -37,170 +37,63 @@
       </div>
       <!-- 约束宽度 -->
       <div style="width: 1024px;margin:0 auto 0;" :style="{height:pageheight - 50 +'px'}">
-        <!-- 关于标题 -->
-        <div style="width: 1024px;position: absolute;top: 38%;">
-          <font style="color: #FFF;font-size: 80px;font-weight: 900;letter-spacing: 0.08em;">关于CMAPLE.CN</font>
-        </div>
-        <!-- 关于说明 -->
-        <div style="width: 600px;position: absolute;top: 54%;left:50%;margin-left:-300px;">
-          <font style="color: #FFF;font-size: 20px;font-weight: 400;">
-            Iconfont-国内功能很强大且图标内容很丰富的矢量图标库,提供矢量图标下载、在线存储、格式转换等功能。阿里巴巴体验团队倾力打造,设计和前端开发的便捷工具
-          </font>
-        </div>
-      </div>
-    </div>
-    <!-- 说明 - 描述网站和工作室的内容 -->
-    <div style="width: 100%;">
-      <!-- 价值观 -->
-      <div style="width: 1024px;height: 300px;margin: 0 auto 0;justify-content: flex-start;text-align: top;padding: 30px 0 30px 0;">
-        <!-- 文字 -->
-        <div style="width: 60%;float: left;margin-top: 60px;">
-          <div style="width: 100%;height: auto;margin-bottom: 10px;text-align: left;">
-            <font style="color: #303133;font-size: 30px;font-weight: 700;">价值观</font>
+        <!-- 约束宽度 -->
+        <div style="width: 1024px;margin:0 auto 0;" :style="{height:pageheight - 50 +'px'}">
+          <!-- 关于标题 -->
+          <div style="width: 1024px;position: absolute;top: 38%;">
+            <font style="color: #FFFFFF;font-size: 80px;font-weight: 900;letter-spacing: 0.08em;">联系我们</font>
           </div>
-          <div style="width: 100%;height: auto;text-align: left;">
-            <font style="color: #303133;font-size: 16px;font-weight: 400;">
-              OpenAI的使命是确保通用人工智能 (Artificial General Intelligence, AGI)，即一种高度自主且在大多数具有经济价值的工作上超越人类的系统，将为全人类带来福祉。我们不仅希望直接建造出安全的、符合共同利益的通用人工智能，而且愿意帮助其它研究机构共同建造出这样的通用人工智能以达成我们的使命。为了达到这个目标，我们制订了如下原则：
+          <!-- 关于说明 -->
+          <div style="width: 600px;position: absolute;top: 54%;left:50%;margin-left:-300px;">
+            <font style="color: #FFFFFF;font-size: 20px;font-weight: 400;">
+              Iconfont-国内功能很强大且图标内容很丰富的矢量图标库,提供矢量图标下载、在线存储、格式转换等功能。阿里巴巴体验团队倾力打造,设计和前端开发的便捷工具
             </font>
           </div>
         </div>
-        <!-- 图片 -->
-        <div class="select" style="width: 19%;float: right;text-align: right;margin-top: 130px;">
-          <font style="color: #000000;font-size: 30px;font-weight: 900;">CMAPLE.CN</font>
+      </div>
+    </div>
+    <!-- 联系方式 -->
+    <div style="width: 100%;">
+      <!-- 限宽 -->
+      <div style="width: 1024px;margin: 0 auto 0;padding-top: 40px;padding-bottom: 40px;">
+        <!-- 标题 -->
+        <div style="text-align: left;">
+          <font style="color: #000000;font-weight: 900;font-size: 35px;">联系方式</font>
+        </div>
+        <!-- Official website custom made -->
+        <div style="text-align: left;">
+          <font style="color: #C0C4CC;font-weight: 200;font-size: 18px;">Contact Way</font>
+        </div>
+        <div style="text-align: left;margin-top: 30px;">
+          <font style="color: #606266;font-weight: 400;font-size: 18px;">{{ContactInfo.address}}</font>
+        </div>
+        <div style="text-align: left;margin-top: 20px;">
+          <font style="color: #606266;font-weight: 400;font-size: 18px;">{{ContactInfo.postcode}}</font>
+        </div>
+        <div style="padding: 40px 0px 10px 0;">
+          <img style="width: 100%;border-radius:10px;" :src="ContactInfo.img">
         </div>
       </div>
     </div>
     <!-- 分割线 -->
     <div class="divider div-transparent"></div>
-    <!-- 工作室介绍 -->
+    <!-- 加入我们 -->
     <div style="width: 100%;">
       <!-- 限宽 -->
-      <div style="width: 1024px;margin: 0 auto 0;">
+      <div style="width: 1024px;margin: 0 auto 0;padding-top: 40px;padding-bottom: 40px;">
         <!-- 标题 -->
-        <div style="text-align: left;padding: 60px 0 20px 0;">
-          <font style="color: #000000;font-weight: 900;font-size: 35px;">关于CMAPLE.CN工作室</font>
+        <div style="text-align: left;">
+          <font style="color: #000000;font-weight: 900;font-size: 35px;">加入我们</font>
         </div>
-        <!-- 内容 -->
-        <div style="width: 70%;text-align: left;padding: 0px 0 40px 0;">
-          <font id="about_font">
-            我们承诺在通用人工智能的开发过程中，将利用所有可获得的影响力，确保它可以造福全人类。我们将避免把人工智能或通用人工智能的技术置于损害人类或过度集中权力的事业中。
-          </font>
+        <!-- Official website custom made -->
+        <div style="text-align: left;">
+          <font style="color: #C0C4CC;font-weight: 200;font-size: 18px;">Join Us</font>
         </div>
-        <div style="width: 70%;text-align: left;padding: 0px 0 40px 0;">
-          <font id="about_font">
-            我们的首要任务是对人类文明负责。我们预计需要调用大量资源来完成这一使命。同时，我们会积极行动以减少雇员和利益相关者间的利益冲突，确保大多数人可以受益。
-          </font>
+        <div style="text-align: left;margin-top: 30px;">
+          <font style="color: #606266;font-weight: 400;font-size: 18px;">{{ContactInfo.Join[0]}}</font>
         </div>
-        <div style="width: 70%;text-align: left;padding: 0px 0 40px 0;">
-          <font id="about_font">
-            我们担心通用人工智能在发展后期将演变成一场激烈的竞赛，导致缺乏充足的时间进行安全防范。因此，如果一个与人类价值观相符、注重安全的项目领先于我们将近达成通用人工智能，我们承诺将停止竞赛，幷转而协助这个项目。我们会针对个别情况设计具体的合作方案。不过，一个典型的触发条件可能会是「这个项目在未来两年内能够成功研发通用人工智能的概率超过一半」。
-          </font>
-        </div>
-        <div style="text-align: left;padding: 0px 0px 40px 0;">
-          <a :href="ServicePageUrl" id="about_font_a">
-            <font>了解更多详细信息</font>
-          </a>
-        </div>
-        <!-- 图片 -->
-        <div style="padding: 10px 0 20px 0;margin-bottom: 50px;">
-          <img style="width: 100%;border-radius:20px;" src="../../static/abuutpage_auout.jpg">
-        </div>
-      </div>
-    </div>
-    <!-- 分割线 -->
-    <div class="divider div-transparent"></div>
-    <!-- 管理团队 -->
-    <div style="width: 100%;">
-      <!-- 限宽 -->
-      <div style="width: 1024px;margin: 0 auto 0;padding: 50px 0 50px 0;text-align: left;">
-        <!-- 标题 -->
-        <div>
-          <font style="color: #000000;font-weight: 900;font-size: 35px;">管理团队</font>
-        </div>
-        <!-- 内容 -->
-        <div v-if="this.teams && this.teams.length > 0">
-          <div id="team_menu" v-for="item in teams">
-            <div style="padding: 12px 0 0 20px;">
-              <!-- 名字 -->
-              <div style="">
-                <font style="font-size: 16px;color: #000000;font-weight: 900;">{{item.name}}</font>
-              </div>
-              <!-- 职位 -->
-              <div style="">
-                <font style="font-size: 12px;color: #000000;font-weight: 400;">{{item.position}}</font>
-              </div>
-              <!-- 贡献度 -->
-              <div style="">
-                <font style="font-size: 10px;color: #000000;font-weight: 600;">{{item.introduce}}</font>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="team_menu" v-else>
-          <div style="padding: 34px 0 0 100px;">
-            <!-- 名字 -->
-            <div style="">
-              <font style="font-size: 16px;color: #DCDFE6;font-weight: 900;">目前暂无管理团队</font>
-            </div>
-          </div>
-        </div>
-        <!-- 合作贡献 -->
-        <div style="margin-top: 40px;">
-          <font style="color: #000000;font-weight: 700;font-size: 25px;">合作贡献</font>
-        </div>
-        <!-- 内容 -->
-        <div v-if="this.contributions && this.contributions.length > 0">
-          <div id="team_menu" v-for="contribution in contributions">
-            <div style="padding: 12px 0 0 20px;">
-              <!-- 名字 -->
-              <div style="">
-                <font style="font-size: 16px;color: #000000;font-weight: 900;">{{contribution.name}}</font>
-              </div>
-              <!-- 职位 -->
-              <div style="">
-                <font style="font-size: 12px;color: #000000;font-weight: 400;">{{contribution.position}}</font>
-              </div>
-              <!-- 贡献度 -->
-              <div style="">
-                <font style="font-size: 10px;color: #000000;font-weight: 600;">{{contribution.introduce}}</font>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="team_menu" v-else>
-          <div style="padding: 34px 0 0 90px;">
-            <!-- 名字 -->
-            <div style="">
-              <font style="font-size: 16px;color: #DCDFE6;font-weight: 900;">目前暂无合作贡献者</font>
-            </div>
-          </div>
-        </div>
-        <!-- 投资者 -->
-        <div style="margin-top: 40px;">
-          <font style="color: #000000;font-weight: 700;font-size: 25px;">投资者</font>
-        </div>
-        <!-- 内容 -->
-        <div v-if="this.investments && this.investments.length > 0">
-          <div id="team_menu" v-for="investment in investments">
-            <div style="padding: 20px 0 0 20px;">
-              <!-- 名字 -->
-              <div style="">
-                <font style="font-size: 16px;color: #000000;font-weight: 600;">{{investment.name}}</font>
-              </div>
-              <!-- 贡献度 -->
-              <div style="margin-top: 5px;">
-                <font style="font-size: 10px;color: #000000;font-weight: 600;">{{investment.introduce}}</font>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="team_menu" v-else>
-          <div style="padding: 34px 0 0 100px;">
-            <!-- 名字 -->
-            <div style="">
-              <font style="font-size: 16px;color: #DCDFE6;font-weight: 900;">目前暂无投资者</font>
-            </div>
-          </div>
+        <div style="text-align: left;margin-top: 15px;">
+          <font style="color: #409EFF;font-weight: 800;font-size: 22px;">{{ContactInfo.Join[1]}}</font>
         </div>
       </div>
     </div>
@@ -344,6 +237,8 @@ export default {
       Run_Time_Range: '',
       // 网址地址
       Domain_Name: '',
+      //github
+      GitHubURL: '',
       //主页路由
       HomePageUrl: "",
       //关于页面路由
@@ -353,74 +248,18 @@ export default {
       //联系我们页面路由
       ContactPageUrl: '',
       //主页图片
-      aboutPageImgUrl: '../../static/about_background.jpg',
-
-      // 管理团队
-      teams: [{
-          //编号
-          id: 1,
-          //名称
-          name: 'C-MAPLE',
-          //职位
-          position: '创始人',
-          //个人介绍
-          introduce: 'CMAPLE.CN网站的创始人。',
-        },
-        {
-          //编号
-          id: 2,
-          //名称
-          name: 'EMMA',
-          //职位
-          position: '创始人',
-          //个人介绍
-          introduce: 'CMAPLE.CN网站的创始人。',
-        },
-      ],
-      // 贡献
-      contributions: [{
-          //编号
-          id: 1,
-          //名称
-          name: '朱BeiFang',
-          //职位
-          position: '前端工程师',
-          //个人介绍
-          introduce: '为网站提供了前端技术支持。',
-        },
-        {
-          //编号
-          id: 2,
-          //名称
-          name: '吴KangLi',
-          //职位
-          position: '前端工程师',
-          //个人介绍
-          introduce: '为网站提供了前端技术支持。',
-        },
-        {
-          //编号
-          id: 3,
-          //名称
-          name: '颜ChengJie',
-          //职位
-          position: '前端工程师',
-          //个人介绍
-          introduce: '为网站提供了前端技术支持。',
-        },
-
-      ],
-      // 赞助
-      investments: [
-        // { 
-        //   //编号
-        //   id:1, 
-        //   //名称
-        //   name:'Microsoft，Reid Hoffman的慈善基金会',
-        //   //个人介绍
-        //   introduce:'为工作室提供赞助支持。',
-        // },
-      ],
+      ContactImgUrl: '../../static/contact_background.jpg',
+      //联系方式
+      ContactInfo: {
+        //地址
+        address: '地址：中国浙江省杭州市滨江区江汉路1515号 - (测试地址)',
+        //邮编
+        postcode: '邮编：310051',
+        //图片
+        img: '../../static/adress.jpg',
+        //加入我们
+        Join: ['请关注微信公众号并在公众号中提交自己的简历，我们将尽快给您进行回复！', '微信公众号：cmaplesystem'],
+      }
     }
   },
   methods: {
@@ -430,12 +269,14 @@ export default {
     },
     mouseEnter() { this.isActive = true },
     mouseOut() { this.isActive = false },
+
   },
   created() {
     //初始化静态参数
     this.Record_No = this.$Config.Record_No;
     this.Run_Time_Range = this.$Config.Run_Time_Range;
     this.Domain_Name = this.$Config.Domain_Name;
+    this.GitHubURL = this.$Config.GitHubURL;
     this.HomePageUrl = this.$Config.HomePageUrl;
     this.AboutPageUrl = this.$Config.AboutPageUrl;
     this.ServicePageUrl = this.$Config.ServicePageUrl;
@@ -452,7 +293,8 @@ export default {
       })()
     }
     this.getPageHeight()
-  }
+  },
+
 }
 
 </script>
@@ -462,7 +304,7 @@ export default {
 #homepage_font {
   width: 100%;
   background-size: cover;
-  background-color: #000000;
+  background-color: #FFF;
 }
 
 #menu {
@@ -528,26 +370,6 @@ export default {
   border-bottom: 2px solid #409EFF;
 }
 
-/* 主页展示内容向下标记图标 */
-#bottom_img {
-  position: absolute;
-  margin: 0 auto;
-  left: 50px;
-  right: 50px;
-  top: 5px;
-  width: 30px;
-}
-
-/* 主页展示内容向下标记图标 鼠标悬浮之后 */
-#bottom_img:hover {
-  position: absolute;
-  margin: 0 auto;
-  left: 50px;
-  right: 50px;
-  top: 8px;
-  width: 30px;
-}
-
 /* 分割线 */
 .divider {
   position: relative;
@@ -573,17 +395,38 @@ export default {
 }
 
 /* 团队管理展示标签 */
-#team_menu {
+#case_menu {
   border-radius: 10px;
   display: inline-block;
   vertical-align: top;
   width: 332px;
-  height: 90px;
+  height: 400px;
   box-shadow: 2px 2px 10px #DCDFE6;
   margin: 30px 9px 0 0;
   /* background-color: #F2F6FC; */
 }
 
+/* 服务程序展示标签 */
+#program_menu {
+  width: 100%;
+  height: 60px;
+  margin-top: 5px;
+}
+
+/*  */
+.a_hover {
+  color: #000;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.a_hover:hover {
+  color: #C0C4CC;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+/* 背景图放大 */
 /* 无法选中属性 */
 .select {
   -webkit-user-select: none;
