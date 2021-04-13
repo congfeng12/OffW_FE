@@ -1,3 +1,4 @@
+<!-- 主页 -->
 <template>
   <div class="hello">
     <!-- 官网首页展示头 - 覆盖整个打开的浏览器页面 -->
@@ -75,7 +76,7 @@
           </div>
           <div style="text-align: left;padding: 20px 80px 0px 0;">
             <font style="">
-              CMAPLE.CN主要业务范围也为网站搭建&第三方插件/程序的开发。我们将尝试简单快捷的图形化网站开发程序，但是如果我们的工作可以帮助其他人实现这一目标，我们也将认为我们的使命已经实现。
+              CMAPLE.CN主要业务范围也为网站搭建&第三方插件/程序的开发。我们将尝试简单快捷的网站开发程序，但是如果我们的工作可以帮助其他人实现这一目标，我们也将认为我们的使命已经实现。
             </font>
           </div>
           <div style="text-align: left;padding: 30px 0px 0px 0;">

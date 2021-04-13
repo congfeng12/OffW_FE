@@ -1,3 +1,4 @@
+<!-- 联系也民 -->
 <template>
   <div class="hello">
     <!-- 官网首页展示头 - 覆盖整个打开的浏览器页面 -->
@@ -46,7 +47,7 @@
           <!-- 关于说明 -->
           <div style="width: 600px;position: absolute;top: 54%;left:50%;margin-left:-300px;">
             <font style="color: #FFFFFF;font-size: 20px;font-weight: 400;">
-              Iconfont-国内功能很强大且图标内容很丰富的矢量图标库,提供矢量图标下载、在线存储、格式转换等功能。阿里巴巴体验团队倾力打造,设计和前端开发的便捷工具
+              加入或者成为CMAPLE.CN的合作贡献者，我们将为你的贡献做出展示并让关注我们的人了解
             </font>
           </div>
         </div>

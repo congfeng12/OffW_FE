@@ -1,3 +1,4 @@
+<!-- 错误页面 -->
 <template>
   <div style="width: 100%;height: 100%;background-color: #EBEEF5;text-align: center;">
     <h3 style="margin: 0px;padding: 120px 0px 0px 0px;">
