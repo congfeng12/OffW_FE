@@ -7,10 +7,19 @@ import router from './router'
 import Config from './ConfigAttributes.vue';
 //引入消息提示插件vue-notification
 import Notifications from 'vue-notification'
+//引入axios
+import axios from 'axios';
+//导入全局属性组建
+import global from './ConfigAttributes.vue';
+
 
 Vue.config.productionTip = false
 //注册全局属性组件
 Vue.prototype.$Config = Config;
+//注册axios
+Vue.prototype.$Axios = axios;
+//注册全局属性组件
+Vue.prototype.$Global = global;
 //消息提示插件
 Vue.use(Notifications);
 

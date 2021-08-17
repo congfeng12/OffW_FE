@@ -1,7 +1,7 @@
 <script type="text/javascript">
 //公共属性
 //后台服务前置名称
-const Back_End_Service = 'http://www.cmaple.cn/MAIN_SERVICE' //'/MAIN_SERVICE'
+const Back_End_Service = 'http://localhost:8080' //'http://www.cmaple.cn/MAIN_SERVICE'
 //备案号
 const Record_No = '浙ICP备19041141号'
 //网站运行年限
@@ -18,6 +18,13 @@ const AboutPageUrl = '/About'
 const ServicePageUrl = '/Service'
 //联系我们
 const ContactPageUrl = '/Contact'
+//请求链接
+//关于页面团队贡献等信息获取函数
+const getContributionInfo = '/basic/contributionInfo'
+//服务页面案例信息获取函数
+const getCases = '/basic/cases'
+//服务页面项目信息获取函数
+const getPrograms = '/basic/programs'
 //公共方法
 //保存cookie
 function setCookie(c_name, value, expiredays) {
@@ -41,8 +48,18 @@ function delCookie(name) {
   if (cval != null)
     document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
 }
+// 消息提示
+function alertMessage(in_th, in_title, in_text, in_type) {
+  in_th.$notify({
+    group: 'foo',
+    title: in_title,
+    text: in_text,
+    type: in_type,
+  });
+}
 // 暴露出这些属性和方法
 export default {
+  //静态参数
   Back_End_Service,
   Record_No,
   Run_Time_Range,
@@ -52,9 +69,15 @@ export default {
   AboutPageUrl,
   ServicePageUrl,
   ContactPageUrl,
+  //链接地址
+  getContributionInfo,
+  getCases,
+  getPrograms,
+  //函数
   setCookie,
   getCookie,
   delCookie,
+  alertMessage,
 }
 
 </script>

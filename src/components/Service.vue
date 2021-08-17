@@ -69,7 +69,7 @@
         <div style="text-align: left;">
           <div v-if="this.Cases && this.Cases.length > 0">
             <div id="case_menu" v-for="Case in Cases" :key="Case.id">
-              <a :href="Case.domain_name" style="text-decoration:none;" target="_blank">
+              <a :href="Case.domainname" style="text-decoration:none;" target="_blank">
                 <div style="padding: 0px;">
                   <!-- 图片 -->
                   <!-- 图片添加动态效果 -->
@@ -114,7 +114,7 @@
         <!-- 内容表格 -->
         <div v-if="Programs && Programs.length > 0">
           <div id="program_menu" v-for="Program in Programs" :key="Program.id">
-            <a :href="Program.domain_name" target="_blank" style="text-decoration:none;">
+            <a :href="Program.domainname" target="_blank" style="text-decoration:none;">
               <div style="width: 59%;display: inline-block;vertical-align: top;text-align: left;" class="a_hover">
                 <font>{{Program.title}} - {{Program.version}}</font>
               </div>
@@ -137,7 +137,7 @@
         </div>
         <!-- 查看更多 -->
         <div style="text-align: left;" v-show="Programs.length > 0">
-          <a :href="GitHubURL" id="about_font_a" target="_blank">
+          <a :href="this.$Global.GitHubURL" id="about_font_a" target="_blank">
             <font>查看更多</font>
           </a>
         </div>
@@ -158,7 +158,7 @@
           <font style="color: #C0C4CC;font-weight: 200;font-size: 18px;">CMAPLE.CN Forum</font>
         </div>
         <!-- 内容 -->
-        <a href="javascript:void(0)" @click="alertMessage (this,'warning','论坛暂未开放！')">
+        <a href="javascript:void(0)" @click="alertMessage ('CMAPLE.CN论坛', '论坛暂未开放！', 'warn')">
           <div style="width: 100%;height: 200px;border-radius:10px;" :style="{backgroundImage:'url('+forumImgUrl+')'}"></div>
         </a>
         <!-- 说明 -->
@@ -322,37 +322,8 @@ export default {
       //论坛图片路径
       forumImgUrl: '../../static/forum_img副本.jpg',
       //案例
-      Cases: [{
-          //id
-          id: 1,
-          //名称
-          title: '比格基地',
-          //图片
-          imgurl: '../../static/case_demo.jpg',
-          //域名
-          domain_name: 'https://www.bigbaser.com/',
-          //说明
-          info: '成为最具创业和创新精神的梦工厂'
-        },
-
-      ],
-      Programs: [{
-          //id
-          id: 1,
-          //标题
-          title: 'DLLP',
-          //版本
-          version: '1.0',
-          //类型
-          type: '深度神经网络',
-          //域名
-          domain_name: 'https://github.com/congfeng12/dllp',
-          //开发时间
-          uptime: '2020-08-12'
-        },
-
-      ],
-
+      Cases: [],
+      Programs: [],
     }
   },
   methods: {
@@ -361,17 +332,67 @@ export default {
       this.pageheight = window.innerHeight;
     },
     // 消息提示
-    alertMessage(th, action, msg) {
-      this.$notify({
-        group: 'foo',
-        title: 'CMAPLE.CN论坛',
-        text: '论坛暂未开放，系统维护中!',
-        type: 'warn',
-      });
+    alertMessage(in_title, in_text, in_type) {
+      var that = this;
+      that.$Global.alertMessage(that, in_title, in_text, in_type);
     },
     mouseEnter() { this.isActive = true },
     mouseOut() { this.isActive = false },
-
+    //服务页面案例信息获取函数
+    cases(){
+      //设置必要参数
+      var that = this;
+      //服务页面案例信息获取函数
+        this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getCases,{})
+      .then(function(res){
+        if (res.data.RTCODE == 'success') {
+          //服务页面案例信息获取函数
+          for (var i = 0; i < res.data.RTDATA.length; ++i) {
+            var c_Cases = new Object();
+            c_Cases.id = res.data.RTDATA[i].id;
+            c_Cases.title = res.data.RTDATA[i].title;
+            c_Cases.imgurl = res.data.RTDATA[i].imgurl;
+            c_Cases.domainname = res.data.RTDATA[i].domainname;
+            c_Cases.info = res.data.RTDATA[i].info;
+            that.Cases.push(c_Cases);
+          }
+        }else{
+          //异常结果显示
+          that.$Global.alertMessage(that, "获取服务页面案例信息异常！", res.data.RTMSG, "error");
+        }
+      })
+      .catch(function(err){
+        that.$Global.alertMessage(that, "获取服务页面案例信息异常！", err+'', "error");
+      });
+    },
+    //服务页面项目信息获取函数
+    programs(){
+      //设置必要参数
+      var that = this;
+      //服务页面项目信息获取函数
+        this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getPrograms,{})
+      .then(function(res){
+        if (res.data.RTCODE == 'success') {
+          //服务页面项目信息获取函数
+          for (var i = 0; i < res.data.RTDATA.length; ++i) {
+            var c_Programs = new Object();
+            c_Programs.id = res.data.RTDATA[i].id;
+            c_Programs.title = res.data.RTDATA[i].title;
+            c_Programs.version = res.data.RTDATA[i].version;
+            c_Programs.type = res.data.RTDATA[i].type;
+            c_Programs.domainname = res.data.RTDATA[i].domainname;
+            c_Programs.uptime = res.data.RTDATA[i].uptime;
+            that.Programs.push(c_Programs);
+          }
+        }else{
+          //异常结果显示
+          that.$Global.alertMessage(that, "获取服务页面案例信息异常！", res.data.RTMSG, "error");
+        }
+      })
+      .catch(function(err){
+        that.$Global.alertMessage(that, "获取服务页面案例信息异常！", err+'', "error");
+      });
+    },
   },
   created() {
     //初始化静态参数
@@ -385,6 +406,8 @@ export default {
     this.ContactPageUrl = this.$Config.ContactPageUrl;
     //请求首页展示图片及内容路由
     //console.log(localStorage.getItem("cip")+'/'+localStorage.getItem("cname"));
+    this.cases();
+    this.programs();
   },
   destroyed() {},
   mounted() {

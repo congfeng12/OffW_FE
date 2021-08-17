@@ -356,71 +356,11 @@ export default {
       //主页图片
       aboutPageImgUrl: '../../static/about_background.jpg',
       // 管理团队
-      teams: [{
-          //编号
-          id: 1,
-          //名称
-          name: 'C-MAPLE',
-          //职位
-          position: '创始人',
-          //个人介绍
-          introduce: 'CMAPLE.CN网站的创始人。',
-        },
-        {
-          //编号
-          id: 2,
-          //名称
-          name: 'EMMA',
-          //职位
-          position: '创始人',
-          //个人介绍
-          introduce: 'CMAPLE.CN网站的创始人。',
-        },
-      ],
+      teams: [],
       // 贡献
-      contributions: [{
-          //编号
-          id: 1,
-          //名称
-          name: '朱BeiFang',
-          //职位
-          position: '前端工程师',
-          //个人介绍
-          introduce: '为网站提供了前端技术支持。',
-        },
-        {
-          //编号
-          id: 2,
-          //名称
-          name: '吴KangLi',
-          //职位
-          position: '前端工程师',
-          //个人介绍
-          introduce: '为网站提供了前端技术支持。',
-        },
-        {
-          //编号
-          id: 3,
-          //名称
-          name: '颜ChengJie',
-          //职位
-          position: '前端工程师',
-          //个人介绍
-          introduce: '为网站提供了前端技术支持。',
-        },
-
-      ],
+      contributions: [],
       // 赞助
-      investments: [
-        // { 
-        //   //编号
-        //   id:1, 
-        //   //名称
-        //   name:'Microsoft，Reid Hoffman的慈善基金会',
-        //   //个人介绍
-        //   introduce:'为工作室提供赞助支持。',
-        // },
-      ],
+      investments: [],
     }
   },
   methods: {
@@ -430,6 +370,53 @@ export default {
     },
     mouseEnter() { this.isActive = true },
     mouseOut() { this.isActive = false },
+    //获取团队管理信息
+    contributionInfo(){
+      //设置必要参数
+      var that = this;
+      //获取团队管理信息
+        this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getContributionInfo,{})
+      .then(function(res){
+        if (res.data.RTCODE == 'success') {
+          //管理团队
+          for (var i = 0; i < res.data.RTDATA.teams.length; ++i) {
+            var c_teams = new Object();
+            c_teams.id = res.data.RTDATA.teams[i].id;
+            c_teams.type = res.data.RTDATA.teams[i].type;
+            c_teams.name = res.data.RTDATA.teams[i].name;
+            c_teams.position = res.data.RTDATA.teams[i].position;
+            c_teams.introduce = res.data.RTDATA.teams[i].introduce;
+            that.teams.push(c_teams);
+          }
+          //贡献
+          for (var i = 0; i < res.data.RTDATA.contributions.length; ++i) {
+            var c_contributions = new Object();
+            c_contributions.id = res.data.RTDATA.contributions[i].id;
+            c_contributions.type = res.data.RTDATA.contributions[i].type;
+            c_contributions.name = res.data.RTDATA.contributions[i].name;
+            c_contributions.position = res.data.RTDATA.contributions[i].position;
+            c_contributions.introduce = res.data.RTDATA.contributions[i].introduce;
+            that.contributions.push(c_contributions);
+          }
+          //赞助
+          for (var i = 0; i < res.data.RTDATA.investments.length; ++i) {
+            var c_investments = new Object();
+            c_investments.id = res.data.RTDATA.investments[i].id;
+            c_investments.type = res.data.RTDATA.investments[i].type;
+            c_investments.name = res.data.RTDATA.investments[i].name;
+            c_investments.position = res.data.RTDATA.investments[i].position;
+            c_investments.introduce = res.data.RTDATA.investments[i].introduce;
+            that.investments.push(c_investments);
+          }
+        }else{
+          //异常结果显示
+          that.$Global.alertMessage(that, "获取团队管理信息异常！", res.data.RTMSG, "error");
+        }
+      })
+      .catch(function(err){
+        that.$Global.alertMessage(that, "获取团队管理信息异常！", err+'', "error");
+      });
+    },
   },
   created() {
     //初始化静态参数
@@ -442,6 +429,7 @@ export default {
     this.ContactPageUrl = this.$Config.ContactPageUrl;
     //请求首页展示图片及内容路由
     //console.log(localStorage.getItem("cip")+'/'+localStorage.getItem("cname"));
+    this.contributionInfo();
   },
   destroyed() {},
   mounted() {
