@@ -1,8 +1,8 @@
-<!-- 联系也民 -->
+<!-- 联系页面 -->
 <template>
   <div class="hello">
     <!-- 官网首页展示头 - 覆盖整个打开的浏览器页面 -->
-    <div id="homepage_font" :style="{height:pageheight+'px'},{backgroundImage:'url('+ContactImgUrl+')'}">
+    <div id="homepage_font" v-bind:style="{height:pageheight+'px',backgroundImage:'url('+ContactImgUrl+')'}">
       <!-- 官网LOGO -->
       <div style="width: 50px;height: 50px;float: left;margin: 10px 0px 0px 20px;">
         <a :href="HomePageUrl" style="text-decoration: none;">

@@ -2,7 +2,7 @@
 <template>
   <div class="hello">
     <!-- 官网首页展示头 - 覆盖整个打开的浏览器页面 -->
-    <div id="homepage_font" :style="{height:pageheight+'px'},{backgroundImage:'url('+homepageImgUrl+')'}">
+    <div id="homepage_font" :style="{height:pageheight+'px',backgroundImage:'url('+homepageImgUrl+')'}">
       <!-- 官网LOGO -->
       <div style="width: 50px;height: 50px;float: left;margin: 10px 0px 0px 20px;">
         <a :href="HomePageUrl" style="text-decoration: none;">
@@ -187,7 +187,7 @@
                 <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">服务时间</font>
               </li>
               <li style="list-style: none;margin-bottom: 0px;">
-                <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">周一至周 08:00 - 18:00</font>
+                <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">周一至周五 08:00 - 18:00</font>
               </li>
             </ul>
           </div>

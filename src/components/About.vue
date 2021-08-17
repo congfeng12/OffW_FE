@@ -2,7 +2,7 @@
 <template>
   <div class="hello">
     <!-- 官网首页展示头 - 覆盖整个打开的浏览器页面 -->
-    <div id="homepage_font" :style="{height:pageheight+'px'},{backgroundImage:'url('+aboutPageImgUrl+')'}">
+    <div id="homepage_font" v-bind:style="{height:this.pageheight+'px',backgroundImage:'url('+this.aboutPageImgUrl+')'}">
       <!-- 官网LOGO -->
       <div style="width: 50px;height: 50px;float: left;margin: 10px 0px 0px 20px;">
         <a :href="HomePageUrl" style="text-decoration: none;">
@@ -120,7 +120,7 @@
         </div>
         <!-- 内容 -->
         <div v-if="this.teams && this.teams.length > 0">
-          <div id="team_menu" v-for="item in teams">
+          <div id="team_menu" v-for="item in teams" :key="item.id">
             <div style="padding: 12px 0 0 20px;">
               <!-- 名字 -->
               <div style="">
@@ -151,7 +151,7 @@
         </div>
         <!-- 内容 -->
         <div v-if="this.contributions && this.contributions.length > 0">
-          <div id="team_menu" v-for="contribution in contributions">
+          <div id="team_menu" v-for="contribution in contributions" :key="contribution.id">
             <div style="padding: 12px 0 0 20px;">
               <!-- 名字 -->
               <div style="">
@@ -182,7 +182,7 @@
         </div>
         <!-- 内容 -->
         <div v-if="this.investments && this.investments.length > 0">
-          <div id="team_menu" v-for="investment in investments">
+          <div id="team_menu" v-for="investment in investments" :key="investment.id">
             <div style="padding: 20px 0 0 20px;">
               <!-- 名字 -->
               <div style="">
@@ -355,7 +355,6 @@ export default {
       ContactPageUrl: '',
       //主页图片
       aboutPageImgUrl: '../../static/about_background.jpg',
-
       // 管理团队
       teams: [{
           //编号

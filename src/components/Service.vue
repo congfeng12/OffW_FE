@@ -2,7 +2,7 @@
 <template>
   <div class="hello">
     <!-- 官网首页展示头 - 覆盖整个打开的浏览器页面 -->
-    <div id="homepage_font" :style="{height:pageheight+'px'},{backgroundImage:'url('+serviceImgUrl+')'}">
+    <div id="homepage_font" :style="{height:pageheight+'px',backgroundImage:'url('+serviceImgUrl+')'}">
       <!-- 官网LOGO -->
       <div style="width: 50px;height: 50px;float: left;margin: 10px 0px 0px 20px;">
         <a :href="HomePageUrl" style="text-decoration: none;">
@@ -68,7 +68,7 @@
         </div>
         <div style="text-align: left;">
           <div v-if="this.Cases && this.Cases.length > 0">
-            <div id="case_menu" v-for="Case in Cases">
+            <div id="case_menu" v-for="Case in Cases" :key="Case.id">
               <a :href="Case.domain_name" style="text-decoration:none;" target="_blank">
                 <div style="padding: 0px;">
                   <!-- 图片 -->
@@ -113,7 +113,7 @@
         </div>
         <!-- 内容表格 -->
         <div v-if="Programs && Programs.length > 0">
-          <div id="program_menu" v-for="Program in Programs">
+          <div id="program_menu" v-for="Program in Programs" :key="Program.id">
             <a :href="Program.domain_name" target="_blank" style="text-decoration:none;">
               <div style="width: 59%;display: inline-block;vertical-align: top;text-align: left;" class="a_hover">
                 <font>{{Program.title}} - {{Program.version}}</font>
