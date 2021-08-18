@@ -209,7 +209,12 @@
       <div style="width: 100%;justify-content: flex-start;text-align: top;">
         <!-- 备案号 -->
         <div style="width: 50%;display: inline-block;vertical-align: top;text-align: left">
-          <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">{{this.Record_No}} - copyright</font>
+          <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">
+             <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" id="recordno">
+              {{this.Record_No}} 
+            </a>
+            - copyright
+          </font>
         </div>
         <!-- 运营时间及版权 -->
         <div style="width: 49%;display: inline-block;vertical-align: top;text-align: right;">
@@ -412,6 +417,16 @@ export default {
   width: 100%;
   height: 60px;
   margin-top: 5px;
+}
+
+/* 备案信息提跳转 */
+#recordno{
+  color: #C0C4CC;
+  text-decoration:none;
+}
+#recordno:hover{
+  color: red;
+  text-decoration:none;
 }
 
 /*  */

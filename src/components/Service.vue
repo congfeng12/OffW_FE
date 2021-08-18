@@ -128,7 +128,7 @@
             <!-- 分割线 -->
             <!-- !!!!!!! -->
             <div v-show="Program.id < Programs.length" style="padding:10px 0 10px 0;">
-              <hr size="1px;" color="C0C4CC" />
+              <hr size="1px;" color="#C0C4CC" />
             </div>
           </div>
         </div>
@@ -158,12 +158,12 @@
           <font style="color: #C0C4CC;font-weight: 200;font-size: 18px;">CMAPLE.CN Forum</font>
         </div>
         <!-- 内容 -->
-        <a href="javascript:void(0)" @click="alertMessage ('CMAPLE.CN论坛', '论坛暂未开放！', 'warn')">
+        <a href="/platform_login" target="_blank">
           <div style="width: 100%;height: 200px;border-radius:10px;" :style="{backgroundImage:'url('+forumImgUrl+')'}"></div>
         </a>
         <!-- 说明 -->
         <div style="text-align: left;padding-top: 20px;">
-          <font style="color: #606266;font-size: 12px;font-weight: 400;">全球最大中文IT社区，为IT专业技术人员提供最全面的信息传播和服务平台</font>
+          <font style="color: #606266;font-size: 13px;font-weight: 900;">永久免费的中文IT社区，专为IT专业技术人员提供最全面的信息传播和服务平台</font>
         </div>
       </div>
     </div>
@@ -278,7 +278,12 @@
       <div style="width: 100%;justify-content: flex-start;text-align: top;">
         <!-- 备案号 -->
         <div style="width: 50%;display: inline-block;vertical-align: top;text-align: left">
-          <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">{{this.Record_No}} - copyright</font>
+          <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">
+            <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" id="recordno">
+              {{this.Record_No}}
+            </a>
+            - copyright
+          </font>
         </div>
         <!-- 运营时间及版权 -->
         <div style="width: 49%;display: inline-block;vertical-align: top;text-align: right;">
@@ -339,12 +344,16 @@ export default {
     mouseEnter() { this.isActive = true },
     mouseOut() { this.isActive = false },
     //服务页面案例信息获取函数
-    cases(){
+    cases() {
       //设置必要参数
       var that = this;
       //服务页面案例信息获取函数
-        this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getCases,{})
-      .then(function(res){
+      this.$Axios.post(this.$Global.Back_End_Service + this.$Global.getCases,
+      this.$qs.stringify({
+        uip: localStorage.getItem("cip"),
+        lastplace: localStorage.getItem("cname")
+      }))
+      .then(function(res) {
         if (res.data.RTCODE == 'success') {
           //服务页面案例信息获取函数
           for (var i = 0; i < res.data.RTDATA.length; ++i) {
@@ -356,22 +365,26 @@ export default {
             c_Cases.info = res.data.RTDATA[i].info;
             that.Cases.push(c_Cases);
           }
-        }else{
+        } else {
           //异常结果显示
           that.$Global.alertMessage(that, "获取服务页面案例信息异常！", res.data.RTMSG, "error");
         }
       })
-      .catch(function(err){
-        that.$Global.alertMessage(that, "获取服务页面案例信息异常！", err+'', "error");
+      .catch(function(err) {
+        that.$Global.alertMessage(that, "获取服务页面案例信息函数异常！", err + '', "error");
       });
     },
     //服务页面项目信息获取函数
-    programs(){
+    programs() {
       //设置必要参数
       var that = this;
       //服务页面项目信息获取函数
-        this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getPrograms,{})
-      .then(function(res){
+      this.$Axios.post(this.$Global.Back_End_Service + this.$Global.getPrograms,
+      this.$qs.stringify({
+        uip: localStorage.getItem("cip"),
+        lastplace: localStorage.getItem("cname")
+      }))
+      .then(function(res) {
         if (res.data.RTCODE == 'success') {
           //服务页面项目信息获取函数
           for (var i = 0; i < res.data.RTDATA.length; ++i) {
@@ -384,13 +397,13 @@ export default {
             c_Programs.uptime = res.data.RTDATA[i].uptime;
             that.Programs.push(c_Programs);
           }
-        }else{
+        } else {
           //异常结果显示
-          that.$Global.alertMessage(that, "获取服务页面案例信息异常！", res.data.RTMSG, "error");
+          that.$Global.alertMessage(that, "获取程序开发信息异常！", res.data.RTMSG, "error");
         }
       })
-      .catch(function(err){
-        that.$Global.alertMessage(that, "获取服务页面案例信息异常！", err+'', "error");
+      .catch(function(err) {
+        that.$Global.alertMessage(that, "获取程序开发信息函数异常！", err + '', "error");
       });
     },
   },
@@ -556,6 +569,17 @@ export default {
   width: 100%;
   height: 60px;
   margin-top: 5px;
+}
+
+/* 备案信息提跳转 */
+#recordno {
+  color: #C0C4CC;
+  text-decoration: none;
+}
+
+#recordno:hover {
+  color: red;
+  text-decoration: none;
 }
 
 /*  */

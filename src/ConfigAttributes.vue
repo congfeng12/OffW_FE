@@ -1,7 +1,7 @@
 <script type="text/javascript">
 //公共属性
 //后台服务前置名称
-const Back_End_Service = 'http://localhost:8080' //'http://www.cmaple.cn/MAIN_SERVICE'
+const Back_End_Service = 'http://localhost:8081' //'http://www.cmaple.cn/MAIN_SERVICE'      'http://localhost:8080'
 //备案号
 const Record_No = '浙ICP备19041141号'
 //网站运行年限
@@ -55,6 +55,7 @@ function alertMessage(in_th, in_title, in_text, in_type) {
     title: in_title,
     text: in_text,
     type: in_type,
+    duration:3000
   });
 }
 // 暴露出这些属性和方法

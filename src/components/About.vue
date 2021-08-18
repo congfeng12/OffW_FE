@@ -316,7 +316,12 @@
       <div style="width: 100%;justify-content: flex-start;text-align: top;">
         <!-- 备案号 -->
         <div style="width: 50%;display: inline-block;vertical-align: top;text-align: left">
-          <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">{{this.Record_No}} - copyright</font>
+          <font style="color: #C0C4CC;font-size: 12px;text-transform: uppercase;font-weight: 600;">
+            <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" id="recordno">
+              {{this.Record_No}} 
+            </a>
+            - copyright
+          </font>
         </div>
         <!-- 运营时间及版权 -->
         <div style="width: 49%;display: inline-block;vertical-align: top;text-align: right;">
@@ -375,7 +380,11 @@ export default {
       //设置必要参数
       var that = this;
       //获取团队管理信息
-        this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getContributionInfo,{})
+        this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getContributionInfo,
+        this.$qs.stringify({
+          uip: localStorage.getItem("cip"),
+          lastplace: localStorage.getItem("cname")
+        }))
       .then(function(res){
         if (res.data.RTCODE == 'success') {
           //管理团队
@@ -414,7 +423,7 @@ export default {
         }
       })
       .catch(function(err){
-        that.$Global.alertMessage(that, "获取团队管理信息异常！", err+'', "error");
+        that.$Global.alertMessage(that, "获取团队管理信息函数异常！", err+'', "error");
       });
     },
   },
@@ -534,6 +543,16 @@ export default {
   right: 50px;
   top: 8px;
   width: 30px;
+}
+
+/* 备案信息提跳转 */
+#recordno{
+  color: #C0C4CC;
+  text-decoration:none;
+}
+#recordno:hover{
+  color: red;
+  text-decoration:none;
 }
 
 /* 分割线 */

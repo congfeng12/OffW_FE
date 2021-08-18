@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :style="{height:pageheight+'px'}">
     <!-- <img src="./assets/logo.png"> -->
     <router-view />
     <notifications position="top center" group="foo" />
@@ -7,8 +7,33 @@
 </template>
 <script>
 export default {
-  name: 'App'
-}
+  name: 'App',
+  data(){
+    return{
+      pageheight:'',
+    }
+  },
+  
+    methods:{
+    getPageHeight(){
+      this.pageheight = window.innerHeight;
+    }
+  },
+  created(){
+  },
+  destroyed(){
+  },
+  mounted(){
+    window.onresize = () =>{
+      return(()=>{
+        this.getPageHeight()
+      }
+        )()
+      }
+        this.getPageHeight()
+    }
+  
+  }
 
 </script>
 <style>
