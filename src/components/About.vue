@@ -66,7 +66,7 @@
           </div>
         </div>
         <!-- 图片 -->
-        <div class="select" style="width: 19%;float: right;text-align: right;margin-top: 130px;">
+        <div class="noselect" style="width: 19%;float: right;text-align: right;margin-top: 130px;">
           <font style="color: #000000;font-size: 30px;font-weight: 900;">CMAPLE.CN</font>
         </div>
       </div>
@@ -94,7 +94,7 @@
         </div>
         <div style="width: 70%;text-align: left;padding: 0px 0 40px 0;">
           <font id="about_font">
-            我们担心服务开发咋发展后期会演变成为一场激烈的竞赛，导致缺乏充足的时间进行安全防范。因此，如果有个人或组织所开发的相同的服务与人类价值观相符、注重安全的项目领先于我们，我们将承诺停止竞赛，并转而协助这个项目。我们会针对个别情况设计具体的合作方案。
+            我们担心服务开发发展后期会演变成为一场激烈的竞赛，导致缺乏充足的时间进行安全防范。因此，如果有个人或组织所开发的相同的服务与人类价值观相符、注重安全的项目领先于我们，我们将承诺停止竞赛，并转而协助这个项目。我们会针对个别情况设计具体的合作方案。
           </font>
         </div>
         <div style="text-align: left;padding: 0px 0px 40px 0;">
@@ -592,7 +592,7 @@ export default {
 }
 
 /* 无法选中属性 */
-.select {
+.noselect {
   -webkit-user-select: none;
   /*WebKit内核私有属性*/
   -moz-user-select: none;

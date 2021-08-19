@@ -31,7 +31,7 @@
         </div>
         <!-- 关于CMAPLE -->
         <div style="float: right;padding: 4px 80px 0px 0px;">
-          <a :href="AboutPageUrl" id="menu_font" style="text-decoration: none;">
+          <a id="menu_font" :href="AboutPageUrl" style="text-decoration: none;">
             <font id="menu_font">关于CMAPLE</font>
           </a>
         </div>
@@ -44,11 +44,11 @@
         </div>
         <!-- 文字 -->
         <div style="width: 1024px;position: absolute;bottom: 36%;" class="select">
-          <font style="color: #FFF;font-size: 80px;font-weight: 900;letter-spacing: 0.08em;">官网全新上线</font>
+          <font style="color: #FFF;font-size: 80px;font-weight: 900;letter-spacing: 0.08em;">技术论坛正式上线</font>
         </div>
         <!-- 文字超链接 -->
         <div style="width: 1024px;height: 40px;position: absolute;bottom: 25%;">
-          <a :href="AboutPageUrl" id="main_font_a">
+          <a :href="MainPageNewUrl" id="main_font_a" target="_blank">
             <font>了解更多</font>
           </a>
         </div>
@@ -76,7 +76,7 @@
           </div>
           <div style="text-align: left;padding: 20px 80px 0px 0;">
             <font style="">
-              CMAPLE.CN主要业务范围也为网站搭建&第三方插件/程序的开发。我们将尝试简单快捷的网站开发程序，但是如果我们的工作可以帮助其他人实现这一目标，我们也将认为我们的使命已经实现。
+              CMAPLE.CN主要业务范围：永久免费的IT技术论坛&网站搭建&第三方插件/程序的开发。我们将尝试简单快捷的网站开发程序，但是如果我们的工作可以帮助其他人实现这一目标，我们也将认为我们的使命已经实现。
             </font>
           </div>
           <div style="text-align: left;padding: 30px 0px 0px 0;">
@@ -233,6 +233,8 @@ export default {
       Record_No: '',
       // 网站运营时间
       Run_Time_Range: '',
+      // 主页展示链接
+      MainPageNewUrl:'/platform_login',
       // 网址地址
       Domain_Name: '',
       //主页路由

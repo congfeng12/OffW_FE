@@ -45,7 +45,7 @@
         <!-- 关于说明 -->
         <div style="width: 600px;position: absolute;top: 54%;left:50%;margin-left:-300px;">
           <font style="color: #FFFFFF;font-size: 20px;font-weight: 400;">
-            CMAPLE.CN主要业务范围也为网站搭建&第三方插件/程序的开发。我们将尝试简单快捷的网站开发程序，但是如果我们的工作可以帮助其他人实现这一目标，我们也将认为我们的使命已经实现。
+            CMAPLE.CN主要业务范围：永久免费的IT技术论坛&网站搭建&第三方插件/程序的开发。我们将尝试简单快捷的网站开发程序，但是如果我们的工作可以帮助其他人实现这一目标，我们也将认为我们的使命已经实现。
           </font>
         </div>
       </div>
@@ -158,6 +158,7 @@
           <font style="color: #C0C4CC;font-weight: 200;font-size: 18px;">CMAPLE.CN Forum</font>
         </div>
         <!-- 内容 -->
+        <!-- <a href="javascript:void(0)" @click="alertMessage ('CMAPLE.CN论坛', '论坛暂未开放！', 'warn')"> -->
         <a href="/platform_login" target="_blank">
           <div style="width: 100%;height: 200px;border-radius:10px;" :style="{backgroundImage:'url('+forumImgUrl+')'}"></div>
         </a>
