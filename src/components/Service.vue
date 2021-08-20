@@ -351,7 +351,7 @@ export default {
       //设置必要参数
       var that = this;
       //服务页面案例信息获取函数
-      this.$Axios.post(this.$Global.Back_End_Service + this.$Global.getCases,
+      this.$Axios.post(this.$Config.Back_End_Service + this.$Config.getCases,
       this.$qs.stringify({
         uip: localStorage.getItem("cip"),
         lastplace: localStorage.getItem("cname")
@@ -370,11 +370,11 @@ export default {
           }
         } else {
           //异常结果显示
-          that.$Global.alertMessage(that, "获取服务页面案例信息异常！", res.data.RTMSG, "error");
+          that.$Config.alertMessage(that, "获取服务页面案例信息异常！", res.data.RTMSG, "error");
         }
       })
       .catch(function(err) {
-        that.$Global.alertMessage(that, "获取服务页面案例信息函数异常！", err + '', "error");
+        that.$Config.alertMessage(that, "获取服务页面案例信息函数异常！", err + '', "error");
       });
     },
     //服务页面项目信息获取函数
@@ -382,7 +382,7 @@ export default {
       //设置必要参数
       var that = this;
       //服务页面项目信息获取函数
-      this.$Axios.post(this.$Global.Back_End_Service + this.$Global.getPrograms,
+      this.$Axios.post(this.$Config.Back_End_Service + this.$Config.getPrograms,
       this.$qs.stringify({
         uip: localStorage.getItem("cip"),
         lastplace: localStorage.getItem("cname")
@@ -402,11 +402,11 @@ export default {
           }
         } else {
           //异常结果显示
-          that.$Global.alertMessage(that, "获取程序开发信息异常！", res.data.RTMSG, "error");
+          that.$Config.alertMessage(that, "获取程序开发信息异常！", res.data.RTMSG, "error");
         }
       })
       .catch(function(err) {
-        that.$Global.alertMessage(that, "获取程序开发信息函数异常！", err + '', "error");
+        that.$Config.alertMessage(that, "获取程序开发信息函数异常！", err + '', "error");
       });
     },
   },

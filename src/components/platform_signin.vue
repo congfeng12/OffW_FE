@@ -95,8 +95,8 @@ export default {
     return {
       // 页面高度
       pageheight:'',
-      // 登陆页面
-      signup:'',
+      // 注册页面
+      signup:'11111',
     }
   },
   methods: {
@@ -108,7 +108,7 @@ export default {
     login(){
       var that = this;
       // 论坛登陆
-      this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getContributionInfo,
+      this.$Axios.post(this.$Config.Back_End_Service+this.$Config.getContributionInfo,
       this.$qs.stringify({
         uip: localStorage.getItem("cip"),
         lastplace: localStorage.getItem("cname")
@@ -118,27 +118,27 @@ export default {
           // 函数结果
         }else{
           //异常结果显示
-          that.$Global.alertMessage(that, "账户登陆返回异常！", res.data.RTMSG, "error");
+          that.$Config.alertMessage(that, "账户登陆返回异常！", res.data.RTMSG, "error");
         }
       })
       .catch(function(err){
-        that.$Global.alertMessage(that, "账户登陆函数异常！", err+'', "error");
+        that.$Config.alertMessage(that, "账户登陆函数异常！" + err + '', "error");
       });
     },
-    created() {
+  },
+  created() {
     // 页面地址列表
-      this.signup = this.$Config.Signup;
-    },
-    destroyed() {},
-    mounted() {
-      // 页面高度赋值
-      window.onresize = () => {
-        return (() => {
-          this.getPageHeight()
-        })()
-      }
-      this.getPageHeight()
+    this.signup = this.$Config.Signup;
+  },
+  destroyed() {},
+  mounted() {
+    // 页面高度赋值
+    window.onresize = () => {
+      return (() => {
+        this.getPageHeight()
+      })()
     }
+    this.getPageHeight()
   }
 }
 </script>

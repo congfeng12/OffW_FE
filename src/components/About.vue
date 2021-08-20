@@ -380,7 +380,7 @@ export default {
       //设置必要参数
       var that = this;
       //获取团队管理信息
-        this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getContributionInfo,
+        this.$Axios.post(this.$Config.Back_End_Service+this.$Config.getContributionInfo,
         this.$qs.stringify({
           uip: localStorage.getItem("cip"),
           lastplace: localStorage.getItem("cname")
@@ -419,11 +419,11 @@ export default {
           }
         }else{
           //异常结果显示
-          that.$Global.alertMessage(that, "获取团队管理信息异常！", res.data.RTMSG, "error");
+          that.$Config.alertMessage(that, "获取团队管理信息异常！", res.data.RTMSG, "error");
         }
       })
       .catch(function(err){
-        that.$Global.alertMessage(that, "获取团队管理信息函数异常！", err+'', "error");
+        that.$Config.alertMessage(that, "获取团队管理信息函数异常！", err+'', "error");
       });
     },
   },

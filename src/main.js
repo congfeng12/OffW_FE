@@ -11,8 +11,6 @@ import Notifications from 'vue-notification'
 import axios from 'axios';
 //引入QS
 import qs from 'qs';
-//导入全局属性组建
-import global from './ConfigAttributes.vue';
 
 
 Vue.config.productionTip = false;
@@ -22,8 +20,6 @@ Vue.prototype.$Config = Config;
 Vue.prototype.$Axios = axios;
 //注册qs
 Vue.prototype.$qs = qs;
-//注册全局属性组件
-Vue.prototype.$Global = global;
 //消息提示插件
 Vue.use(Notifications);
 

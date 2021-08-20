@@ -38,7 +38,7 @@
                 <b style="color:#FFFFFF;position:absolute;left:57px;">邮箱验证码:</b>
                 <br>
                 <input id="plun" style="width:48%;height:30px;border-radius:5px 0px 0px 5px;padding:2px 10px 0px 10px;margin: 10px 98px 0px 0px;font-size:18px;color:#606266;font-weight:600;border:1px solid #F2F6FC;outline:none;letter-spacing: .1em!important;" type="text" name="plun">
-                 <button type="submit" class="emal_button" @click="Verification()" >获取验证码</button>
+                 <button id="emal_button" type="submit" class="emal_button" @click="Verification($event.target)">获取验证码</button>
               </div>
               <!-- 密码 -->
               <div style="margin-top:20px;width: 450px;">
@@ -81,7 +81,9 @@ export default {
     return {
       // 页面高度
       pageheight:'',
-      // 注册页面
+      // 验证码倒计时
+      countdown: 60,
+      // 登陆页面
       signin:'',
     }
   },
@@ -94,7 +96,7 @@ export default {
     signup(){
       var that = this;
       // 论坛登陆
-      this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getContributionInfo,
+      this.$Axios.post(this.$Config.Back_End_Service+this.$Config.getContributionInfo,
       this.$qs.stringify({
         uip: localStorage.getItem("cip"),
         lastplace: localStorage.getItem("cname")
@@ -108,31 +110,49 @@ export default {
 
         }else{
           //异常结果显示
-          that.$Global.alertMessage(that, "账户注册返回信息异常！", res.data.RTMSG, "error");
+          that.$Config.alertMessage(that, "账户注册返回信息异常！", res.data.RTMSG, "error");
         }
       })
       .catch(function(err){
-        that.$Global.alertMessage(that, "账户注册函数异常！", err+'', "error");
+        that.$Config.alertMessage(that, "账户注册函数异常！", err+'', "error");
       });
     },
     // 发送验证码
-    Verification(){
-      this.$Global.alertMessage(this, "验证码：", "验证码已发送，请注意查收！", "success");
-    },
-    created() {
-    // 页面地址列表
-      this.signin = this.$Config.Signin;
-    },
-    destroyed() {},
-    mounted() {
-      // 页面高度赋值
-      window.onresize = () => {
-        return (() => {
-          this.getPageHeight()
-        })()
+    Verification(obj){
+      var thst = this;
+      if (this.countdown == 60) {
+        this.$Config.alertMessage(this, "验证码：", "验证码已发送，请注意查收！", "success");
       }
-      this.getPageHeight()
+      //倒计时
+      // obj = document.getElementById("emal_button");
+      if (this.countdown == 0) {
+          obj.removeAttribute("disabled");
+          obj.innerHTML="获取验证码";
+          this.countdown = 60;
+          return;
+      } else {
+          obj.setAttribute("disabled", true);
+          obj.innerHTML=this.countdown + "秒后再试";
+          this.countdown--;
+      }
+      setTimeout(function() {
+          thst.Verification(obj) }
+          ,1000)
+    },
+  },
+  created() {
+  // 页面地址列表
+    this.signin = this.$Config.Signin;
+  },
+  destroyed() {},
+  mounted() {
+    // 页面高度赋值
+    window.onresize = () => {
+      return (() => {
+        this.getPageHeight()
+      })()
     }
+    this.getPageHeight()
   }
 }
 </script>
@@ -210,11 +230,11 @@ export default {
     right: 56px;
     top: 148px;
   }
-  .emal_button:hover{
+  .emal_button:disabled{
     width:99px;
     height:34px;
     border-radius:0px 5px 5px 0px;
-    background-color:#67C23A;
+    background-color:#F56C6C;
     color:#FFFFFF;
     font-size: 1.0rem;
     font-weight: 600;
