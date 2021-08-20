@@ -234,7 +234,7 @@ export default {
       // 网站运营时间
       Run_Time_Range: '',
       // 主页展示链接
-      MainPageNewUrl:'/platform_login',
+      MainPageNewUrl:'',
       // 网址地址
       Domain_Name: '',
       //主页路由
@@ -266,6 +266,7 @@ export default {
     this.AboutPageUrl = this.$Config.AboutPageUrl;
     this.ServicePageUrl = this.$Config.ServicePageUrl;
     this.ContactPageUrl = this.$Config.ContactPageUrl;
+    this.MainPageNewUrl = this.$Config.Signin;
     //请求首页展示图片及内容路由
   },
   destroyed() {},

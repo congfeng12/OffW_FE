@@ -159,7 +159,7 @@
         </div>
         <!-- 内容 -->
         <!-- <a href="javascript:void(0)" @click="alertMessage ('CMAPLE.CN论坛', '论坛暂未开放！', 'warn')"> -->
-        <a href="/platform_login" target="_blank">
+        <a :href="signin" target="_blank">
           <div style="width: 100%;height: 200px;border-radius:10px;" :style="{backgroundImage:'url('+forumImgUrl+')'}"></div>
         </a>
         <!-- 说明 -->
@@ -323,6 +323,8 @@ export default {
       ServicePageUrl: '',
       //联系我们页面路由
       ContactPageUrl: '',
+      // 论坛登陆页面
+      signin: '',
       //主页图片
       serviceImgUrl: '../../static/service_background.jpg',
       //论坛图片路径
@@ -418,6 +420,7 @@ export default {
     this.AboutPageUrl = this.$Config.AboutPageUrl;
     this.ServicePageUrl = this.$Config.ServicePageUrl;
     this.ContactPageUrl = this.$Config.ContactPageUrl;
+    this.signin = this.$Config.Signin;
     //请求首页展示图片及内容路由
     //console.log(localStorage.getItem("cip")+'/'+localStorage.getItem("cname"));
     this.cases();

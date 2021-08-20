@@ -2,7 +2,7 @@
   <div id="app" :style="{height:pageheight+'px'}">
     <!-- <img src="./assets/logo.png"> -->
     <router-view />
-    <notifications position="top center" group="foo" />
+    <notifications position="bottom right" group="cmaple"/>
   </div>
 </template>
 <script>
@@ -45,7 +45,6 @@ export default {
   color: #2c3e50;
   /* margin-top: 60px; */
 }
-
 </style>
 <style scoped>
 /* 通知栏css效果 */

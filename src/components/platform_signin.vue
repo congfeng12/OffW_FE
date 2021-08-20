@@ -11,7 +11,7 @@
             </a>
           </div>
           <!-- 注册按钮 -->
-          <a href="/ContactPageUrl" style="text-decoration: none;">
+          <a :href="signup" style="text-decoration: none;">
             <div id="pl_menu_font">注册</div>
           </a>
         </div>
@@ -38,13 +38,13 @@
               <div style="margin-top:40px;">
                 <b style="color:#FFFFFF;">论坛账户:</b>
                 <br>
-                <input id="plun" style="width:95%;height:30px;border-radius:5px;padding:2px 10px 0px 10px;margin-top: 5px;font-size:18px;color:#606266;font-weight:600;border:1px solid #F2F6FC;outline:none;" type="text" name="plun">
+                <input id="plun" style="width:95%;height:30px;border-radius:5px;padding:2px 10px 0px 10px;margin-top: 5px;font-size:18px;color:#606266;font-weight:600;border:1px solid #F2F6FC;outline:none;letter-spacing: .05em!important;" type="text" name="plun">
               </div>
               <!-- 密码 -->
               <div style="margin-top: 20px;">
                 <b style="color:#FFFFFF;">密码:</b>
                 <br>
-                <input id="plup" style="width:95%;height:30px;border-radius:5px;padding:2px 10px 0px 10px;margin-top: 5px;font-size:18px;color:#606266;font-weight:600;border:1px solid #F2F6FC;outline:none;" type="password" name="plup">
+                <input id="plup" style="width:95%;height:30px;border-radius:5px;padding:2px 10px 0px 10px;margin-top: 5px;font-size:18px;color:#606266;font-weight:600;border:1px solid #F2F6FC;outline:none;letter-spacing: .15em!important;" type="password" name="plup">
               </div>
               <!-- 验证码（暂时不实现） -->
               <!-- 登陆按钮 -->
@@ -93,7 +93,10 @@ export default {
   //name: 'HelloWorld',
   data() {
     return {
+      // 页面高度
       pageheight:'',
+      // 登陆页面
+      signup:'',
     }
   },
   methods: {
@@ -104,15 +107,31 @@ export default {
     // 登陆
     login(){
       var that = this;
-      that.$Global.alertMessage(that, '测试', '测试内容', 'success');
+      // 论坛登陆
+      this.$Axios.post(this.$Global.Back_End_Service+this.$Global.getContributionInfo,
+      this.$qs.stringify({
+        uip: localStorage.getItem("cip"),
+        lastplace: localStorage.getItem("cname")
+      }))
+      .then(function(res){
+        if (res.data.RTCODE == 'success') {
+          // 函数结果
+        }else{
+          //异常结果显示
+          that.$Global.alertMessage(that, "账户登陆返回异常！", res.data.RTMSG, "error");
+        }
+      })
+      .catch(function(err){
+        that.$Global.alertMessage(that, "账户登陆函数异常！", err+'', "error");
+      });
     },
     created() {
-    //页面地址列表
-
+    // 页面地址列表
+      this.signup = this.$Config.Signup;
     },
     destroyed() {},
     mounted() {
-      //页面高度赋值
+      // 页面高度赋值
       window.onresize = () => {
         return (() => {
           this.getPageHeight()

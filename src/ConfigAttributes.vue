@@ -18,6 +18,10 @@ const AboutPageUrl = '/About'
 const ServicePageUrl = '/Service'
 //联系我们
 const ContactPageUrl = '/Contact'
+//登陆
+const Signin = '/platform_signin'
+//注册
+const Signup = '/platform_signup'
 //请求链接
 //关于页面团队贡献等信息获取函数
 const getContributionInfo = '/basic/contributionInfo'
@@ -51,11 +55,12 @@ function delCookie(name) {
 // 消息提示
 function alertMessage(in_th, in_title, in_text, in_type) {
   in_th.$notify({
-    group: 'foo',
+    group: 'cmaple',
     title: in_title,
     text: in_text,
     type: in_type,
-    duration:3000
+    duration:5000,
+    speed:500
   });
 }
 // 暴露出这些属性和方法
@@ -70,6 +75,8 @@ export default {
   AboutPageUrl,
   ServicePageUrl,
   ContactPageUrl,
+  Signin,
+  Signup,
   //链接地址
   getContributionInfo,
   getCases,
