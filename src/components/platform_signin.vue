@@ -116,6 +116,9 @@ export default {
       .then(function(res){
         if (res.data.RTCODE == 'success') {
           // 函数结果
+          //跳转页面 储存token
+          localStorage.setItem("token", res.data.RTDATA);
+          that.$router.push("/platform_home/");
         }else{
           //异常结果显示
           that.$Config.alertMessage(that, "账户登陆返回异常！", res.data.RTMSG, "error");
@@ -123,6 +126,7 @@ export default {
       })
       .catch(function(err){
         that.$Config.alertMessage(that, "账户登陆函数异常！" + err + '', "error");
+        that.$router.push("/platform_home/");
       });
     },
   },

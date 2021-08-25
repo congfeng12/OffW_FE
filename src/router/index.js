@@ -7,6 +7,7 @@ import Service from '@/components/Service'
 import Contact from '@/components/Contact'
 import platform_signin from '@/components/platform_signin'
 import platform_signup from '@/components/platform_signup'
+import platform_home from '@/components/platform_home'
 import err_404 from '@/components/err_404'
 
 Vue.use(Router)
@@ -47,6 +48,12 @@ export default new Router({
       path: '/platform_signup',
       name: 'platform_signup',
       component: platform_signup
+    },
+    {
+      // 论坛主页
+      path: '/platform_home',
+      name: 'platform_home',
+      component: platform_home
     },
     {
       //当访问了不存在的路由的时候
