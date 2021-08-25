@@ -1,3 +1,4 @@
+<!-- 论坛首页 -->
 <template>
   <div style="width: 100%;height: 100%;">
       <div style="width: 100%;background-color: #E4E7ED;" :style="{height:pageheight+'px'}">
@@ -71,8 +72,8 @@
                 </div>
               </div>
               <!-- 帖子标题 -->
-              <div style="   width:300px;height:30px;padding: 0px;line-height: 30px!important;text-align: left;position: absolute;left:320px;">
-                <a href="/1111" style="text-decoration: none;color: #000000!important;font-weight:900;">{{contribution.title}}</a>
+              <div style="width:450px;height:30px;padding: 0px;line-height: 30px!important;text-align: left;position: absolute;left:320px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
+                <a class="pl_a" href="/1111">{{contribution.title}}</a>
               </div>
               <!-- 日期/发布提前时间 -->
                <div class="noselect" style="width:100px;height:30px;padding: 0px;line-height: 30px;text-align: right;position: absolute;right:160px;font-weight:600;color: #C0C4CC;">
@@ -120,7 +121,7 @@ export default {
           name:'黑山老幺的好的哈',
           types:1,
           comments:'200/45800006',
-          title:'这个是测试标题，点击直接跳转',
+          title:'这个是测试标题，点击直接跳转1111111姐姐互粉互粉很看好法喜111111',
           time:'2021-01-21'
         },
         {
@@ -308,5 +309,20 @@ export default {
     letter-spacing: 0.2em;
     font-weight: 900;
     border-bottom: 1.5px solid #FFFFFF;
+  }
+
+  .pl_a{
+    text-decoration: none;
+    color: #000000!important;
+    font-weight:900;
+    width: auto;
+    height: auto;
+  }
+  .pl_a:hover{
+    text-decoration: underline;
+    color: #409EFF!important;
+    font-weight:900;
+    width: auto;
+    height: auto;
   }
 </style>
