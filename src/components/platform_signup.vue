@@ -1,3 +1,4 @@
+<!-- 注册 -->
 <template>
   <div style="width: 100%;background-color: #303133;height: 100%;">
     <div v-bind:style="{height:pageheight+'px'}" style="width: 100%;">
