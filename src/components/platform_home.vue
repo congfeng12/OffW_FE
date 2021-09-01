@@ -36,7 +36,7 @@
         <!-- 页面内容 -->
         <div style="margin: 20px 0px 0px 40px;">
           <!-- 列表 -->
-          <div class="pl_hone_menu" v-for="contribution in contributions" :key="contribution.id">
+          <div class="pl_hone_menu" v-for="contribution in contributions.date" :key="contribution.id">
             <div style="padding: 5px;height: 30px;position: relative;">
               <!-- 用户头像 -->
               <div style="width:40px;height:40px;position: absolute;top: 0px;">
@@ -93,8 +93,12 @@
           </div>
           <!-- 分页按钮 -->
            <div class="pl_hone_menu">
-             分页按钮
-             
+            <!-- 前翻按钮  -->
+            <button v-if="contributions.here != 1" class="pl_button" type="submit" @click="search()"><<</button>
+            <!-- 中间按钮 -->
+            <button v-if="con != contributions.here" v-for="con in contributions.number" class="pl_button" type="submit" @click="search()">{{con}}</button>
+            <!-- 后翻按钮 -->
+            <button v-if="contributions.number != contributions.here" class="pl_button" type="submit" @click="search()">>></button>
            </div>
         </div>
         <!-- 侧面功能按钮 -->
@@ -119,6 +123,9 @@
           <div style="width:66%;height:125px;float: right;text-align:left;padding-left: 10px;border-radius:0px 0px 5px 0px;">
             <!-- 用户名 -->
             <h1 style="font-size:20px;letter-spacing: .01em;margin: 7px 0px 5px 0px;">{{perInfo.name}}</h1>
+            <!-- <div style="font-weight: 900;font-size: 13px;background-color: #990011;width: 45px;height: 20px;border-radius:5px;color: #F5DF4D;text-align: center;line-height:20px;border: 0px solid #F5DF4D;">
+                LV {{perInfo.lvl}}
+            </div> -->
             <!-- 用户级别 -->
               <!-- 创始人 -->
               <div v-if="perInfo.type == 0" style="font-weight: 900;font-size: 16px;background-color: #303133;width: 80px;height: 25px;border-radius:5px;color: #FBD51F;text-align: center;line-height:25px;border: 2px solid #FBD51F;">
@@ -187,143 +194,149 @@ export default {
       // 页面高度
       pageheight: '',
       // 论坛目录
-      contributions: [
-        {
-          id:1,
-          img:'../../static/head/hipster-1.png',
-          name:'黑山老幺的好的哈',
-          types:1,
-          comments:'200/45800006',
-          title:'这个是测试标题，点击直接跳转1',
-          time:'2021-01-21'
-        },
-        {
-          id:2,
-          img:'../../static/head/hipster-1.png',
-          name:'黑山老幺的好的哈',
-          types:1,
-          comments:'200/45800006',
-          title:'这个是测试标题，点击直接跳转2',
-          time:'2021-01-21'
-        },
-        {
-          id:3,
-          img:'../../static/head/hipster-1.png',
-          name:'黑山老幺的好的哈',
-          types:2,
-          comments:'200/45800006',
-          title:'这个是测试标题，点击直接跳转3',
-          time:'2021-01-21'
-        },
-        {
-          id:4,
-          img:'../../static/head/hipster-1.png',
-          name:'黑山老幺的好的哈',
-          types:3,
-          comments:'200/45800006',
-          title:'这个是测试标题，点击直接跳转4',
-          time:'2021-01-21'
-        },
-        {
-          id:5,
-          img:'../../static/head/hipster-1.png',
-          name:'黑山老幺的好的哈',
-          types:4,
-          comments:'200/45800006',
-          title:'这个是测试标题，点击直接跳转5',
-          time:'2021-01-21'
-        },
-        {
-          id:6,
-          img:'../../static/head/hipster-1.png',
-          name:'黑山老幺的好的哈',
-          types:5,
-          comments:'200/45800006',
-          title:'这个是测试标题，点击直接跳转6',
-          time:'2021-01-21'
-        },
-        {
-          id:7,
-          img:'../../static/head/hipster-1.png',
-          name:'黑山老幺的好的哈',
-          types:6,
-          comments:'200/45800006',
-          title:'这个是测试标题，点击直接跳转7',
-          time:'2021-01-21'
-        },
-        {
-          id:8,
-          img:'../../static/head/hipster-1.png',
-          name:'黑山老幺的好的哈',
-          types:6,
-          comments:'200/45800006',
-          title:'这个是测试标题，点击直接跳转8',
-          time:'2021-01-21'
-        },
-        {
-          id:9,
-          img:'../../static/head/hipster-1.png',
-          name:'黑山老幺的好的哈',
-          types:6,
-          comments:'200/45800006',
-          title:'这个是测试标题，点击直接跳转9',
-          time:'2021-01-21'
-        },
-        {
-          id:10,
-          img:'../../static/head/hipster-1.png',
-          name:'黑山老幺的好的哈',
-          types:6,
-          comments:'200/45800006',
-          title:'这个是测试标题，点击直接跳转10',
-          time:'2021-01-21'
-        },
-        {
-          id:11,
-          img:'../../static/head/hipster-1.png',
-          name:'黑山老幺的好的哈',
-          types:6,
-          comments:'200/45800006',
-          title:'这个是测试标题，点击直接跳转11',
-          time:'2021-01-21'
-        },
-        {
-          id:12,
-          img:'../../static/head/hipster-1.png',
-          name:'黑山老幺的好的哈',
-          types:6,
-          comments:'200/45800006',
-          title:'这个是测试标题，点击直接跳转12',
-          time:'2021-01-21'
-        },
-        {
-          id:13,
-          img:'../../static/head/hipster-1.png',
-          name:'黑山老幺的好的哈',
-          types:6,
-          comments:'200/45800006',
-          title:'这个是测试标题，点击直接跳转13',
-          time:'2021-01-21'
-        },
-        {
-          id:14,
-          img:'../../static/head/hipster-1.png',
-          name:'黑山老幺的好的哈',
-          types:6,
-          comments:'200/45800006',
-          title:'这个是测试标题，点击直接跳转14',
-          time:'2021-01-21'
-        },
-        {
-          id:15,
-          img:'../../static/head/hipster-1.png',
-          name:'黑山老幺的好的哈',
-          types:6,
-          comments:'200/45800006',
-          title:'这个是测试标题，点击直接跳转15',
-          time:'2021-01-21'
-        },
-      ],
+      contributions: {
+        // 分页数据
+        number:21,
+        here:1,
+        // 数据
+        date:[
+          {
+            id:1,
+            img:'../../static/head/hipster-1.png',
+            name:'黑山老幺的好的哈',
+            types:1,
+            comments:'200/45800006',
+            title:'这个是测试标题，点击直接跳转1',
+            time:'2021-01-21'
+          },
+          {
+            id:2,
+            img:'../../static/head/hipster-1.png',
+            name:'黑山老幺的好的哈',
+            types:1,
+            comments:'200/45800006',
+            title:'这个是测试标题，点击直接跳转2',
+            time:'2021-01-21'
+          },
+          {
+            id:3,
+            img:'../../static/head/hipster-1.png',
+            name:'黑山老幺的好的哈',
+            types:2,
+            comments:'200/45800006',
+            title:'这个是测试标题，点击直接跳转3',
+            time:'2021-01-21'
+          },
+          {
+            id:4,
+            img:'../../static/head/hipster-1.png',
+            name:'黑山老幺的好的哈',
+            types:3,
+            comments:'200/45800006',
+            title:'这个是测试标题，点击直接跳转4',
+            time:'2021-01-21'
+          },
+          {
+            id:5,
+            img:'../../static/head/hipster-1.png',
+            name:'黑山老幺的好的哈',
+            types:4,
+            comments:'200/45800006',
+            title:'这个是测试标题，点击直接跳转5',
+            time:'2021-01-21'
+          },
+          {
+            id:6,
+            img:'../../static/head/hipster-1.png',
+            name:'黑山老幺的好的哈',
+            types:5,
+            comments:'200/45800006',
+            title:'这个是测试标题，点击直接跳转6',
+            time:'2021-01-21'
+          },
+          {
+            id:7,
+            img:'../../static/head/hipster-1.png',
+            name:'黑山老幺的好的哈',
+            types:6,
+            comments:'200/45800006',
+            title:'这个是测试标题，点击直接跳转7',
+            time:'2021-01-21'
+          },
+          {
+            id:8,
+            img:'../../static/head/hipster-1.png',
+            name:'黑山老幺的好的哈',
+            types:6,
+            comments:'200/45800006',
+            title:'这个是测试标题，点击直接跳转8',
+            time:'2021-01-21'
+          },
+          {
+            id:9,
+            img:'../../static/head/hipster-1.png',
+            name:'黑山老幺的好的哈',
+            types:6,
+            comments:'200/45800006',
+            title:'这个是测试标题，点击直接跳转9',
+            time:'2021-01-21'
+          },
+          {
+            id:10,
+            img:'../../static/head/hipster-1.png',
+            name:'黑山老幺的好的哈',
+            types:6,
+            comments:'200/45800006',
+            title:'这个是测试标题，点击直接跳转10',
+            time:'2021-01-21'
+          },
+          {
+            id:11,
+            img:'../../static/head/hipster-1.png',
+            name:'黑山老幺的好的哈',
+            types:6,
+            comments:'200/45800006',
+            title:'这个是测试标题，点击直接跳转11',
+            time:'2021-01-21'
+          },
+          {
+            id:12,
+            img:'../../static/head/hipster-1.png',
+            name:'黑山老幺的好的哈',
+            types:6,
+            comments:'200/45800006',
+            title:'这个是测试标题，点击直接跳转12',
+            time:'2021-01-21'
+          },
+          {
+            id:13,
+            img:'../../static/head/hipster-1.png',
+            name:'黑山老幺的好的哈',
+            types:6,
+            comments:'200/45800006',
+            title:'这个是测试标题，点击直接跳转13',
+            time:'2021-01-21'
+          },
+          {
+            id:14,
+            img:'../../static/head/hipster-1.png',
+            name:'黑山老幺的好的哈',
+            types:6,
+            comments:'200/45800006',
+            title:'这个是测试标题，点击直接跳转14',
+            time:'2021-01-21'
+          },
+          {
+            id:15,
+            img:'../../static/head/hipster-1.png',
+            name:'黑山老幺的好的哈',
+            types:6,
+            comments:'200/45800006',
+            title:'这个是测试标题，点击直接跳转15',
+            time:'2021-01-21'
+          },
+        ]
+      },
       // 广告
       advertisements:[
         {
@@ -401,7 +414,8 @@ export default {
         name:'黑山老幺的好的哈',
         type:0,
         integral:9999,
-        signature:'这个人很懒，啥都没写！'
+        signature:'这个人很懒，啥都没写！',
+        lvl:12
       },
     }
   },
@@ -416,7 +430,8 @@ export default {
     },
     // 发布话题
     add(){
-
+      let routeData = this.$router.resolve("/platform_add/");
+      window.open(routeData.href, '_blank');
     },
   },
   created() {
@@ -652,5 +667,36 @@ export default {
   .pl_hone_ns_a:hover{
     text-decoration: underline;
     color: #409EFF!important;
+  }
+  /* 分页按钮 */
+  .pl_button{
+    margin: 7.5px 2px 0px 0px;
+    width: 35px;
+    height: 25px;
+    border: 0px solid #FFFFFF;
+    background-color:#303133;
+    border-radius: 5px;
+    transition: .5s;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 900;
+    outline: none;
+    cursor: pointer;
+    line-height: 25px;
+  }
+  .pl_button:hover{
+    margin: 7.5px 2px 0px 0px;
+    width: 35px;
+    height: 25px;
+    border: 0px solid #FFFFFF;
+    background-color:#9CA1A3;
+    transition: .5s;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 900;
+    outline: none;
+    cursor: pointer;
+    line-height: 25px;
   }
 </style>

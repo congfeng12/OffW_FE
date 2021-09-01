@@ -1,0 +1,274 @@
+<!-- 发布帖子 -->
+<template>
+  <div style="width: 100%;height: 100%;">
+    <div style="width: 100%;background-color: #DDE5E4;">
+       <!-- 页头 -->
+        <div style="background-color: #303133;width: 100%;height: 60px;">
+          <!-- 用户中心 -->
+           <div style="float: left;padding: 0px 0px 0px 42px;">
+            <font class="noselect" style="line-height: 60px;color: #FFFFFF;font-size: 23px;text-transform: uppercase;letter-spacing: 0.2em;font-weight: 900;">CMAPLE.CN 论坛</font>
+          </div>
+          <!-- 用户中心 -->
+           <div style="float: right;padding: 18px 45px 0px 0px;">
+            <a href="/" style="text-decoration: none;">
+              <font id="menu_font">用户中心</font>
+            </a>
+          </div>
+          <!-- 关于 -->
+          <div style="float: right;padding: 18px 80px 0px 0px;">
+            <a href="/ServicePageUrl" style="text-decoration: none;">
+              <font id="menu_font">关于</font>
+            </a>
+          </div>
+          <!-- 首页 -->
+          <div style="float: right;padding: 18px 80px 0px 0px;">
+            <a href="/platform_home/" style="text-decoration: none;">
+              <font id="menu_font">首页</font>
+            </a>
+          </div>
+        </div>
+        <!-- 内容 -->
+        <div style="width: 1024px;height: 1000px;background-color: #FFFFFF;margin: 40px auto 0;border-radius: 6px;"> 
+          <!-- 标题 -->
+          <div style="width:100%;height: 50px;text-align: left;">
+            <h1 class="noselect" style="font-size: 16px;margin: 0px 0px 0px 40px;line-height: 50px;font-weight:900;">发布帖子</h1>
+          </div>
+          <!-- 分割线 -->
+          <hr color= #DCDFE6 size="1" style="margin: 0px;">
+          <!-- 标题 -->
+          <div style="float:left;width:223px;text-align: right;">
+            <!-- 标题 -->
+            <h1 style="margin: 60px 50px 0px 0px;font-size:18px;">标题：</h1>
+            <!-- 内容 -->
+            <h1 style="margin: 70px 50px 0px 0px;font-size:18px;">内容：</h1>
+            <!-- 选择板块 -->
+            <h1 style="margin: 560px 50px 0px 0px;font-size:18px;">选择板块: </h1>
+          </div>
+          <!-- 内容 -->
+          <div style="float:right;width:800px;height: auto;">
+            <!-- 标题 -->
+            <div style="height:auto;margin: 60px 115px 0px 40px!important;">
+              <input id="title" type="text" name="addtitle" class="pl_add_input" v-model="titleval">
+            </div>
+            <!-- 富文本编辑器 -->
+            <div style="height: 542px;margin: 55px 0px 0px 40px!important;">
+              <quill-editor v-model="contents"
+                class="pl_quill"
+                ref="editer"
+                :options="editorOption"
+                @blur="oneditorblur($event)" 
+                @focus="oneditorfocus($event)" 
+                @change="oneditorchange($event)">
+              </quill-editor>
+            </div>
+            <!-- 板块选择 -->
+            <div style="height: auto;margin:0px;">
+              <select v-model="selectval" class="pl_add_select">
+                <option value="">请选择板块</option>
+                <option v-if="perInfo.type == 0 || perInfo.type == 1" value="1">置顶</option>
+                <option v-if="perInfo.type == 0 || perInfo.type == 1" value="2">广告</option>
+                <option v-if="perInfo.type == 0 || perInfo.type == 1" value="3">精华</option>
+                <option v-if="perInfo.type == 0 || perInfo.type == 1" value="4">热点</option>
+                <option v-if="perInfo.type == 0 || perInfo.type == 1" value="5">广告</option>
+                <option value="6">交流</option>
+              </select>
+            </div>
+            <!-- 发布按钮 -->
+            <div style="height:auto;width:200px;margin: 80px 0px 0px 170px;">
+              <button v-bind:disabled="isShowBatchSend" class="pl_add_button" type="" @click="">发布</button>
+            </div>
+           <!--  <div>
+              <iframe src="//player.bilibili.com/player.html?bvid=BV1t44y1C7sF" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 600px;height:340px;margin: 50px 0px 0px 0px;"> </iframe>
+            </div> -->
+          </div>
+        </div>
+        <div style="height:40px"></div>
+    </div>
+  </div>
+</template>
+<script>
+export default {
+  data() {
+    return {
+      // 页面高度
+      pageheight: '',
+      editorOption:{
+        theme: "snow",
+        placeholder: "请输尽情发挥吧...",
+        modules:{
+          toolbar:[
+            ['bold', 'italic', 'underline', 'strike'],
+            [{ list: "ordered" }, { list: "bullet" }],
+            [{ size: ["small", false, "large", "huge"] }, { color: [] }],
+            ['blockquote', 'code-block', ],
+            ['image', 'video'],
+            // [("link")]
+          ]
+        },
+      },
+      // 标题内容
+      titleval:'',
+      // 富文本内容
+      contents:'',
+      // 选择内容
+      selectval:'',
+      // 个人信息
+      perInfo:{
+        img:'../../static/head/gentleman.png',
+        name:'黑山老幺的好的哈',
+        type:0,
+        integral:9999,
+        signature:'这个人很懒，啥都没写！',
+        lvl:12
+      },
+      // 按钮是否可用
+      isShowBatchSend: false,
+
+    }
+  },
+  methods: {
+    // 获取页面高度
+   getPageHeight() {
+      this.pageheight = window.innerHeight;
+    },
+    // 失去焦点
+    oneditorblur(editor){
+
+    },
+    // 获取焦点
+    oneditorfocus(editor){
+
+    },
+    // 编辑器文本发生变化
+    oneditorchange(editor,html,text){
+      console.log(this.titleval);
+      console.log(this.contents);
+    },
+
+
+  },
+  created() {
+    
+  },
+  destroyed() {},
+  mounted() {
+   //页面高度赋值
+    window.onresize = () => {
+      return (() => {
+        this.getPageHeight()
+      })()
+    }
+    this.getPageHeight()
+  }
+}
+
+</script>
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+  /* 导航栏字体 */
+  #menu_font {
+    color: #FFFFFF;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 900;
+    text-decoration: none;
+  }
+  #menu_font:hover {
+    color: #FFFFFF;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 900;
+    border-bottom: 1.5px solid #FFFFFF;
+  }
+  /* 无法选中属性 */
+  .noselect {
+    -webkit-user-select: none;
+    /*WebKit内核私有属性*/
+    -moz-user-select: none;
+    /*Firefox私有属性*/
+    -ms-user-select: none;
+    /*IE私有属性(IE10及以后)*/
+    -khtml-user-select: none;
+    /*KHTML内核私有属性*/
+    -o-user-select: none;
+    /*Opera私有属性*/
+    user-select: none;
+    /*CSS3属性*/
+  }
+  /* 标题框 */
+  .pl_add_input{
+    width: 640px;
+    height: 40px;
+    border: 1px solid #C0C4CC;
+    border-radius: 5px;
+    outline-color: #409EFF;
+    letter-spacing: .2em;
+    font-size: 1.2em;
+  }
+  /* 富文本编辑器样式 */
+  .pl_quill{
+    height: 500px;
+    width: 645px;
+    text-align: left;
+    padding: 0px;
+  }
+  /* 选择框 */
+  .pl_add_select{
+    width: 200px;
+    height: 30px;
+    text-align: left;
+    margin:  40px 520px 0px 0px;
+    border: 1px solid #C0C4CC;
+    font-size: 1em;
+    border-radius: 5px;
+    outline-color: #409EFF;
+  }
+  /* 发布按钮 */
+  .pl_add_button{
+    width: 240px;
+    height: 40px;
+    border-radius:5px;
+    background-color:#409EFF;
+    color:#FFFFFF;
+    font-size: 1.0rem;
+    font-weight: 600;
+    line-height: 40px;
+    border: 0px solid #FFFFFF;
+    outline: none;
+    cursor: pointer;
+    transition: .5s;
+    margin: 10px 0px 10px 10px;
+  }
+  .pl_add_button:hover{
+     width: 240px;
+    height: 40px;
+    border-radius:5px;
+    background-color:#007BBF;
+    color:#FFFFFF;
+    font-size: 1.0rem;
+    font-weight: 600;
+    line-height: 40px;
+    border: 0px solid #FFFFFF;
+    outline: none;
+    cursor: pointer;
+    transition: .5s;
+    margin: 10px 0px 10px 10px;
+  }
+  .pl_add_button:disabled{
+    width: 240px;
+    height: 40px;
+    border-radius:5px;
+    background-color:#BD1921;
+    color:#FFFFFF;
+    font-size: 1.0rem;
+    font-weight: 600;
+    line-height: 40px;
+    border: 0px solid #FFFFFF;
+    outline: none;
+    cursor: pointer;
+    transition: .5s;
+    margin: 10px 0px 10px 10px;
+  }
+</style>

@@ -11,7 +11,14 @@ import Notifications from 'vue-notification'
 import axios from 'axios';
 //引入QS
 import qs from 'qs';
+// 引入quill
+import VueQuillEditor from 'vue-quill-editor';
 
+// 引入css文件
+// quill
+import 'quill/dist/quill.core.css';
+import 'quill/dist/quill.snow.css';
+import 'quill/dist/quill.bubble.css';
 
 Vue.config.productionTip = false;
 //注册全局属性组件
@@ -22,6 +29,8 @@ Vue.prototype.$Axios = axios;
 Vue.prototype.$qs = qs;
 //消息提示插件
 Vue.use(Notifications);
+// quill
+Vue.use(VueQuillEditor);
 
 /* eslint-disable no-new */
 new Vue({
