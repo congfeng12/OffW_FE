@@ -79,7 +79,7 @@
               </div>
               <!-- 帖子标题 -->
               <div style="width:550px;height:30px;padding: 0px;line-height: 30px!important;text-align: left;position: absolute;left:320px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
-                <a class="pl_a" href="/1111">{{contribution.title}}</a>
+                <a class="pl_a" :href="contribution.url" target="_blank">{{contribution.title}}</a>
               </div>
               <!-- 日期/发布提前时间 -->
                <div class="noselect" style="width:100px;height:30px;padding: 0px;line-height: 30px;text-align: right;position: absolute;right:160px;font-weight:400;color: #C0C4CC;">
@@ -207,6 +207,7 @@ export default {
             types:1,
             comments:'200/45800006',
             title:'这个是测试标题，点击直接跳转1',
+            url: '/platform_article',
             time:'2021-01-21'
           },
           {
@@ -216,6 +217,7 @@ export default {
             types:1,
             comments:'200/45800006',
             title:'这个是测试标题，点击直接跳转2',
+            url: '/platform_article',
             time:'2021-01-21'
           },
           {
@@ -225,6 +227,7 @@ export default {
             types:2,
             comments:'200/45800006',
             title:'这个是测试标题，点击直接跳转3',
+            url: '/platform_article',
             time:'2021-01-21'
           },
           {
@@ -234,6 +237,7 @@ export default {
             types:3,
             comments:'200/45800006',
             title:'这个是测试标题，点击直接跳转4',
+            url: '/platform_article',
             time:'2021-01-21'
           },
           {
@@ -243,6 +247,7 @@ export default {
             types:4,
             comments:'200/45800006',
             title:'这个是测试标题，点击直接跳转5',
+            url: '/platform_article',
             time:'2021-01-21'
           },
           {
@@ -252,6 +257,7 @@ export default {
             types:5,
             comments:'200/45800006',
             title:'这个是测试标题，点击直接跳转6',
+            url: '/platform_article',
             time:'2021-01-21'
           },
           {
@@ -261,6 +267,7 @@ export default {
             types:6,
             comments:'200/45800006',
             title:'这个是测试标题，点击直接跳转7',
+            url: '/platform_article',
             time:'2021-01-21'
           },
           {
@@ -270,6 +277,7 @@ export default {
             types:6,
             comments:'200/45800006',
             title:'这个是测试标题，点击直接跳转8',
+            url: '/platform_article',
             time:'2021-01-21'
           },
           {
@@ -279,6 +287,7 @@ export default {
             types:6,
             comments:'200/45800006',
             title:'这个是测试标题，点击直接跳转9',
+            url: '/platform_article',
             time:'2021-01-21'
           },
           {
@@ -288,6 +297,7 @@ export default {
             types:6,
             comments:'200/45800006',
             title:'这个是测试标题，点击直接跳转10',
+            url: '/platform_article',
             time:'2021-01-21'
           },
           {
@@ -297,6 +307,7 @@ export default {
             types:6,
             comments:'200/45800006',
             title:'这个是测试标题，点击直接跳转11',
+            url: '/platform_article',
             time:'2021-01-21'
           },
           {
@@ -306,6 +317,7 @@ export default {
             types:6,
             comments:'200/45800006',
             title:'这个是测试标题，点击直接跳转12',
+            url: '/platform_article',
             time:'2021-01-21'
           },
           {
@@ -315,6 +327,7 @@ export default {
             types:6,
             comments:'200/45800006',
             title:'这个是测试标题，点击直接跳转13',
+            url: '/platform_article',
             time:'2021-01-21'
           },
           {
@@ -324,6 +337,7 @@ export default {
             types:6,
             comments:'200/45800006',
             title:'这个是测试标题，点击直接跳转14',
+            url: '/platform_article',
             time:'2021-01-21'
           },
           {
@@ -333,6 +347,7 @@ export default {
             types:6,
             comments:'200/45800006',
             title:'这个是测试标题，点击直接跳转15',
+            url: '/platform_article',
             time:'2021-01-21'
           },
         ]

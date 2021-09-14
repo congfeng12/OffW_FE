@@ -28,41 +28,30 @@
           </div>
         </div>
         <!-- 内容 -->
-        <div style="width: 1024px;height: 1000px;background-color: #FFFFFF;margin: 40px auto 0;border-radius: 6px;"> 
+        <div style="width: 1024px;background-color: #FFFFFF;margin: 0 auto 0;border-radius: 6px;margin-top:40px;"> 
           <!-- 标题 -->
-          <div style="width:100%;height: 50px;text-align: left;">
+          <div style="width:1024px;height: 50px;text-align: left;">
             <h1 class="noselect" style="font-size: 16px;margin: 0px 0px 0px 40px;line-height: 50px;font-weight:900;">发布帖子</h1>
           </div>
           <!-- 分割线 -->
           <hr color= #DCDFE6 size="1" style="margin: 0px;">
           <!-- 标题 -->
-          <div style="float:left;width:223px;text-align: right;">
+          <div style="width:223px;text-align: right;position:absolute;top:150px;">
             <!-- 标题 -->
             <h1 style="margin: 60px 50px 0px 0px;font-size:18px;">标题：</h1>
             <!-- 内容 -->
-            <h1 style="margin: 70px 50px 0px 0px;font-size:18px;">内容：</h1>
+            <h1 style="margin: 70px 50px 0px 0px;font-size:18px;">选择模块：</h1>
             <!-- 选择板块 -->
-            <h1 style="margin: 560px 50px 0px 0px;font-size:18px;">选择板块: </h1>
+            <h1 style="margin: 60px 50px 0px 0px;font-size:18px;">内容: </h1>
           </div>
           <!-- 内容 -->
-          <div style="float:right;width:800px;height: auto;">
+          <div style="width:800px;height: auto;">
             <!-- 标题 -->
-            <div style="height:auto;margin: 60px 115px 0px 40px!important;">
+            <div style="height:auto;margin: 60px 115px 0px 240px!important;">
               <input id="title" type="text" name="addtitle" class="pl_add_input" v-model="titleval">
             </div>
-            <!-- 富文本编辑器 -->
-            <div style="height: 542px;margin: 55px 0px 0px 40px!important;">
-              <quill-editor v-model="contents"
-                class="pl_quill"
-                ref="editer"
-                :options="editorOption"
-                @blur="oneditorblur($event)" 
-                @focus="oneditorfocus($event)" 
-                @change="oneditorchange($event)">
-              </quill-editor>
-            </div>
             <!-- 板块选择 -->
-            <div style="height: auto;margin:0px;">
+            <div style="height: auto;margin:10px 0px 0px 240px;">
               <select v-model="selectval" class="pl_add_select">
                 <option value="">请选择板块</option>
                 <option v-if="perInfo.type == 0 || perInfo.type == 1" value="1">置顶</option>
@@ -73,13 +62,22 @@
                 <option value="6">交流</option>
               </select>
             </div>
+            <!-- 富文本编辑器 -->
+            <div id="edidiv" style="margin: 55px 0px 0px 240px!important;height:auto;">
+              <vue-html5-editor
+                :content="contents" 
+                :height="500"
+                style="width: 646px;"
+                @blur="oneditorblur($event)" 
+                @focus="oneditorfocus($event)" 
+                @change="oneditorchange($event)"
+              ></vue-html5-editor>
+            </div>
             <!-- 发布按钮 -->
-            <div style="height:auto;width:200px;margin: 80px 0px 0px 170px;">
+            <div style="height:auto;width:200px;margin: 80px 0px 0px 370px;">
               <button v-bind:disabled="isShowBatchSend" class="pl_add_button" type="" @click="">发布</button>
             </div>
-           <!--  <div>
-              <iframe src="//player.bilibili.com/player.html?bvid=BV1t44y1C7sF" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 600px;height:340px;margin: 50px 0px 0px 0px;"> </iframe>
-            </div> -->
+            <div style="height:20px"></div>
           </div>
         </div>
         <div style="height:40px"></div>
@@ -92,20 +90,6 @@ export default {
     return {
       // 页面高度
       pageheight: '',
-      editorOption:{
-        theme: "snow",
-        placeholder: "请输尽情发挥吧...",
-        modules:{
-          toolbar:[
-            ['bold', 'italic', 'underline', 'strike'],
-            [{ list: "ordered" }, { list: "bullet" }],
-            [{ size: ["small", false, "large", "huge"] }, { color: [] }],
-            ['blockquote', 'code-block', ],
-            ['image', 'video'],
-            // [("link")]
-          ]
-        },
-      },
       // 标题内容
       titleval:'',
       // 富文本内容
@@ -127,11 +111,15 @@ export default {
     }
   },
   methods: {
+    // 
+    init(){
+      this.$quill.insertEmbed(0, 'image',{width:'800px'});
+    },
     // 获取页面高度
-   getPageHeight() {
+    getPageHeight() {
       this.pageheight = window.innerHeight;
     },
-    // 失去焦点
+     // 失去焦点
     oneditorblur(editor){
 
     },
@@ -141,11 +129,9 @@ export default {
     },
     // 编辑器文本发生变化
     oneditorchange(editor,html,text){
-      console.log(this.titleval);
+      this.contents = editor;
       console.log(this.contents);
     },
-
-
   },
   created() {
     
@@ -155,10 +141,10 @@ export default {
    //页面高度赋值
     window.onresize = () => {
       return (() => {
-        this.getPageHeight()
+        this.getPageHeight();
       })()
     }
-    this.getPageHeight()
+    this.getPageHeight();
   }
 }
 
