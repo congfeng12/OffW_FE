@@ -42,38 +42,11 @@ let opt = {
     image: {
       // 文件最大体积，单位字节  
       sizeLimit: 512 * 1024 * 10,
-      // 上传参数,默认把图片转为base64而不上传
-      // upload config,default null and convert image to base64
-      // upload: {
-      //   // url: 'https://test.xiujianshen.com/media/upload',
-      //   url: '/media/upload',
-      //   headers: {
-      //     'Authorization': '6e1e2d1b88f446c7bea9785febec1c6b-fa06ec7a7065ce25408d85f54d67d6acc93ec390'
-      //   },
-      //   params: {
-      //       prefix: 'coursesuggestImg', // 阿里云额外参数
-      //   },
-      //   fieldName: 'file'
-      // },
-      // 压缩参数,默认使用localResizeIMG进行压缩,设置为null禁止压缩
-      // width和height是文件的最大宽高
       compress: {
         width: 800,
         height: null,
         quality: 80
       },
-      // 响应数据处理,最终返回图片链接
-//       uploadHandler(responseText){
-//         console.log(JSON.parse(responseText));
-        
-// //      default accept json data like  {ok:false,msg:"unexpected"} or {ok:true,data:"image url"}
-//         var json = JSON.parse(responseText);
-//         if(json.code == 0){
-//             return json.data;
-//         }else{
-//             alert(json.message)
-//         }
-//       }
     },
     // 语言，内建的有英文（en-us）和中文（zh-cn）
     language: "zh-cn",
@@ -126,20 +99,12 @@ let opt = {
     hiddenModules: [],
     // 自定义要显示的模块，并控制顺序
     visibleModules: [
-//    "text",
       "color",
       "font",
       "align",
       "list",
       "link",
-//    "unlink",
-//    "tabulation",
       "image",
-//    "hr",
-//    "eraser",
-      // "undo",
-//    "full-screen",
-//    "info",
     ],
     // 扩展模块，具体可以参考examples或查看源码
     // extended modules
@@ -147,7 +112,6 @@ let opt = {
       //omit,reference to source code of build-in modules
     }
   };
-
 
 Vue.config.productionTip = false;
 //注册全局属性组件

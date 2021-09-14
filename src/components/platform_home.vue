@@ -106,9 +106,9 @@
           <!-- 发布话题 -->
           <button id="add_button" type="submit" class="add_button" style="float: left;width:29.5%;height:40px;" @click="add()">发布话题</button>
           <!-- 寻找组织 -->
-          <button id="add_button" type="submit" class="topic_button" style="float: left;width:29.5%;height:40px;" @click="add()">寻找组织</button>
+          <button id="topic_button" type="submit" class="topic_button" style="float: left;width:29.5%;height:40px;" @click="add()">寻找组织</button>
           <!-- 管理中心 （只有创始人&管理员级别才能查看）-->
-          <button id="add_button" type="submit" class="useradmin_button" style="float: left;width:29.5%;height:40px;" @click="add()">管理中心</button>
+          <button id="useradmin_button" type="submit" class="useradmin_button" style="float: left;width:29.5%;height:40px;" @click="add()">管理中心</button>
         </div>
         <!-- 侧面个人信息 -->
         <div style="width: 21.5%;height: 150px;border-radius: 6px;box-shadow: 2px 2px 10px #DCDFE6;background-color: #F2F6FC;position:fixed;right:2.5%;top:145px;">
