@@ -1,7 +1,7 @@
 <!-- 发布帖子 -->
 <template>
-  <div style="width: 100%;height: 100%;background-color: #DDE5E4;">
-    <div style="width: 100%;background-color: #DDE5E4;">
+  <div style="width: 100%;height: 100%;background-color: #F0F0F0;">
+    <div style="width: 100%;background-color: #F0F0F0;">
        <!-- 页头 -->
         <div style="background-color: #303133;width: 100%;height: 60px;">
           <!-- 用户中心 -->

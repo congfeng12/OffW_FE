@@ -137,7 +137,7 @@
         </div>
         <!-- 查看更多 -->
         <div style="text-align: left;" v-show="Programs.length > 0">
-          <a :href="this.$Global.GitHubURL" id="about_font_a" target="_blank">
+          <a :href="this.$Config.GitHubURL" id="about_font_a" target="_blank">
             <font>查看更多</font>
           </a>
         </div>
@@ -342,7 +342,7 @@ export default {
     // 消息提示
     alertMessage(in_title, in_text, in_type) {
       var that = this;
-      that.$Global.alertMessage(that, in_title, in_text, in_type);
+      that.$Config.alertMessage(that, in_title, in_text, in_type);
     },
     mouseEnter() { this.isActive = true },
     mouseOut() { this.isActive = false },
