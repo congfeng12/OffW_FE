@@ -4,37 +4,63 @@
       <div style="width: 100%;">
         <!-- 页头 -->
         <div style="background-color: #303133;width: 100%;height: 60px;">
-          <!-- 用户中心 -->
-           <div style="float: left;padding: 0px 0px 0px 42px;">
-            <font class="noselect" style="line-height: 60px;color: #FFFFFF;font-size: 23px;text-transform: uppercase;letter-spacing: 0.2em;font-weight: 900;">CMAPLE.CN 论坛</font>
-          </div>
-          <div style="float: left;width:550px;padding: 5px 0px 0px 50px;">
-             <!-- 搜索框 -->
-             <input id="search" style="width:70%;height:30px;border-radius:5px 0px 0px 5px;padding:2px 10px 0px 10px;margin: 8px 0px 0px 20px;font-size:18px;color:#606266;font-weight:600;border:1px solid #F2F6FC;outline:none;letter-spacing: .05em!important;float:left;" type="text" name="search" placeholder="请输入 标题/内容 的关键字">
-             <!-- 按钮 -->
-             <button id="search_button" type="submit" class="search_button" @click="search()">搜&nbsp&nbsp索</button>
-          </div>
-          <!-- 用户中心 -->
-           <div style="float: right;padding: 18px 45px 0px 0px;">
-            <a href="/" style="text-decoration: none;">
-              <font id="menu_font">用户中心</font>
-            </a>
-          </div>
-          <!-- 关于 -->
-          <div style="float: right;padding: 18px 80px 0px 0px;">
-            <a href="/ServicePageUrl" style="text-decoration: none;">
-              <font id="menu_font">关于</font>
-            </a>
-          </div>
-          <!-- 首页 -->
-          <div style="float: right;padding: 18px 80px 0px 0px;">
-            <a href="/platform_home/" style="text-decoration: none;">
-              <font id="menu_font">首页</font>
-            </a>
+          <!-- 宽度限制 -->
+          <div style="width:1200px;margin:0 auto 0;position:relative;">
+            <!-- 用户中心 -->
+            <div style="float: left;padding: 0px 0px 0px 0px;">
+              <a href="/platform_home/" style="text-decoration: none;">
+                <font class="noselect" style="line-height: 60px;color: #FFFFFF;font-size: 20px;text-transform: uppercase;letter-spacing: 0.1em;font-weight: 900;">CMAPLE.CN 论坛</font>
+              </a>
+            </div>
+            <div style="float: left;width:550px;padding: 5px 0px 0px 25px;">
+               <!-- 搜索框 -->
+               <input id="search" style="width:50%;height:30px;border-radius:20px 0px 0px 20px;padding:2px 10px 0px 10px;margin: 8px 0px 0px 20px;font-size:14px;color:#606266;font-weight:600;border:1px solid #F2F6FC;outline:none;letter-spacing: .05em!important;float:left;" type="text" name="search" placeholder="请输入 标题/内容 的关键字">
+               <!-- 按钮 -->
+               <button id="search_button" type="submit" class="search_button" @click="search()">搜&nbsp&nbsp索</button>
+            </div>
+            <!-- 用户中心 -->
+            <div style="float: right;padding: 10px 0px 0px 0px;">
+              <a @click="userseting()" href="javascript:void(0)" style="text-decoration: none;">
+                <img style="width: 40px;border-radius: 5px;" :src="perInfo.img">
+              </a>
+            </div>
+            <!-- 消息 -->
+            <div style="float: right;padding: 15px 50px 0px 0px;position: relative;">
+              <div v-if="0 != noread" class="css-1q0jj93">{{noread}}</div>
+              <a @click.preview="xiaoxi()" href="javascript:void(0)" style="text-decoration: none;">
+                <img style="width: 30px;border-radius: 5px;" src="../../static/xiaoxi.png">
+              </a>
+            </div>
+            <!-- 用户中心弹窗 -->
+            <div v-show="true == isuserinfo" style="width:120px;height:auto;background-color: #FFFFFF;z-index: 203;border-radius: 5px;position: absolute;left: 1120px;top: 65px;box-shadow: 1px 1px 6px #909399;padding:7px 0px 7px 0px;" ref="tc_userinfo">
+              <!-- 三角形 -->
+              <div style="width: 0;height: 0;border-left: 8px solid transparent;border-right: 8px solid transparent;border-bottom: 10px solid #FFFFFF;position:absolute;top:-10px;left:53px;"></div>
+              <!-- 按钮组 -->
+              <!-- 我的主页 -->
+              <div class="userinfo_button" @click="zhuye()">
+                <img src="../../static/user.png" style="width: 15px;float:left;margin:14px 8px 0px 20px;">
+                <div style="color: #99a2aa;line-height:45px;text-align:left;font-size:14px;font-weight:600;">我的主页</div>
+              </div>
+              <!-- 用户设置 -->
+              <div class="userinfo_button" @click="shezhi()">
+                <img src="../../static/shezhi.png" style="width: 15px;float:left;margin:14px 8px 0px 20px;">
+                <div style="color: #99a2aa;line-height:45px;text-align:left;font-size:14px;font-weight:600;">用户设置</div>
+              </div>
+              <!-- 退出登录 -->
+              <div class="userinfo_button" @click="tuichu()">
+                <img src="../../static/tuichu.png" style="width: 15px;float:left;margin:14px 8px 0px 20px;">
+                <div style="color: #99a2aa;line-height:45px;text-align:left;font-size:14px;font-weight:600;">退出登录</div>
+              </div>
+            </div>
+            <!-- 消息弹窗 -->
+            <div v-show="true == tc_xiaoxi" style="width:300px;height:500px;background-color: #FFFFFF;z-index: 203;border-radius: 5px;position: absolute;left: 950px;top: 65px;box-shadow: 1px 1px 6px #909399;" ref="tc_xiaoxi">
+              <!-- 三角形 -->
+              <div style="width: 0;height: 0;border-left: 8px solid transparent;border-right: 8px solid transparent;border-bottom: 10px solid #FFFFFF;position:absolute;top:-10px;left:138px;"></div>
+            </div>
           </div>
         </div>
         <!-- 页面内容 -->
-        <div style="margin: 0 auto 0;margin-top: 20px;width: 1024px;overflow: hidden;">
+        <div style="margin: 0 auto 0;margin-top: 10px;width: 1024px;overflow: hidden;">
           <div style="width:750px;height: auto;margin:0px;float:left;">
             <!-- 列表 -->
             <div class="pl_hone_menu" v-for="contribution in contributions.date" :key="contribution.id">
@@ -114,20 +140,17 @@
             </div>
           </div>
           <!-- 侧面功能按钮 -->
-          <div style="width: 260px;height: 730px;float:right;">
-             <div style="width: 260px;height:auto;">
-              <div style="width: 260px;height: 60px;border-radius: 6px;background-color: #FFFFFF;">
-                <!-- 发布话题 -->
-                <button id="add_button" type="submit" class="add_button" style="float: left;width: 115px;height:40px;" @click="add()">发布话题</button>
-                <!-- 管理中心 （只有创始人&管理员级别才能查看）-->
-                <button id="useradmin_button" type="submit" class="useradmin_button" style="float: left;width:115px;height:40px;" @click="add()">管理中心</button>
-              </div>
+          <div style="width: 265px;height: 730px;float:right;">
+             <div style="width: 265px;height:auto;">
               <!-- 侧面个人信息 -->
-              <div style="width: 260px;height: 150px;border-radius: 6px;background-color: #FFFFFF;margin-top:10px;">
+              <div style="width: 265px;height: 210px;background-color: #FFFFFF;margin-top:0px;">
                 <!-- 标题栏 -->
-                <div style="width: 100%;height: 25px;background-color: #303133;border-radius:5px 5px 0px 0px;text-align: left;">
-                  <font style="padding: 0px 0px 0px 10px;line-height:25px;font-size:13px;font-weight:900;color: #FFFFFF;">个人信息</font>
-                </div>
+                <!-- <div style="width: 100%;height: 25px;text-align: left;">
+                  <font style="padding: 0px 0px 0px 10px;line-height:25px;font-size:13px;font-weight:900;color: #000000;">个人信息</font>
+                </div> -->
+                <!-- 分割线 -->
+                <!-- <hr color= #DCDFE6 size="1" style="margin: 0px;"> -->
+                 
                 <!-- 头像 -->
                 <div style="width:40px;height:40px;float: left;margin: 10px 0px 0px 10px;">
                   <img :src="perInfo.img" style="width: 40px;height: 40px;border-radius: 100px;">
@@ -170,11 +193,15 @@
                     {{perInfo.signature}}
                   </p>
                 </div>
+                <!-- 发布话题 -->
+                <button id="add_button" type="submit" class="add_button" style="float: left;width: 115px;height:40px;" @click="add()">发布话题</button>
+                <!-- 管理中心 （只有创始人&管理员级别才能查看）-->
+                <button id="useradmin_button" type="submit" class="useradmin_button" style="float: left;width:115px;height:40px;" @click="add()">管理中心</button>
               </div>
               <!-- 侧面广告信息 -->
-              <div style="width: 260px;height: 250px;border-radius: 6px;background-color: #FFFFFF;margin-top:10px;">
+              <div style="width: 265px;height: 250px;background-color: #FFFFFF;margin-top:5px;">
                 <!-- 标题框 -->
-                <div style="width: 100%;height: 25px;background-color: #303133;border-radius:5px 5px 0px 0px;text-align: left;">
+                <div style="width: 100%;height: 25px;background-color: #303133;text-align: left;">
                   <font style="padding: 0px 0px 0px 10px;line-height:25px;font-size:13px;font-weight:900;color: #FFFFFF;">广告信息</font>
                 </div>
                 <div v-if="advertisements && advertisements.length > 0">
@@ -188,9 +215,9 @@
                 </div>
               </div>
               <!-- 无人回复的陈旧话题 -->
-              <div style="width: 260px;height: 240px;border-radius: 6px;background-color: #FFFFFF;margin-top:10px;">
+              <div style="width: 265px;height: 240px;background-color: #FFFFFF;margin-top:5px;">
                 <!-- 标题框 -->
-                <div style="width: 100%;height: 25px;background-color: #303133;border-radius:5px 5px 0px 0px;text-align: left;">
+                <div style="width: 100%;height: 25px;background-color: #303133;text-align: left;">
                   <font style="padding: 0px 0px 0px 10px;line-height:25px;font-size:13px;font-weight:900;color: #FFFFFF;">无人回复的陈旧话题</font>
                 </div>
                 <div v-if="noanswtops && noanswtops.length > 0">
@@ -330,78 +357,6 @@ export default {
             url: '/platform_article',
             time:'2021-01-21'
           },
-          {
-            id:10,
-            img:'../../static/head/simanan.jpg',
-            name:'黑山老幺的好的哈',
-            types:6,
-             comments:'7823',
-            browse:'28347',
-            collect:'82',
-            title:'这个是测试标题，点击直接跳转10',
-            url: '/platform_article',
-            time:'2021-01-21'
-          },
-          {
-            id:11,
-            img:'../../static/head/simanan.jpg',
-            name:'黑山老幺的好的哈',
-            types:6,
-             comments:'7823',
-            browse:'28347',
-            collect:'82',
-            title:'这个是测试标题，点击直接跳转11',
-            url: '/platform_article',
-            time:'2021-01-21'
-          },
-          {
-            id:12,
-            img:'../../static/head/simanan.jpg',
-            name:'黑山老幺的好的哈',
-            types:6,
-             comments:'7823',
-            browse:'28347',
-            collect:'82',
-            title:'这个是测试标题，点击直接跳转12',
-            url: '/platform_article',
-            time:'2021-01-21'
-          },
-          {
-            id:13,
-            img:'../../static/head/simanan.jpg',
-            name:'黑山老幺的好的哈',
-            types:6,
-             comments:'7823',
-            browse:'28347',
-            collect:'82',
-            title:'这个是测试标题，点击直接跳转13',
-            url: '/platform_article',
-            time:'2021-01-21'
-          },
-          {
-            id:14,
-            img:'../../static/head/simanan.jpg',
-            name:'黑山老幺的好的哈',
-            types:6,
-             comments:'7823',
-            browse:'28347',
-            collect:'82',
-            title:'这个是测试标题，点击直接跳转14',
-            url: '/platform_article',
-            time:'2021-01-21'
-          },
-          {
-            id:15,
-            img:'../../static/head/simanan.jpg',
-            name:'黑山老幺的好的哈',
-            types:6,
-             comments:'7823',
-            browse:'28347',
-            collect:'82',
-            title:'这个是测试标题，点击直接跳转15',
-            url: '/platform_article',
-            time:'2021-01-21'
-          },
         ]
       },
       // 广告
@@ -484,6 +439,13 @@ export default {
         signature:'这个人很懒，啥都没写！',
         lvl:12
       },
+      // 未读消息数量
+      noread:99,
+      // 用户弹窗显示标记
+      isuserinfo: true,
+      // 消息弹窗显示标记
+      tc_xiaoxi: false,
+
     }
   },
   methods: {
@@ -500,6 +462,10 @@ export default {
       let routeData = this.$router.resolve("/platform_add/");
       window.open(routeData.href, '_blank');
     },
+    // 打开用户二级菜单
+    userseting(){
+      this.isuserinfo = !this.isuserinfo;
+    },
   },
   created() {
     
@@ -512,7 +478,14 @@ export default {
         this.getPageHeight()
       })()
     }
-    this.getPageHeight()
+    this.getPageHeight();
+    var that = this;
+    // 
+    document.addEventListener('click', function(e){
+      // if (!that.$refs.tc_userinfo.contains(e.target) && that.isuserinfo) {
+      //   that.isuserinfo = false;
+      // }
+    })
   }
 }
 
@@ -579,7 +552,7 @@ export default {
   .search_button{
     width:99px;
     height:34px;
-    border-radius:0px 5px 5px 0px;
+    border-radius:0px 20px 20px 0px;
     background-color:#67C23A;
     color:#FFFFFF;
     font-size: 1.0rem;
@@ -595,7 +568,7 @@ export default {
   .search_button:hover{
     width:99px;
     height:34px;
-    border-radius:0px 5px 5px 0px;
+    border-radius:0px 20px 20px 0px;
     background-color:#2ea44f;
     color:#FFFFFF;
     font-size: 1.0rem;
@@ -765,5 +738,33 @@ export default {
     outline: none;
     cursor: pointer;
     line-height: 25px;
+  }
+  /* 消息提示角标 */
+  .css-1q0jj93 {
+    margin: 0px;
+    min-width: 0px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(241, 64, 60);
+    padding-left: 4px;
+    padding-right: 4px;
+    position: absolute;
+    left: 22%;
+    top: 15%;
+    font-weight: 600;
+    font-size: 8px;
+    border-radius: 20px;
+    border: 2px solid rgb(255, 255, 255);
+  }
+  /* 弹窗按钮 */
+  .userinfo_button{
+    width:100%;
+    height:40px;
+    cursor:pointer;
+  }
+  .userinfo_button:hover{
+    width:100%;
+    height:40px;
+    background-color: #EBEEF5;
+    cursor:pointer;
   }
 </style>

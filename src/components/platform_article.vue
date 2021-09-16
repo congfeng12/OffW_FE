@@ -5,7 +5,9 @@
       <div style="background-color: #303133;width: 100%;height: 60px;">
         <!-- 用户中心 -->
          <div style="float: left;padding: 0px 0px 0px 42px;">
-          <font class="noselect" style="line-height: 60px;color: #FFFFFF;font-size: 23px;text-transform: uppercase;letter-spacing: 0.2em;font-weight: 900;">CMAPLE.CN 论坛</font>
+          <a href="/platform_home/" style="text-decoration: none;">
+            <font class="noselect" style="line-height: 60px;color: #FFFFFF;font-size: 23px;text-transform: uppercase;letter-spacing: 0.2em;font-weight: 900;">CMAPLE.CN 论坛</font>
+          </a>
         </div>
         <!-- 用户中心 -->
          <div style="float: right;padding: 18px 45px 0px 0px;">
@@ -20,11 +22,11 @@
           </a>
         </div>
         <!-- 首页 -->
-        <div style="float: right;padding: 18px 80px 0px 0px;">
+      <!--   <div style="float: right;padding: 18px 80px 0px 0px;">
           <a href="/platform_home/" style="text-decoration: none;">
             <font id="menu_font">首页</font>
           </a>
-        </div>
+        </div> -->
       </div>
       <!-- 内容 -->
       <div id="vhtml">
@@ -59,6 +61,7 @@
           <button id="reply_button" type="submit" class="reply_button" style="float: left;width:160px;height:40px;" @click="reply()">写回答</button>
           <!-- 举报内容 -->
           <a class="accusation_a" @click="accusation()" href="javascript:void(0)">举报内容</a>
+          <!-- 删除话题 -->
         </div>
       </div>
     </div>
@@ -82,19 +85,23 @@
           <!-- 按钮组 -->
           <div style="width: 800px;height: auto;float:right;margin: 0px 0px 10px 0px;">
             <!-- 时间 -->
-            <b class="comment_a" style="margin: 5px 0px 0px 80px;">{{comment.time}}</b>
+            <b class="comment_a_time" style="margin: 5px 0px 0px 80px;">{{comment.time}}</b>
             <!-- 点赞 -->
             <div class="comment_a" style="margin: 5px 0px 0px 30px;">
-              <img style="width:17px;" src="../../static/dianzan.png">
-              <font style="float:right;margin: 0px 5px 0px 5px;">{{comment.dianz}}</font>
+              <a class="comment_a" @click="dianzan()" href="javascript:void(0)">
+                <img style="width:17px;" src="../../static/dianzan.png">
+                <font style="float:right;margin: 0px 5px 0px 5px;">{{comment.dianz}}</font>
+              </a>
             </div>
             <!-- 踩 -->
             <div class="comment_a" style="margin: 5px 0px 0px 30px;">
-              <img style="width:17px;" src="../../static/dianzan.png">
-              <font style="float:right;margin: 0px 5px 0px 5px;">{{comment.cai}}</font>
+              <a class="comment_a" @click="cai()" href="javascript:void(0)">
+                <img style="width:17px;" src="../../static/dianzan.png">
+                <font style="float:right;margin: 0px 5px 0px 5px;">{{comment.cai}}</font>
+              </a>
             </div>
             <!-- 回复 -->
-            <a class="comment_a" style="margin: 5px 0px 0px 50px;" @click="accusation()" href="javascript:void(0)">回复</a>
+            <a class="comment_a" style="margin: 5px 0px 0px 50px;" @click="reply()" href="javascript:void(0)">回复</a>
           </div>
           <!-- 次级回复 -->
           <div v-for="r in comment.reply" style="width: 600px;height: auto;float:right;margin: 0px 0px 10px 0px;">
@@ -123,19 +130,23 @@
             <!-- 按钮组 -->
             <div style="width: 545px;height: auto;float:right;margin: 0px 0px 0px 0px;">
               <!-- 时间 -->
-              <b class="comment_a" style="margin: 5px 0px 0px 0px;">{{r.time}}</b>
+              <b class="comment_a_time" style="margin: 5px 0px 0px 0px;">{{r.time}}</b>
               <!-- 点赞 -->
               <div class="comment_a" style="margin: 5px 0px 0px 30px;">
-                <img style="width:17px;" src="../../static/dianzan.png">
-                <font style="float:right;margin: 0px 5px 0px 5px;">{{r.dianz}}</font>
+                <a class="comment_a" @click="dianzan()" href="javascript:void(0)">
+                  <img style="width:17px;" src="../../static/dianzan.png">
+                  <font style="float:right;margin: 0px 5px 0px 5px;">{{r.dianz}}</font>
+                </a>
               </div>
               <!-- 踩 -->
               <div class="comment_a" style="margin: 5px 0px 0px 30px;">
-                <img style="width:17px;" src="../../static/dianzan.png">
-                <font style="float:right;margin: 0px 5px 0px 5px;">{{r.cai}}</font>
+                <a class="comment_a" @click="cai()" href="javascript:void(0)">
+                  <img style="width:17px;" src="../../static/dianzan.png">
+                  <font style="float:right;margin: 0px 5px 0px 5px;">{{r.cai}}</font>
+                </a>
               </div>
               <!-- 回复 -->
-              <a class="comment_a" style="margin: 5px 0px 0px 50px;" @click="accusation()" href="javascript:void(0)">回复</a>
+              <a class="comment_a" style="margin: 5px 0px 0px 50px;" @click="reply()" href="javascript:void(0)">回复</a>
             </div>
           </div>
           <!-- 分割线 -->
@@ -396,10 +407,25 @@ export default {
 }
 /* 评论按钮 */
 .comment_a{
-    font-size: 13.5px;
-    font-weight: 600;
-    color: #C0C4CC;
-    text-decoration:none;
-    float: left;
-  }
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #C0C4CC;
+  text-decoration:none;
+  float: left;
+}
+.comment_a:hover{
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #409EFF;
+  text-decoration:none;
+  float: left;
+}
+/* 评论时间 */
+.comment_a_time{
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #C0C4CC;
+  text-decoration:none;
+  float: left;
+}
 </style>
