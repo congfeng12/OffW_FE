@@ -18,7 +18,7 @@
                <!-- 按钮 -->
                <button id="search_button" type="submit" class="search_button" @click="search()">搜&nbsp&nbsp索</button>
             </div>
-            <!-- 用户中心 -->
+            <!-- 用户头像 -->
             <div style="float: right;padding: 10px 0px 0px 0px;">
               <a @click="userseting()" href="javascript:void(0)" style="text-decoration: none;">
                 <img style="width: 40px;border-radius: 5px;" :src="perInfo.img">
@@ -61,7 +61,7 @@
         </div>
         <!-- 页面内容 -->
         <div style="margin: 0 auto 0;margin-top: 10px;width: 1024px;overflow: hidden;">
-          <div style="width:750px;height: auto;margin:0px;float:left;">
+          <div style="width:700px;height: auto;margin:0px;float:left;">
             <!-- 列表 -->
             <div class="pl_hone_menu" v-for="contribution in contributions.date" :key="contribution.id">
               <div style="padding: 5px;height: 130px;position: relative;">
@@ -140,70 +140,103 @@
             </div>
           </div>
           <!-- 侧面功能按钮 -->
-          <div style="width: 265px;height: 730px;float:right;">
-             <div style="width: 265px;height:auto;">
+          <div style="width: 315px;height: 730px;float:right;">
+             <div style="width: 315px;height:auto;">
               <!-- 侧面个人信息 -->
-              <div style="width: 265px;height: 210px;background-color: #FFFFFF;margin-top:0px;">
-                <!-- 标题栏 -->
-                <!-- <div style="width: 100%;height: 25px;text-align: left;">
-                  <font style="padding: 0px 0px 0px 10px;line-height:25px;font-size:13px;font-weight:900;color: #000000;">个人信息</font>
-                </div> -->
-                <!-- 分割线 -->
-                <!-- <hr color= #DCDFE6 size="1" style="margin: 0px;"> -->
-                 
+              <div style="width: 315px;height: 210px;background-color: #FFFFFF;margin-top:0px;">
                 <!-- 头像 -->
-                <div style="width:40px;height:40px;float: left;margin: 10px 0px 0px 10px;">
-                  <img :src="perInfo.img" style="width: 40px;height: 40px;border-radius: 100px;">
-                </div>
-                <div style="width:76%;height:125px;float: right;text-align:left;padding-left: 0px;border-radius:0px 0px 5px 0px;">
+                <!-- <div style="width:50px;height:50px;float: left;margin: 10px 0px 0px 10px;">
+                  <img :src="perInfo.img" style="width: 50px;height: 50px;border-radius: 100px;">
+                </div> -->
+                <div style="width:300px;height: auto;text-align:left;padding-left: 0px;border-radius:0px 0px 5px 0px;padding: 8px 0px 20px 15px;">
                   <!-- 用户名 -->
-                  <h1 style="font-size:15px;letter-spacing: .01em;margin: 7px 0px 10px 0px;">{{perInfo.name}}</h1>
+                  <h1 style="line-height: 30px;font-size:20px;letter-spacing: .01em;font-weight: 900;margin: 0px;">{{perInfo.name}}</h1>
+                  <!-- 用户等级 -->
+                  <h2 style="line-height: 30px;font-size:14px;margin:2px 0px 0px 0px;color:#0066FF;"><font>lvl</font> {{perInfo.lvl}}</h2>
+                  
+
                   <!-- 用户级别 -->
                     <!-- 创始人 -->
-                    <div v-if="perInfo.type == 0" style="font-weight: 900;font-size: 13px;background-color: #303133;width: 70px;height: 18px;border-radius:5px;color: #FBD51F;text-align: center;line-height:18px;border: 2px solid #FBD51F;">
+                    <!-- div v-if="perInfo.type == 0" class="userlabel" style="background-color: #303133;color: #FBD51F;border: 2px solid #FBD51F;">
                       创&nbsp始&nbsp人
-                    </div>
+                    </div> -->
                     <!-- 管理员 -->
-                    <div v-else-if="perInfo.type == 1" style="font-weight: 900;font-size: 13px;background-color: #1A4C7B;width: 70px;height: 18px;border-radius:5px;color: #DEE0EC;text-align: center;line-height:18px;border: 2px solid #DEE0EC;">
+                    <!-- <div v-else-if="perInfo.type == 1" class="userlabel" style="background-color: #1A4C7B;color: #DEE0EC;border: 2px solid #DEE0EC;">
                       管&nbsp理&nbsp员
-                    </div>
+                    </div> -->
                     <!-- 贡献者 -->
-                    <div v-else-if="perInfo.type == 2" style="font-weight: 900;font-size: 13px;background-color: #162E55;width: 70px;height: 18px;border-radius:5px;color: #E6BE90;text-align: center;line-height:18px;border: 2px solid #E6BE90;">
+                    <!-- <div v-else-if="perInfo.type == 2" class="userlabel"  style="background-color: #162E55;color: #E6BE90;border: 2px solid #E6BE90;">
                       贡&nbsp献&nbsp者
-                    </div>
+                    </div> -->
                     <!-- 投资人 -->
-                    <div v-else-if="perInfo.type == 3" style="font-weight: 900;font-size: 13px;background-color: #9F383A;width: 70px;height: 18px;border-radius:5px;color: #F4DBB2;text-align: center;line-height:18px;border: 2px solid #F4DBB2;">
+                    <!-- <div v-else-if="perInfo.type == 3" class="userlabel"  style="background-color: #9F383A;color: #F4DBB2;border: 2px solid #F4DBB2;">
                       投&nbsp资&nbsp人
-                    </div>
+                    </div> -->
                     <!-- 会员 -->
-                    <div v-else-if="perInfo.type == 4" style="font-weight: 900;font-size: 13px;background-color: #007762;width: 70px;height: 18px;border-radius:5px;color: #E0B588;text-align: center;line-height:18px;border: 2px solid #E0B588;">
+                    <!-- <div v-else-if="perInfo.type == 4" class="userlabel"  style="background-color: #007762;color: #E0B588;border: 2px solid #E0B588;">
                       会&nbsp&nbsp员
-                    </div>
+                    </div> -->
                     <!-- 错误类别 -->
-                    <div v-else style="font-weight: 900;font-size: 13px;background-color: #990011;width: 70px;height: 18px;border-radius:5px;color: #F5DF4D;text-align: center;line-height:18px;border: 2px solid #F5DF4D;">
+                    <!-- <div v-else class="userlabel"  style="background-color: #990011;color: #F5DF4D;border: 2px solid #F5DF4D;">
                       异常类型
-                    </div>
-                  <!-- 积分 -->
-                  <p style="margin: 10px 0px 0px 0px;font-size: 12px;font-weight: 600;">
+                    </div> -->
+                  <!-- 等级 -->
+                  <!-- <p style="margin: 10px 0px 0px 0px;font-size: 12px;font-weight: 600;">
                     积分:
                     <font style="color: #FF8705;">{{perInfo.integral}}</font>
-                  </p>
+                  </p> -->
                   <!-- 个人签名 -->
-                  <p style="margin: 10px 0px 0px 0px;font-size: 12px;font-weight: 600;color: #909399;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
+                 <!--  <p style="margin: 10px 0px 0px 0px;font-size: 12px;font-weight: 600;color: #909399;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
                     {{perInfo.signature}}
-                  </p>
+                  </p> -->
                 </div>
-                <!-- 发布话题 -->
-                <button id="add_button" type="submit" class="add_button" style="float: left;width: 115px;height:40px;" @click="add()">发布话题</button>
-                <!-- 管理中心 （只有创始人&管理员级别才能查看）-->
-                <button id="useradmin_button" type="submit" class="useradmin_button" style="float: left;width:115px;height:40px;" @click="add()">管理中心</button>
+                <div style="overflow: hidden;">
+                  <!-- 发布 -->
+                  <div style="width:  60px;float:left;text-align:center;margin: 0px 0px 0px 15px;" >
+                    <a class="seting_a" @click="dianzan()" href="javascript:void(0)">
+                      <div style="width: 40px;height:40px;border-radius:50px;margin: 0 auto 0;background-color: #B5E4B2;">
+                        <img style="width: 25px;margin: 7px 0px 0px 0px;" src="../../static/fabu.png">
+                      </div>
+                      <p style="margin: 5px 0px 0px 0px;">发布话题</p>
+                    </a>
+                  </div>                 
+                  <!-- 管理 -->
+                  <div style="width:  60px;float:left;text-align:center;margin: 0px 0px 0px 15px;" >
+                    <a class="seting_a" @click="dianzan()" href="javascript:void(0)">
+                      <div style="width: 40px;height:40px;border-radius:50px;margin: 0 auto 0;background-color: #FFD592;">
+                        <img style="width: 25px;margin: 8px 0px 0px 0px;" src="../../static/guanli.png">
+                      </div>
+                      <p style="margin: 5px 0px 0px 0px;">论坛管理</p>
+                    </a>
+                  </div>
+                  <!--  -->
+                  <div style="width:  60px;float:left;text-align:center;margin: 0px 0px 0px 15px;" >
+                    <a class="seting_a" @click="dianzan()" href="javascript:void(0)">
+                      <div style="width: 40px;height:40px;border-radius:50px;margin: 0 auto 0;background-color: #FFD592;">
+                        <img style="width: 25px;margin: 8px 0px 0px 0px;" src="../../static/guanli.png">
+                      </div>
+                      <p style="margin: 5px 0px 0px 0px;">论坛管理</p>
+                    </a>
+                  </div>
+                  <!--  -->
+                  <div style="width:  60px;float:left;text-align:center;margin: 0px 0px 0px 15px;" >
+                    <a class="seting_a" @click="dianzan()" href="javascript:void(0)">
+                      <div style="width: 40px;height:40px;border-radius:50px;margin: 0 auto 0;background-color: #FFD592;">
+                        <img style="width: 25px;margin: 8px 0px 0px 0px;" src="../../static/guanli.png">
+                      </div>
+                      <p style="margin: 5px 0px 0px 0px;">论坛管理</p>
+                    </a>
+                  </div>
+                </div>
+                <!-- 进入个人中心 -->
+                <button id="reply_button" type="submit" class="reply_button" @click="reply()">进入个人主页 ></button>
               </div>
               <!-- 侧面广告信息 -->
-              <div style="width: 265px;height: 250px;background-color: #FFFFFF;margin-top:5px;">
+              <div style="width: 315px;height: 250px;background-color: #FFFFFF;margin-top:8px;">
                 <!-- 标题框 -->
-                <div style="width: 100%;height: 25px;background-color: #303133;text-align: left;">
+                <!-- <div style="width: 100%;height: 25px;background-color: #303133;text-align: left;">
                   <font style="padding: 0px 0px 0px 10px;line-height:25px;font-size:13px;font-weight:900;color: #FFFFFF;">广告信息</font>
-                </div>
+                </div> -->
                 <div v-if="advertisements && advertisements.length > 0">
                   <!-- 广告列表 -->
                   <div class="pl_hone_ad" v-for="advertisement in advertisements" :key="advertisement.id">
@@ -215,7 +248,7 @@
                 </div>
               </div>
               <!-- 无人回复的陈旧话题 -->
-              <div style="width: 265px;height: 240px;background-color: #FFFFFF;margin-top:5px;">
+              <div style="width: 315px;height: 240px;background-color: #FFFFFF;margin-top:8px;">
                 <!-- 标题框 -->
                 <div style="width: 100%;height: 25px;background-color: #303133;text-align: left;">
                   <font style="padding: 0px 0px 0px 10px;line-height:25px;font-size:13px;font-weight:900;color: #FFFFFF;">无人回复的陈旧话题</font>
@@ -435,14 +468,13 @@ export default {
         img:'../../static/head/cmaple.jpg',
         name:'CMAPLE',
         type:0,
-        integral:9999,
         signature:'这个人很懒，啥都没写！',
         lvl:12
       },
       // 未读消息数量
       noread:99,
       // 用户弹窗显示标记
-      isuserinfo: true,
+      isuserinfo: false,
       // 消息弹窗显示标记
       tc_xiaoxi: false,
 
@@ -494,7 +526,7 @@ export default {
 <style scoped>
   /* 团队管理展示标签 */
   .pl_hone_menu {
-    width: 750px;
+    width: 700px;
     height: 140px;
     margin: 1px 0px 0px 0px;
     background-color: #FFFFFF;
@@ -767,4 +799,59 @@ export default {
     background-color: #EBEEF5;
     cursor:pointer;
   }
+  /* 用户类型标签属性 */
+/*   .userlabel{
+    font-weight: 900;
+    font-size: 13px;
+    width: 70px;
+    height: 18px;
+    border-radius:5px;
+    text-align: center;
+    line-height:18px;
+    margin: 0px 0px 0px 10px;
+  } */
+  /* 评论按钮 */
+.seting_a{
+  text-decoration:none;
+  font-size:12px;
+  color: #444444;
+  font-weight: 600;
+}
+.seting_a:hover{
+  text-decoration:none;
+  font-size:12px;
+  color: #0078A3;
+  font-weight: 600;
+}
+/* 写回答 */
+.reply_button{
+  border-radius:5px;
+  background-color:#303133;
+  color:#FFFFFF;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  border: 1px solid #FFFFFF;
+  outline: none;
+  cursor: pointer;
+  transition: .5s;
+  margin: 15px auto 0;
+  width:280px;
+  height:30px;
+}
+.reply_button:hover{
+  border-radius:5px;
+  background-color:#606266;
+  color:#FFFFFF;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  border: 1px solid #FFFFFF;
+  outline: none;
+  cursor: pointer;
+  transition: .5s;
+  margin: 15px auto 0;
+  width:280px;
+  height:30px;
+}
 </style>
