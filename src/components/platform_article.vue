@@ -21,12 +21,6 @@
             <font id="menu_font">关于</font>
           </a>
         </div>
-        <!-- 首页 -->
-      <!--   <div style="float: right;padding: 18px 80px 0px 0px;">
-          <a href="/platform_home/" style="text-decoration: none;">
-            <font id="menu_font">首页</font>
-          </a>
-        </div> -->
       </div>
       <!-- 内容 -->
       <div id="vhtml">
@@ -60,8 +54,7 @@
           <!-- 写答案 -->
           <button id="reply_button" type="submit" class="reply_button" style="float: left;width:160px;height:40px;" @click="reply()">写回答</button>
           <!-- 举报内容 -->
-          <a class="accusation_a" @click="accusation()" href="javascript:void(0)">举报内容</a>
-          <!-- 删除话题 -->
+          <a class="accusation_a" style="color: #F56C6C;" @click="accusation()" href="javascript:void(0)">举报内容</a>
         </div>
       </div>
     </div>

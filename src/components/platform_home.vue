@@ -25,10 +25,10 @@
               </a>
             </div>
             <!-- 消息 -->
-            <div style="float: right;padding: 15px 50px 0px 0px;position: relative;">
+            <div style="float: right;padding: 18px 80px 0px 0px;position: relative;">
               <div v-if="0 != noread" class="css-1q0jj93">{{noread}}</div>
               <a @click.preview="xiaoxi()" href="javascript:void(0)" style="text-decoration: none;">
-                <img style="width: 30px;border-radius: 5px;" src="../../static/xiaoxi.png">
+                <img style="width: 25px;border-radius: 5px;" src="../../static/xiaoxi.png">
               </a>
             </div>
             <!-- 用户中心弹窗 -->
@@ -53,9 +53,41 @@
               </div>
             </div>
             <!-- 消息弹窗 -->
-            <div v-show="true == tc_xiaoxi" style="width:300px;height:500px;background-color: #FFFFFF;z-index: 203;border-radius: 5px;position: absolute;left: 950px;top: 65px;box-shadow: 1px 1px 6px #909399;" ref="tc_xiaoxi">
+            <div v-show="true == isxiaoxi" style="width:300px;height:500px;background-color: #FFFFFF;z-index: 203;border-radius: 5px;position: absolute;left: 920px;top: 65px;box-shadow: 1px 1px 6px #909399;" ref="tc_xiaoxi">
               <!-- 三角形 -->
-              <div style="width: 0;height: 0;border-left: 8px solid transparent;border-right: 8px solid transparent;border-bottom: 10px solid #FFFFFF;position:absolute;top:-10px;left:138px;"></div>
+              <div style="width: 0;height: 0;border-left: 8px solid transparent;border-right: 8px solid transparent;border-bottom: 10px solid #FFFFFF;position:absolute;top:-10px;left:140px;"></div>
+              <!-- 标题 -->
+              <div style="width：100%;height:50px;">
+                <font style="line-height:50px;font-size:15px;color: #121212;">我的消息</font>
+              </div>
+              <!-- 分割线 -->
+              <hr color= #DCDFE6 size="1" style="margin: 0px 0px 0px 0px;">
+              <!-- 内容列表 -->
+              <div style="overflow:auto;width:100%;height:410px;">
+                <div v-for="(unmsg, index) in unreadMsg" class="unread_msg">
+                  <a target="_blank" :href="unmsg.url">
+                    <!-- 头像 -->
+                    <div style="width:70px;height:70px;float:left;">
+                      <img style="width: 40px;margin:15px auto 0px;border-radius: 5px;" :src="unmsg.head">
+                    </div>
+                    <!-- 文字内容 -->
+                    <div style="width:230px;height:70px;float:right;text-align: left;">
+                      <!-- 名称 -->
+                      <h1 style="margin: 12px 0px 0px 0px;font-size:15px;font-weight:900;color: #303133;">{{unmsg.name}}</h1>
+                      <!-- 内容 -->
+                      <h2 style="font-size: 14px;font-weight: 600;color: #909399;padding: 0px 10px 0px 0px;margin: 5px 0px 0px 0px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
+                        {{unmsg.msg}}
+                      </h2>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <!-- 分割线 -->
+              <hr color= #DCDFE6 size="1" style="margin: 0px 0px 0px 0px;">
+              <!-- 页面底部 -->
+              <div style="width:100%;height: 39px;background-color: #FFFFFF;border-radius: 0px 0px 5px 5px;">
+                <a class="open_all" @click="accusation()" href="javascript:void(0)">查看全部</a>
+              </div>
             </div>
           </div>
         </div>
@@ -85,7 +117,7 @@
                   </div>
                   <!-- 广告 -->
                   <div v-else-if="contribution.types == 5" class="label" style="background-color: #909399;">
-                    广告
+                    新闻
                   </div>
                   <!-- 交流 -->
                   <div v-else-if="contribution.types == 6" class="label" style="background-color: #409EFF;">
@@ -113,7 +145,7 @@
                   {{contribution.name}}
                 </div>
                 <!-- 文章标签 -->
-                <!-- 收藏 -->
+                <!-- （暂时不实现） -->
                 <!-- 收藏数量 -->
                 <div class="noselect" style="width:110px;height:30px;padding: 0px;line-height: 30px;text-align: right;position: absolute;right:360px;top: 105px;font-size: 13px;font-weight:600;color: #99a2aa;">
                   收藏：{{contribution.collect}}
@@ -143,58 +175,20 @@
           <div style="width: 315px;height: 730px;float:right;">
              <div style="width: 315px;height:auto;">
               <!-- 侧面个人信息 -->
-              <div style="width: 315px;height: 210px;background-color: #FFFFFF;margin-top:0px;">
-                <!-- 头像 -->
-                <!-- <div style="width:50px;height:50px;float: left;margin: 10px 0px 0px 10px;">
-                  <img :src="perInfo.img" style="width: 50px;height: 50px;border-radius: 100px;">
-                </div> -->
-                <div style="width:300px;height: auto;text-align:left;padding-left: 0px;border-radius:0px 0px 5px 0px;padding: 8px 0px 20px 15px;">
+              <div style="width: 315px;height: auto;background-color: #FFFFFF;margin-top:0px;">
+                <div style="width:300px;height: 50px;text-align:left;padding-left: 0px;border-radius:0px 0px 5px 0px;padding: 8px 0px 20px 15px;">
                   <!-- 用户名 -->
-                  <h1 style="line-height: 30px;font-size:20px;letter-spacing: .01em;font-weight: 900;margin: 0px;">{{perInfo.name}}</h1>
-                  <!-- 用户等级 -->
-                  <h2 style="line-height: 30px;font-size:14px;margin:2px 0px 0px 0px;color:#0066FF;"><font>lvl</font> {{perInfo.lvl}}</h2>
-                  
-
-                  <!-- 用户级别 -->
-                    <!-- 创始人 -->
-                    <!-- div v-if="perInfo.type == 0" class="userlabel" style="background-color: #303133;color: #FBD51F;border: 2px solid #FBD51F;">
-                      创&nbsp始&nbsp人
-                    </div> -->
-                    <!-- 管理员 -->
-                    <!-- <div v-else-if="perInfo.type == 1" class="userlabel" style="background-color: #1A4C7B;color: #DEE0EC;border: 2px solid #DEE0EC;">
-                      管&nbsp理&nbsp员
-                    </div> -->
-                    <!-- 贡献者 -->
-                    <!-- <div v-else-if="perInfo.type == 2" class="userlabel"  style="background-color: #162E55;color: #E6BE90;border: 2px solid #E6BE90;">
-                      贡&nbsp献&nbsp者
-                    </div> -->
-                    <!-- 投资人 -->
-                    <!-- <div v-else-if="perInfo.type == 3" class="userlabel"  style="background-color: #9F383A;color: #F4DBB2;border: 2px solid #F4DBB2;">
-                      投&nbsp资&nbsp人
-                    </div> -->
-                    <!-- 会员 -->
-                    <!-- <div v-else-if="perInfo.type == 4" class="userlabel"  style="background-color: #007762;color: #E0B588;border: 2px solid #E0B588;">
-                      会&nbsp&nbsp员
-                    </div> -->
-                    <!-- 错误类别 -->
-                    <!-- <div v-else class="userlabel"  style="background-color: #990011;color: #F5DF4D;border: 2px solid #F5DF4D;">
-                      异常类型
-                    </div> -->
-                  <!-- 等级 -->
-                  <!-- <p style="margin: 10px 0px 0px 0px;font-size: 12px;font-weight: 600;">
-                    积分:
-                    <font style="color: #FF8705;">{{perInfo.integral}}</font>
-                  </p> -->
+                  <h1 style="color: #000000;padding-right: 10px;line-height: 30px;font-size:20px;letter-spacing: .01em;font-weight: 900;margin: 10px 0px 0px 8px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;"><font style="color: #606266;">欢迎：</font>{{perInfo.name}}</h1>
                   <!-- 个人签名 -->
-                 <!--  <p style="margin: 10px 0px 0px 0px;font-size: 12px;font-weight: 600;color: #909399;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
-                    {{perInfo.signature}}
-                  </p> -->
+                  <p style="margin: 10px 0px 0px 8px;font-size: 12px;font-weight: 600;color: #909399;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
+                    个人签名：{{perInfo.signature}}
+                  </p>
                 </div>
-                <div style="overflow: hidden;">
+                <div style="overflow: hidden;margin-top:20px;">
                   <!-- 发布 -->
                   <div style="width:  60px;float:left;text-align:center;margin: 0px 0px 0px 15px;" >
                     <a class="seting_a" @click="dianzan()" href="javascript:void(0)">
-                      <div style="width: 40px;height:40px;border-radius:50px;margin: 0 auto 0;background-color: #B5E4B2;">
+                      <div style="width: 40px;height:40px;border-radius:50px;margin: 0 auto 0;background-color: #e5edff;">
                         <img style="width: 25px;margin: 7px 0px 0px 0px;" src="../../static/fabu.png">
                       </div>
                       <p style="margin: 5px 0px 0px 0px;">发布话题</p>
@@ -203,25 +197,25 @@
                   <!-- 管理 -->
                   <div style="width:  60px;float:left;text-align:center;margin: 0px 0px 0px 15px;" >
                     <a class="seting_a" @click="dianzan()" href="javascript:void(0)">
-                      <div style="width: 40px;height:40px;border-radius:50px;margin: 0 auto 0;background-color: #FFD592;">
-                        <img style="width: 25px;margin: 8px 0px 0px 0px;" src="../../static/guanli.png">
+                      <div style="width: 40px;height:40px;border-radius:50px;margin: 0 auto 0;background-color: #fff3e7;">
+                        <img style="width: 25px;margin: 8px 0px 0px 0px;" src="../../static/huida.png">
                       </div>
-                      <p style="margin: 5px 0px 0px 0px;">论坛管理</p>
+                      <p style="margin: 5px 0px 0px 0px;">回答问题</p>
                     </a>
                   </div>
                   <!--  -->
                   <div style="width:  60px;float:left;text-align:center;margin: 0px 0px 0px 15px;" >
                     <a class="seting_a" @click="dianzan()" href="javascript:void(0)">
-                      <div style="width: 40px;height:40px;border-radius:50px;margin: 0 auto 0;background-color: #FFD592;">
-                        <img style="width: 25px;margin: 8px 0px 0px 0px;" src="../../static/guanli.png">
+                      <div style="width: 40px;height:40px;border-radius:50px;margin: 0 auto 0;background-color: #fef9e7;">
+                        <img style="width: 25px;margin: 8px 0px 0px 0px;" src="../../static/jianyi.png">
                       </div>
-                      <p style="margin: 5px 0px 0px 0px;">论坛管理</p>
+                      <p style="margin: 5px 0px 0px 0px;">投诉建议</p>
                     </a>
                   </div>
                   <!--  -->
                   <div style="width:  60px;float:left;text-align:center;margin: 0px 0px 0px 15px;" >
                     <a class="seting_a" @click="dianzan()" href="javascript:void(0)">
-                      <div style="width: 40px;height:40px;border-radius:50px;margin: 0 auto 0;background-color: #FFD592;">
+                      <div style="width: 40px;height:40px;border-radius:50px;margin: 0 auto 0;background-color: #e9f7f7;">
                         <img style="width: 25px;margin: 8px 0px 0px 0px;" src="../../static/guanli.png">
                       </div>
                       <p style="margin: 5px 0px 0px 0px;">论坛管理</p>
@@ -232,11 +226,17 @@
                 <button id="reply_button" type="submit" class="reply_button" @click="reply()">进入个人主页 ></button>
               </div>
               <!-- 侧面广告信息 -->
-              <div style="width: 315px;height: 250px;background-color: #FFFFFF;margin-top:8px;">
-                <!-- 标题框 -->
-                <!-- <div style="width: 100%;height: 25px;background-color: #303133;text-align: left;">
-                  <font style="padding: 0px 0px 0px 10px;line-height:25px;font-size:13px;font-weight:900;color: #FFFFFF;">广告信息</font>
-                </div> -->
+              <div style="width: 315px;height: auto;background-color: #FFFFFF;margin-top:8px;padding-bottom:10px;">
+                <!-- 置顶广告位 -->
+                <div  style="width:100%;">
+                  <a class="extension" href="https://www.apple.com.cn/shop/buy-iphone/iphone-13" target="_blank">
+                    <img style="width:93%;margin: 10px auto 0px;" src="../../static/tuiguang.png">
+                    <h1 style="text-align:left;margin: 0px 0px 0px 10px;font-size:16px;">全新iphone开启预售</h1>
+                  </a>
+                </div>
+                <!-- 分割线 -->
+                <hr color= #DCDFE6 size="1" style="margin: 10px 0px 10px 0px;">
+                <!-- 广告列表 -->
                 <div v-if="advertisements && advertisements.length > 0">
                   <!-- 广告列表 -->
                   <div class="pl_hone_ad" v-for="advertisement in advertisements" :key="advertisement.id">
@@ -245,22 +245,6 @@
                 </div>
                 <div v-else>
                   <div style="height: 210px;line-height: 210px;font-size: 15px;font-weight:600;color: #99a2aa;">暂无广告</div>
-                </div>
-              </div>
-              <!-- 无人回复的陈旧话题 -->
-              <div style="width: 315px;height: 240px;background-color: #FFFFFF;margin-top:8px;">
-                <!-- 标题框 -->
-                <div style="width: 100%;height: 25px;background-color: #303133;text-align: left;">
-                  <font style="padding: 0px 0px 0px 10px;line-height:25px;font-size:13px;font-weight:900;color: #FFFFFF;">无人回复的陈旧话题</font>
-                </div>
-                <div v-if="noanswtops && noanswtops.length > 0">
-                  <!-- 无人回复的陈旧话题列表 -->
-                  <div class="pl_hone_ns" v-for="noanswtop in noanswtops" :key="noanswtop.id">
-                    <a class="pl_hone_ns_a" :href="noanswtop.url" target="_blank">{{noanswtop.title}}</a>
-                  </div>
-                </div>
-                <div v-else>
-                  <div style="height: 210px;line-height: 210px;font-size: 15px;font-weight:600;color: #99a2aa;">暂无陈旧话题</div>
                 </div>
               </div>
             </div>
@@ -430,37 +414,85 @@ export default {
           url:'/111111111',
         },
       ],
-      // 无人回复的陈旧话题
-      noanswtops:[
-         {
-          id:1,
-          title:'无人回复测试标题1',
-          url:'/111111111',
+      // 未读消息
+      unreadMsg:[
+        {
+          head:'../../static/head/M_Studio.jpg',
+          name:'M_Studio',
+          msg:'精神内耗的人日常最多的体会就是累，没来由的累。曾经我就是一个这样的人，感觉对生活失去了兴趣，花了很长时间才最终调整过来。 为了能够帮助到更',
+          url:'/platform_article'
         },
         {
-          id:2,
-          title:'无人回复测试标题2',
-          url:'/111111111',
+          head:'../../static/head/luoxiang.jpg',
+          name:'罗翔',
+          msg:'精神内耗的人日常最多的体会就是累，没来由的累。曾经我就是一个这样的人，感觉对生活失去了兴趣，花了很长时间才最终调整过来。 为了能够帮助到更',
+          url:'/platform_article'
         },
         {
-          id:3,
-          title:'无人回复测试标题3',
-          url:'/111111111',
+          head:'../../static/head/luoxiang.jpg',
+          name:'罗翔',
+          msg:'精神内耗的人日常最多的体会就是累，没来由的累。曾经我就是一个这样的人，感觉对生活失去了兴趣，花了很长时间才最终调整过来。 为了能够帮助到更',
+          url:'/platform_article'
         },
         {
-          id:4,
-          title:'无人回复测试标题4',
-          url:'/111111111',
+          head:'../../static/head/luoxiang.jpg',
+          name:'罗翔',
+          msg:'精神内耗的人日常最多的体会就是累，没来由的累。曾经我就是一个这样的人，感觉对生活失去了兴趣，花了很长时间才最终调整过来。 为了能够帮助到更',
+          url:'/platform_article'
         },
         {
-          id:5,
-          title:'无人回复测试标题5',
-          url:'/111111111',
+          head:'../../static/head/luoxiang.jpg',
+          name:'罗翔',
+          msg:'精神内耗的人日常最多的体会就是累，没来由的累。曾经我就是一个这样的人，感觉对生活失去了兴趣，花了很长时间才最终调整过来。 为了能够帮助到更',
+          url:'/platform_article'
         },
         {
-          id:6,
-          title:'无人回复测试标题6',
-          url:'/111111111',
+          head:'../../static/head/luoxiang.jpg',
+          name:'罗翔',
+          msg:'精神内耗的人日常最多的体会就是累，没来由的累。曾经我就是一个这样的人，感觉对生活失去了兴趣，花了很长时间才最终调整过来。 为了能够帮助到更',
+          url:'/platform_article'
+        },
+        {
+          head:'../../static/head/luoxiang.jpg',
+          name:'罗翔',
+          msg:'精神内耗的人日常最多的体会就是累，没来由的累。曾经我就是一个这样的人，感觉对生活失去了兴趣，花了很长时间才最终调整过来。 为了能够帮助到更',
+          url:'/platform_article'
+        },
+        {
+          head:'../../static/head/luoxiang.jpg',
+          name:'罗翔',
+          msg:'精神内耗的人日常最多的体会就是累，没来由的累。曾经我就是一个这样的人，感觉对生活失去了兴趣，花了很长时间才最终调整过来。 为了能够帮助到更',
+          url:'/platform_article'
+        },
+        {
+          head:'../../static/head/luoxiang.jpg',
+          name:'罗翔',
+          msg:'精神内耗的人日常最多的体会就是累，没来由的累。曾经我就是一个这样的人，感觉对生活失去了兴趣，花了很长时间才最终调整过来。 为了能够帮助到更',
+          url:'/platform_article'
+        },
+        {
+          head:'../../static/head/luoxiang.jpg',
+          name:'罗翔',
+          msg:'精神内耗的人日常最多的体会就是累，没来由的累。曾经我就是一个这样的人，感觉对生活失去了兴趣，花了很长时间才最终调整过来。 为了能够帮助到更',
+          url:'/platform_article'
+        },
+        {
+          head:'../../static/head/luoxiang.jpg',
+          name:'罗翔',
+          msg:'精神内耗的人日常最多的体会就是累，没来由的累。曾经我就是一个这样的人，感觉对生活失去了兴趣，花了很长时间才最终调整过来。 为了能够帮助到更',
+          url:'/platform_article'
+        },
+        {
+          head:'../../static/head/luoxiang.jpg',
+          name:'罗翔',
+          msg:'精神内耗的人日常最多的体会就是累，没来由的累。曾经我就是一个这样的人，感觉对生活失去了兴趣，花了很长时间才最终调整过来。 为了能够帮助到更',
+          url:'/platform_article'
+        },
+        {
+          head:'../../static/head/luoxiang.jpg',
+          name:'罗翔',
+          msg:'精神内耗的人日常最多的体会就是累，没来由的累。曾经我就是一个这样的人，感觉对生活失去了兴趣，花了很长时间才最终调整过来。 为了能够帮助到更',
+          url:'/platform_article'
         },
       ],
       // 个人信息
@@ -469,14 +501,13 @@ export default {
         name:'CMAPLE',
         type:0,
         signature:'这个人很懒，啥都没写！',
-        lvl:12
       },
       // 未读消息数量
       noread:99,
       // 用户弹窗显示标记
       isuserinfo: false,
       // 消息弹窗显示标记
-      tc_xiaoxi: false,
+      isxiaoxi: false,
 
     }
   },
@@ -497,6 +528,12 @@ export default {
     // 打开用户二级菜单
     userseting(){
       this.isuserinfo = !this.isuserinfo;
+      this.isxiaoxi = false;
+    },
+    // 打开消息二级菜单
+    xiaoxi(){
+      this.isxiaoxi = !this.isxiaoxi;
+      this.isuserinfo = false;
     },
   },
   created() {
@@ -705,9 +742,9 @@ export default {
   /* 广告列表 */
   .pl_hone_ad{
     font-weight:900;
-    font-size: 15px;
+    font-size: 13px;
     height: auto;
-    padding: 10px 20px 0px 20px;
+    padding: 8px 0px 0px 10px;
     text-align: left;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -715,11 +752,11 @@ export default {
   }
   .pl_hone_ad_a{
     text-decoration: none;
-    color: #606266!important;
+    color: #909399;
   }
   .pl_hone_ad_a:hover{
-    text-decoration: underline;
-    color: #409EFF!important;
+    text-decoration: none;
+    color: #409EFF;
   }
   /* 陈旧话题 */
     .pl_hone_ns{
@@ -734,7 +771,7 @@ export default {
   }
   .pl_hone_ns_a{
     text-decoration: none;
-    color: #606266!important;
+    color: #909399!important;
   }
   .pl_hone_ns_a:hover{
     text-decoration: underline;
@@ -780,8 +817,8 @@ export default {
     padding-left: 4px;
     padding-right: 4px;
     position: absolute;
-    left: 22%;
-    top: 15%;
+    left: 13%;
+    top: 18%;
     font-weight: 600;
     font-size: 8px;
     border-radius: 20px;
@@ -796,20 +833,9 @@ export default {
   .userinfo_button:hover{
     width:100%;
     height:40px;
-    background-color: #EBEEF5;
+    background-color: #F2F6FC;
     cursor:pointer;
   }
-  /* 用户类型标签属性 */
-/*   .userlabel{
-    font-weight: 900;
-    font-size: 13px;
-    width: 70px;
-    height: 18px;
-    border-radius:5px;
-    text-align: center;
-    line-height:18px;
-    margin: 0px 0px 0px 10px;
-  } */
   /* 评论按钮 */
 .seting_a{
   text-decoration:none;
@@ -835,7 +861,7 @@ export default {
   outline: none;
   cursor: pointer;
   transition: .5s;
-  margin: 15px auto 0;
+  margin: 15px auto 10px;
   width:280px;
   height:30px;
 }
@@ -850,8 +876,46 @@ export default {
   outline: none;
   cursor: pointer;
   transition: .5s;
-  margin: 15px auto 0;
+  margin: 15px auto 10px;
   width:280px;
   height:30px;
 }
+/* 推广 */
+.extension{
+  text-decoration:none;
+  color: #909399;
+}
+.extension:hover{
+  text-decoration:none;
+  color: #409EFF;
+}
+/* 未读消息 */
+.unread_msg{
+  width:100%;
+  height: 70px;
+  padding: 0px 0px 0px 0px;
+}
+.unread_msg:hover{
+  width:100%;
+  height: 70px;
+  padding: 0px 0px 0px 0px;
+  background-color: #F2F6FC;
+}
+/* 查看全部 */
+.open_all{
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #909399;
+    text-decoration:none;
+    float: right;
+    margin: 10px 10px 0px 0px;
+  }
+  .open_all:hover{
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #606266;
+    text-decoration:none;
+    float: right;
+    margin: 10px 10px 0px 0px;
+  }
 </style>
