@@ -10,6 +10,7 @@ import platform_signup from '@/components/platform_signup'
 import platform_home from '@/components/platform_home'
 import platform_add from '@/components/platform_add'
 import platform_article from '@/components/platform_article'
+import platform_personal from '@/components/platform_personal'
 import err_404 from '@/components/err_404'
 
 Vue.use(Router)
@@ -68,6 +69,12 @@ export default new Router({
       path: '/platform_article',
       name: 'platform_article',
       component: platform_article
+    },
+    {
+      // 个人中心
+      path: '/platform_personal',
+      name: 'platform_personal',
+      component: platform_personal
     },
     {
       //当访问了不存在的路由的时候

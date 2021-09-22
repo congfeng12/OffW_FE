@@ -37,14 +37,14 @@
               <div style="width: 0;height: 0;border-left: 8px solid transparent;border-right: 8px solid transparent;border-bottom: 10px solid #FFFFFF;position:absolute;top:-10px;left:53px;"></div>
               <!-- 按钮组 -->
               <!-- 我的主页 -->
-              <div class="userinfo_button" @click="zhuye()">
+              <div class="userinfo_button" @click="personal()">
                 <img src="../../static/user.png" style="width: 15px;float:left;margin:14px 8px 0px 20px;">
                 <div style="color: #99a2aa;line-height:45px;text-align:left;font-size:14px;font-weight:600;">我的主页</div>
               </div>
-              <!-- 用户设置 -->
+              <!-- 管理中心 -->
               <div class="userinfo_button" @click="shezhi()">
                 <img src="../../static/shezhi.png" style="width: 15px;float:left;margin:14px 8px 0px 20px;">
-                <div style="color: #99a2aa;line-height:45px;text-align:left;font-size:14px;font-weight:600;">用户设置</div>
+                <div style="color: #99a2aa;line-height:45px;text-align:left;font-size:14px;font-weight:600;">管理中心</div>
               </div>
               <!-- 退出登录 -->
               <div class="userinfo_button" @click="tuichu()">
@@ -218,28 +218,28 @@
                       <div style="width: 40px;height:40px;border-radius:50px;margin: 0 auto 0;background-color: #e9f7f7;">
                         <img style="width: 25px;margin: 8px 0px 0px 0px;" src="../../static/guanli.png">
                       </div>
-                      <p style="margin: 5px 0px 0px 0px;">论坛管理</p>
+                      <p style="margin: 5px 0px 0px 0px;">用户设置</p>
                     </a>
                   </div>
                 </div>
                 <!-- 进入个人中心 -->
-                <button id="reply_button" type="submit" class="reply_button" @click="reply()">进入个人主页 ></button>
+                <button id="reply_button" type="submit" class="reply_button" @click="personal()">进入个人主页 ></button>
               </div>
               <!-- 侧面广告信息 -->
               <div style="width: 315px;height: auto;background-color: #FFFFFF;margin-top:8px;padding-bottom:10px;">
+                <!-- 广告列表 -->
+                <div v-if="advertisements && advertisements.length > 0">
                 <!-- 置顶广告位 -->
                 <div  style="width:100%;">
-                  <a class="extension" href="https://www.apple.com.cn/shop/buy-iphone/iphone-13" target="_blank">
-                    <img style="width:93%;margin: 10px auto 0px;" src="../../static/tuiguang.png">
-                    <h1 style="text-align:left;margin: 0px 0px 0px 10px;font-size:16px;">全新iphone开启预售</h1>
+                  <a class="extension" :href="advertisements[0].url" target="_blank">
+                    <img style="width:93%;margin: 10px auto 0px;" :src="advertisements[0].images">
+                    <h1 style="text-align:left;margin: 0px 0px 0px 10px;font-size:16px;">{{advertisements[0].title}}</h1>
                   </a>
                 </div>
                 <!-- 分割线 -->
                 <hr color= #DCDFE6 size="1" style="margin: 10px 0px 10px 0px;">
-                <!-- 广告列表 -->
-                <div v-if="advertisements && advertisements.length > 0">
                   <!-- 广告列表 -->
-                  <div class="pl_hone_ad" v-for="advertisement in advertisements" :key="advertisement.id">
+                  <div class="pl_hone_ad" v-show="0 != index" v-for="(advertisement, index) in advertisements" :key="advertisement.id">
                     <a class="pl_hone_ad_a" :href="advertisement.url" target="_blank">{{advertisement.title}}</a>
                   </div>
                 </div>
@@ -380,37 +380,50 @@ export default {
       advertisements:[
         {
           id:1,
-          title:'广告测试标题1',
-          url:'/111111111',
+          title:'全新iphone开启预售',
+          images:'../../static/tuiguang.png',
+          url:'https://www.apple.com.cn/shop/buy-iphone/iphone-13',
         },
         {
           id:2,
           title:'广告测试标题2',
+          images:'',
           url:'/111111111',
         },
         {
           id:3,
           title:'广告测试标题3',
+          images:'',
           url:'/111111111',
         },
         {
           id:4,
           title:'广告测试标题4',
+          images:'',
           url:'/111111111',
         },
         {
           id:5,
           title:'广告测试标题5',
+          images:'',
           url:'/111111111',
         },
         {
           id:6,
           title:'广告测试标题6',
+          images:'',
           url:'/111111111',
         },
         {
           id:7,
           title:'广告测试标题7',
+          images:'',
+          url:'/111111111',
+        },
+        {
+          id:8,
+          title:'广告测试标题8',
+          images:'',
           url:'/111111111',
         },
       ],
@@ -534,6 +547,11 @@ export default {
     xiaoxi(){
       this.isxiaoxi = !this.isxiaoxi;
       this.isuserinfo = false;
+    },
+    // 跳转个人中心
+    personal(){
+      let routeData = this.$router.resolve("/platform_personal/");
+      window.open(routeData.href, '_blank');
     },
   },
   created() {
