@@ -1,6 +1,6 @@
 <!-- 个人中心 -->
 <template>
-  <div style="width: 100%;height: auto;background-color: #F0F0F0;">
+  <div style="width: 100%;background-color: #F0F0F0;" :style="{'min-height':pageheight+'px'}">
     <div style="width: 100%;">
       <!-- 页头 -->
         <div style="background-color: #303133;width: 100%;height: 60px;">
@@ -15,7 +15,7 @@
             <!-- 用户头像 -->
             <div style="float: right;padding: 10px 0px 0px 0px;">
               <a @click="userseting()" href="javascript:void(0)" style="text-decoration: none;">
-                <img style="width: 40px;border-radius: 5px;" :src="perInfo.img">
+                <img style="width: 40px;height: 40px;border-radius: 5px;" :src="perInfo.img">
               </a>
             </div>
             <!-- 消息 -->
@@ -34,6 +34,11 @@
               <div class="userinfo_button" @click="personal()">
                 <img src="../../static/user.png" style="width: 15px;float:left;margin:14px 8px 0px 20px;">
                 <div style="color: #99a2aa;line-height:45px;text-align:left;font-size:14px;font-weight:600;">我的主页</div>
+              </div>
+              <!-- 用户设置 -->
+              <div class="userinfo_button" @click="shezhi()">
+                <img src="../../static/shezhi.png" style="width: 15px;float:left;margin:14px 8px 0px 20px;">
+                <div style="color: #99a2aa;line-height:45px;text-align:left;font-size:14px;font-weight:600;">用户设置</div>
               </div>
               <!-- 管理中心 -->
               <div class="userinfo_button" @click="shezhi()">
@@ -90,26 +95,135 @@
           <!-- 个人信息简介 -->
           <div style="width:1000px;height:auto;margin: 0 auto 0;position:relative;">
             <!-- 背景图 -->
-            <div style="width:100%;height:240px;background-size: cover;" :style="{backgroundImage:'url('+homepageImgUrl+')'}"></div>
+            <div style="width:100%;height:240px;background-size: cover;" :style="{backgroundImage:'url('+perInfo.homepageImgUrl+')'}"></div>
             <!-- 用户信息栏位 -->
-            <div style="width:100%;height:118px;background-color:#FFFFFF;box-shadow: 1px 1px 3px #DCDFE6;">
-              <div style="text-align:left;background-color: #E6A23C;padding: 10px 0px 0px 220px;">
+            <div style="width:100%;height:128px;background-color:#FFFFFF;box-shadow: 1px 1px 3px #DCDFE6;">
+              <div style="text-align:left;padding: 10px 0px 0px 220px;">
                 <!-- 名称 -->
-                <h1 style="margin:0px;font-size:30px;font-weight:900;">{{perInfo.name}}</h1>
+                <h1 style="margin:0px;font-size:30px;font-weight:900;float:left;">{{perInfo.name}}</h1>
                 <!-- 用户类型 -->
+                <!-- 创始人 -->
+                <div v-if="perInfo.type == 0" class="userlab" style="background-color: #000000;color: #F4B615;">创始人</div>
+                <!-- 管理员 -->
+                <div v-else-if="perInfo.type == 1" class="userlab" style="background-color: #1A4C7B;color: #DEE0EC;">管理员</div>
+                <!-- 贡献者 -->
+                <div v-else-if="perInfo.type == 2" class="userlab" style="background-color: #162E55;color: #E6BE90;">贡献者</div>
+                <!-- 投资人 -->
+                <div v-else-if="perInfo.type == 3" class="userlab" style="background-color: #9F383A;color: #F4DBB2;">投资人</div>
+                <!-- 会员 -->
+                <div v-else-if="perInfo.type == 4" class="userlab" style="background-color: #303133;color: #FBD51F;">会&nbsp员</div>
+                <!-- 错误类别 -->
+                <div v-else class="userlab" style="background-color: #990011;color: #F5DF4D;">异常类型</div>
+                <!-- 用户等级标签 -->
+                <!-- 创始人 -->
+                <div class="userlab" style="background-color: #ED6C17;color: #FFFFFF;width: 40px;margin-left:7px;">lv{{perInfo.lvl}}</div>
+                <!-- 用户编程语言标签 -->
+                <div v-show="null != perInfo.lan" class="userlab" style="background-color: #00A2C4;color: #FFFFFF;width: 40px;margin-left:7px;">{{perInfo.lan}}</div>
                 <!-- 个人签名 -->
+                <p style="margin: 50px 0px 0px 0px;font-size: 14px;font-weight: 600;color: #909399;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
+                  {{perInfo.signature}}
+                </p>
               </div>
+              <!-- 用户uid -->
+              <h1 style="font-size:12px;font-weight:600;position:absolute;right:20px;bottom:90px;color: #909399;">UID: {{perInfo.uid}}</h1>
+              <!-- 写答案 -->
+              <button id="reply_button" type="submit" class="reply_button" style="width:120px;height:30px;" @click="reply()">编辑个人资料</button>
             </div>
             <!-- 头像 -->
-            <img style="width:150px;position:absolute;left:20px;top:180px;border-radius:10px;border:5px solid #FFFFFF;" :src="perInfo.img">
+            <img style="width:150px;height:150px;position:absolute;left:20px;top:180px;border-radius:10px;border:5px solid #FFFFFF;" :src="perInfo.img">
           </div>
-          <div style="width:1000px;height:500px;margin: 10px auto 40px;background-color:#FFFFFF;box-shadow: 1px 1px 3px #DCDFE6;">
-            
+          <div style="width:1000px;height:auto;margin: 10px auto 40px;overflow:auto;">
+            <!-- 左侧栏位 -->
+            <div style="float:left;width:700px;min-height:300px;box-shadow: 1px 1px 3px #DCDFE6;background-color:#FFFFFF;text-align:left;padding: 0px 0px 20px 0px;">
+              <!-- 发布过的帖子 -->
+              <!-- 标题 -->
+              <h1 style="margin:10px 0px 0px 10px;font-size:16px;">我的话题</h1>
+              <!-- 分割线 -->
+              <hr color= #DCDFE6 size="1" style="margin: 8px 0px 8px 0px;">
+              <!-- 内容 -->
+              <div v-if="pertopic && pertopic.length > 0" v-for="topic in pertopic" style="padding: 10px 0px 0px 20px;overflow:auto;position:relative;margin-bottom: 10px;">
+                <div style="position:relative;height:65px;margin-top:10px;overflow: hidden;">
+                  <div style="float: left;width: 650px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
+                    <a class="pl_a" :href="topic.url">{{topic.title}}</a>
+                  </div>
+                  <!-- 关注数量 -->
+                  <div class="noselect" style="width:110px;height:30px;padding: 0px;line-height: 30px;text-align: right;position: absolute;right:440px;bottom: 0px;font-size: 13px;font-weight:600;color: #99a2aa;">
+                    关注：{{topic.collect}}
+                  </div>
+                   <!-- 评论数量 -->
+                  <div class="noselect" style="width:110px;height:30px;padding: 0px;line-height: 30px;text-align: right;position: absolute;right:320px;bottom: 0px;font-size: 13px;font-weight:600;color: #99a2aa;">
+                    评论：{{topic.comments}}
+                  </div>
+                  <!-- 浏览次数 -->
+                  <div class="noselect" style="width:110px;height:30px;padding: 0px;line-height: 30px;text-align: right;position: absolute;right:200px;bottom: 0px;font-size: 13px;font-weight:600;color: #99a2aa;">
+                    浏览：{{topic.browse}}
+                  </div>
+                  <!-- 日期/发布提前时间 -->
+                  <div class="noselect" style="width:210px;height:30px;padding: 0px;line-height: 30px;text-align: right;position: absolute;right:20px;bottom: 0px;font-size: 13px;font-weight:600;color: #99a2aa;">
+                    发布于：{{topic.time}}
+                  </div>
+                </div>
+              </div>
+              <div v-else style="text-align:center;">
+                <h1 class="noselect" style="font-size:16px;font-weight:400;color:#C0C4CC;margin-top:100px;">暂无发布话题</h1>
+              </div>
+            </div>
+            <!-- 右侧栏位 -->
+            <div style="width:290px;min-height:300px;float:right;">
+              <!-- 经验&关注数量&点赞数量 -->
+              <div style="width: 100%;min-height:200px;box-shadow: 1px 1px 3px #DCDFE6;background-color:#FFFFFF;">
+                <!-- 标题 -->
+                <h1 style="margin:0px;font-size:16px;padding:10px 0px 0px 10px;text-align: left;">创作板块</h1>
+                <!-- 分割线 -->
+                <hr color= #DCDFE6 size="1" style="margin: 8px 0px 8px 0px;">
+                <!-- 经验 -->
+                <div style="width:100%;height:40px;margin-bottom: 20px;">
+                  <div style="text-align:left;padding: 0px 0px 0px 15px;">
+                    <font style="color: #303133;font-weight:800;font-size:16px;">经验：</font>
+                  </div>
+                  <div style="text-align:left;padding: 5px 0px 0px 15px;">
+                    <font style="color:#606266;font-weight:600;font-size:15px;">1000 / 5000</font>
+                  </div>
+                </div>
+                <div style="width:260px;height:100px;margin:0 auto 0;background-color:#F2F6FC;border-radius:3px;">
+                  <!-- 关注 -->
+                  <div style="width:129px;height:100px;text-align:center;float:left;">
+                    <p style="margin:10px 0px 0px 0px;color: #606266;font-size:13px;font-weight:600;">今日阅读(播放)数</p>
+                    <p style="margin:5px 0px 0px 0px;color: #000000;font-size:22px;font-weight:900;">1</p>
+                    <p style="margin:5px 0px 0px 0px;color: #6385A6;font-size:12.5px;font-weight:600;">昨日数据 <font style="color: #303133;font-weight:900;">63</font></p>
+                  </div>
+                  <div style="width:1px;height:70px;background-color: #DCDFE6;float:left;margin: 15px 0px 0px 0.5px;"></div>
+                  <!-- 点赞 -->
+                  <div style="width:129px;height:100px;text-align:center;float:right;">
+                    <p style="margin:10px 0px 0px 0px;color: #606266;font-size:13px;font-weight:600;">今日关注数</p>
+                    <p style="margin:5px 0px 0px 0px;color: #000000;font-size:22px;font-weight:900;">0</p>
+                    <p style="margin:5px 0px 0px 0px;color: #6385A6;font-size:12.5px;font-weight:600;">昨日数据 <font style="color: #303133;font-weight:900;">0</font></p>
+                  </div>
+                </div>
+                <!-- 按钮 -->
+                <button id="rbutton" type="submit" class="rbutton" @click="huati()">进入创作中心 ></button>
+              </div>
+              <!-- 个人成就 -->
+              <div style="width: 100%;min-height:100px;margin-top: 10px;box-shadow: 1px 1px 3px #DCDFE6;background-color:#FFFFFF;">
+                <!-- 关注 -->
+                  <div style="width:144px;height:100px;text-align:center;float:left;">
+                    <p style="margin:23px 0px 0px 0px;color: #606266;font-size:14px;font-weight:600;">关注了</p>
+                    <p style="margin:8px 0px 0px 0px;color: #000000;font-size:18px;font-weight:900;">
+                      <a @click="personal()" href="javascript:void(0)" class="guanzhu">847</a>
+                    </p>
+                  </div>
+                  <div style="width:1px;height:70px;background-color: #DCDFE6;float:left;margin: 15px 0px 0px 0.5px;"></div>
+                  <!-- 点赞 -->
+                  <div style="width:144px;height:100px;text-align:center;float:right;">
+                    <p style="margin:23px 0px 0px 0px;color: #606266;font-size:14px;font-weight:600;">关注者</p>
+                    <p style="margin:8px 0px 0px 0px;color: #000000;font-size:18px;font-weight:900;">
+                      <a @click="personal()" href="javascript:void(0)" class="guanzhu">201</a>
+                    </p>
+                  </div>
+              </div>
+            </div>
           </div>
-          <!-- 帖子&回复&关注 -->
-          <!-- 个人成就&关注列表 -->
         </div>
-
     </div>
   </div>
 </template>
@@ -117,13 +231,17 @@
 export default {
   data() {
     return {
-      // 背景图
-      homepageImgUrl:'../../static/personal_background.jpg',
+      // 页面高度
+      pageheight: '',
       // 个人信息
       perInfo:{
+        uid: '100000001',
         img:'../../static/head/cmaple.jpg',
+        homepageImgUrl:'../../static/personal_background.jpg',
         name:'CMAPLE',
         type:0,
+        lvl:12,
+        lan:'JAVA',
         signature:'这个人很懒，啥都没写！',
       },
       // 用户弹窗显示标记
@@ -213,21 +331,60 @@ export default {
           url:'/platform_article'
         },
       ],
+      // 发布话题列表
+      pertopic:[
+        {
+          title:'这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1',
+          time:'2021-09-12',
+          comments:'7823',
+          browse:'28347',
+          collect:'82',
+          types:1,
+          url: '/platform_article',
+        },
+        {
+          title:'这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1',
+          time:'2021-09-12',
+          comments:'7823',
+          browse:'28347',
+          collect:'82',
+          types:1,
+          url: '/platform_article',
+        },
+        {
+          title:'这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1',
+          time:'2021-09-12',
+          comments:'7823',
+          browse:'28347',
+          collect:'82',
+          types:1,
+          url: '/platform_article',
+        },
+        {
+          title:'这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1',
+          time:'2021-09-12',
+          comments:'7823',
+          browse:'28347',
+          collect:'82',
+          types:1,
+          url: '/platform_article',
+        },
+        {
+          title:'这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1',
+          time:'2021-09-12',
+          comments:'7823',
+          browse:'28347',
+          collect:'82',
+          types:1,
+          url: '/platform_article',
+        },
+      ],
     }
   },
   methods: {
     // 获取页面高度
    getPageHeight() {
       this.pageheight = window.innerHeight;
-    },
-    // 搜索按钮
-    search(){
-
-    },
-    // 发布话题
-    add(){
-      let routeData = this.$router.resolve("/platform_add/");
-      window.open(routeData.href, '_blank');
     },
     // 打开用户二级菜单
     userseting(){
@@ -239,6 +396,7 @@ export default {
       this.isxiaoxi = !this.isxiaoxi;
       this.isuserinfo = false;
     },
+
   },
   created() {
     
@@ -247,7 +405,13 @@ export default {
 
   },
   mounted() {
-  
+    //页面高度赋值
+    window.onresize = () => {
+      return (() => {
+        this.getPageHeight()
+      })()
+    }
+    this.getPageHeight()
   }
 }
 
@@ -326,4 +490,121 @@ export default {
     background-color: #F2F6FC;
     cursor:pointer;
   }
+  /* 写回答 */
+  .reply_button{
+    border-radius:5px;
+    background-color:#FFFFFF;
+    color:#303133;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    border: 1px solid #303133;
+    outline: none;
+    cursor: pointer;
+    transition: .5s;
+    margin: 0px 15px 0px 0px;
+    position: absolute;
+    right: 5px;
+    bottom: 20px;
+  }
+  .reply_button:hover{
+    border-radius:5px;
+    background-color:#C0C4CC;
+    color:#303133;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    border: 1px solid #303133;
+    outline: none;
+    cursor: pointer;
+    transition: .5s;
+    margin: 0px 15px 0px 0px;
+    position: absolute;
+    right: 5px;
+    bottom: 20px;
+  }
+  /* 账户类型标签 */
+  .userlab{
+    font-weight: 900;
+    font-size: 12px;
+    width: 50px;
+    height: 20px;
+    border-radius:5px;
+    text-align: center;
+    line-height:20px;
+    float:left;
+    margin: 10px 0px 0px 20px;
+  }
+  /* 无法选中属性 */
+  .noselect {
+    -webkit-user-select: none;
+    /*WebKit内核私有属性*/
+    -moz-user-select: none;
+    /*Firefox私有属性*/
+    -ms-user-select: none;
+    /*IE私有属性(IE10及以后)*/
+    -khtml-user-select: none;
+    /*KHTML内核私有属性*/
+    -o-user-select: none;
+    /*Opera私有属性*/
+    user-select: none;
+    /*CSS3属性*/
+  }
+  /* 话题标题 */
+  .pl_a{
+    text-decoration: none;
+    font-size: 18px;
+    color: #000000!important;
+    font-weight:600;
+    width: auto;
+    height: auto;
+  }
+  .pl_a:hover{
+    text-decoration: underline;
+    font-size:18px;
+    color: #409EFF!important;
+    font-weight:600;
+    width: auto;
+    height: auto;
+  }
+  /* 写回答 */
+.rbutton{
+  border-radius:5px;
+  background-color:#303133;
+  color:#FFFFFF;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  border: 1px solid #FFFFFF;
+  outline: none;
+  cursor: pointer;
+  transition: .5s;
+  margin: 15px auto 10px;
+  width:260px;
+  height:30px;
+}
+.rbutton:hover{
+  border-radius:5px;
+  background-color:#606266;
+  color:#FFFFFF;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  border: 1px solid #FFFFFF;
+  outline: none;
+  cursor: pointer;
+  transition: .5s;
+  margin: 15px auto 10px;
+  width:260px;
+  height:30px;
+}
+/* 关注连接 */
+.guanzhu{
+  color: #000000;
+  text-decoration:none;
+}
+.guanzhu:hover{
+  color: #409EFF;
+  text-decoration:none;
+}
 </style>

@@ -21,7 +21,7 @@
             <!-- 用户头像 -->
             <div style="float: right;padding: 10px 0px 0px 0px;">
               <a @click="userseting()" href="javascript:void(0)" style="text-decoration: none;">
-                <img style="width: 40px;border-radius: 5px;" :src="perInfo.img">
+                <img style="width: 40px;height: 40px;border-radius: 5px;" :src="perInfo.img">
               </a>
             </div>
             <!-- 消息 -->
@@ -40,6 +40,11 @@
               <div class="userinfo_button" @click="personal()">
                 <img src="../../static/user.png" style="width: 15px;float:left;margin:14px 8px 0px 20px;">
                 <div style="color: #99a2aa;line-height:45px;text-align:left;font-size:14px;font-weight:600;">我的主页</div>
+              </div>
+              <!-- 用户设置 -->
+              <div class="userinfo_button" @click="shezhi()">
+                <img src="../../static/shezhi.png" style="width: 15px;float:left;margin:14px 8px 0px 20px;">
+                <div style="color: #99a2aa;line-height:45px;text-align:left;font-size:14px;font-weight:600;">用户设置</div>
               </div>
               <!-- 管理中心 -->
               <div class="userinfo_button" @click="shezhi()">
@@ -146,9 +151,9 @@
                 </div>
                 <!-- 文章标签 -->
                 <!-- （暂时不实现） -->
-                <!-- 收藏数量 -->
+                <!-- 关注数量 -->
                 <div class="noselect" style="width:110px;height:30px;padding: 0px;line-height: 30px;text-align: right;position: absolute;right:360px;top: 105px;font-size: 13px;font-weight:600;color: #99a2aa;">
-                  收藏：{{contribution.collect}}
+                  关注：{{contribution.collect}}
                 </div>
                  <!-- 评论数量 -->
                 <div class="noselect" style="width:110px;height:30px;padding: 0px;line-height: 30px;text-align: right;position: absolute;right:270px;top: 105px;font-size: 13px;font-weight:600;color: #99a2aa;">
@@ -178,7 +183,9 @@
               <div style="width: 315px;height: auto;background-color: #FFFFFF;margin-top:0px;">
                 <div style="width:300px;height: 50px;text-align:left;padding-left: 0px;border-radius:0px 0px 5px 0px;padding: 8px 0px 20px 15px;">
                   <!-- 用户名 -->
-                  <h1 style="color: #000000;padding-right: 10px;line-height: 30px;font-size:20px;letter-spacing: .01em;font-weight: 900;margin: 10px 0px 0px 8px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;"><font style="color: #606266;">欢迎：</font>{{perInfo.name}}</h1>
+                  <h1 style="padding-right: 10px;line-height: 30px;font-size:20px;letter-spacing: .01em;font-weight: 900;margin: 10px 0px 0px 8px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;"><font style="color: #606266;">欢迎：</font>
+                    <a @click="personal()" href="javascript:void(0)" class="home_name">{{perInfo.name}}</a>
+                  </h1>
                   <!-- 个人签名 -->
                   <p style="margin: 10px 0px 0px 8px;font-size: 12px;font-weight: 600;color: #909399;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
                     个人签名：{{perInfo.signature}}
@@ -187,7 +194,7 @@
                 <div style="overflow: hidden;margin-top:20px;">
                   <!-- 发布 -->
                   <div style="width:  60px;float:left;text-align:center;margin: 0px 0px 0px 15px;" >
-                    <a class="seting_a" @click="dianzan()" href="javascript:void(0)">
+                    <a class="seting_a" @click="add()" href="javascript:void(0)">
                       <div style="width: 40px;height:40px;border-radius:50px;margin: 0 auto 0;background-color: #e5edff;">
                         <img style="width: 25px;margin: 7px 0px 0px 0px;" src="../../static/fabu.png">
                       </div>
@@ -223,7 +230,7 @@
                   </div>
                 </div>
                 <!-- 进入个人中心 -->
-                <button id="reply_button" type="submit" class="reply_button" @click="personal()">进入个人主页 ></button>
+                <button id="reply_button" type="submit" class="reply_button" @click="huati()">进入创作中心 ></button>
               </div>
               <!-- 侧面广告信息 -->
               <div style="width: 315px;height: auto;background-color: #FFFFFF;margin-top:8px;padding-bottom:10px;">
@@ -513,6 +520,7 @@ export default {
         img:'../../static/head/cmaple.jpg',
         name:'CMAPLE',
         type:0,
+        lvl:12,
         signature:'这个人很懒，啥都没写！',
       },
       // 未读消息数量
@@ -935,5 +943,14 @@ export default {
     text-decoration:none;
     float: right;
     margin: 10px 10px 0px 0px;
+  }
+  /* 用户名字 */
+  .home_name{
+    color: #000000;
+    text-decoration:none;
+  }
+  .home_name:hover{
+    color: #409EFF;
+    text-decoration:none;
   }
 </style>

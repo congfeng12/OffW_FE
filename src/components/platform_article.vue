@@ -40,6 +40,11 @@
               <img src="../../static/user.png" style="width: 15px;float:left;margin:14px 8px 0px 20px;">
               <div style="color: #99a2aa;line-height:45px;text-align:left;font-size:14px;font-weight:600;">我的主页</div>
             </div>
+            <!-- 用户设置 -->
+            <div class="userinfo_button" @click="shezhi()">
+              <img src="../../static/shezhi.png" style="width: 15px;float:left;margin:14px 8px 0px 20px;">
+              <div style="color: #99a2aa;line-height:45px;text-align:left;font-size:14px;font-weight:600;">用户设置</div>
+            </div>
             <!-- 管理中心 -->
             <div class="userinfo_button" @click="shezhi()">
               <img src="../../static/shezhi.png" style="width: 15px;float:left;margin:14px 8px 0px 20px;">
@@ -407,6 +412,7 @@ export default {
         img:'../../static/head/cmaple.jpg',
         name:'CMAPLE',
         type:0,
+        lvl:12,
         signature:'这个人很懒，啥都没写！',
       },
     }
