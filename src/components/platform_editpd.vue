@@ -1,4 +1,4 @@
-<!-- 个人中心 -->
+<!-- 编辑个人资料 -->
 <template>
   <div style="width: 100%;background-color: #F0F0F0;" :style="{'min-height':pageheight+'px'}">
     <div style="width: 100%;">
@@ -89,7 +89,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>  
         <!-- 页面内容 -->
         <div style="margin: 0 auto 0;margin-top: 10px;width: 1024px;overflow: hidden;">
           <!-- 个人信息简介 -->
@@ -97,7 +97,7 @@
             <!-- 背景图 -->
             <div style="width:100%;height:240px;background-size: cover;" :style="{backgroundImage:'url('+perInfo.homepageImgUrl+')'}"></div>
             <!-- 用户信息栏位 -->
-            <div style="width:100%;height:128px;background-color:#FFFFFF;box-shadow: 1px 1px 3px #DCDFE6;">
+            <div style="width:100%;height:auto;background-color:#FFFFFF;box-shadow: 1px 1px 3px #DCDFE6;">
               <div style="text-align:left;padding: 10px 0px 0px 220px;">
                 <!-- 名称 -->
                 <h1 style="margin:0px;font-size:30px;font-weight:900;float:left;">{{perInfo.name}}</h1>
@@ -119,110 +119,82 @@
                 <div class="userlab" style="background-color: #ED6C17;color: #FFFFFF;width: 40px;margin-left:7px;">lv{{perInfo.lvl}}</div>
                 <!-- 用户编程语言标签 -->
                 <div v-show="null != perInfo.lan" class="userlab" style="background-color: #00A2C4;color: #FFFFFF;width: 40px;margin-left:7px;">{{perInfo.lan}}</div>
-                <!-- 个人签名 -->
-                <p style="margin: 50px 0px 0px 0px;font-size: 14px;font-weight: 600;color: #909399;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
-                  {{perInfo.signature}}
-                </p>
               </div>
               <!-- 用户uid -->
-              <h1 style="font-size:12px;font-weight:600;position:absolute;right:20px;bottom:90px;color: #909399;">UID: {{perInfo.uid}}</h1>
-              <!-- 写答案 -->
-              <button id="reply_button" type="submit" class="reply_button" style="width:120px;height:30px;" @click="edirpd()">编辑个人资料</button>
+              <h1 style="font-size:12px;font-weight:600;position:absolute;right:20px;top:250px;color: #909399;">UID: {{perInfo.uid}}</h1>
+              <!-- 信息修改栏位 -->
+              <div style="width:800px;height:auto;margin: 120px auto 0;">
+                <!-- 左侧标题 -->
+                <div style="width: 150px;height: auto;float:left;text-align:right;">
+                  <!-- 个人签名 -->
+                  <h1 class="editTitle" style="margin-top:10px;">个人签名：</h1>
+                  <!-- 性别 -->
+                  <h1 class="editTitle">性别：</h1>
+                  <!-- 电话号码 -->
+                  <h1 class="editTitle">电话号码：</h1>
+                  <!-- 电子邮箱 -->
+                  <h1 class="editTitle">电子邮箱：</h1>
+                  <!-- 居住地址 -->
+                  <h1 class="editTitle">居住地址：</h1>
+                  <!-- 毕业院校 -->
+                  <h1 class="editTitle">毕业院校：</h1>
+                  <!-- 职业经历 -->
+                  <h1 class="editTitle">职业经历：</h1>
+                  <!-- 主要编程语言 -->
+                  <h1 class="editTitle">主要编程语言：</h1>
+                  <!-- 个人域名 -->
+                  <h1 class="editTitle" style="margin-bottom: 60px;">个人域名：</h1>
+                </div>
+                <!-- 右侧内容 -->
+                <div style="width: 650px;height: auto;float:right;text-align:left;">
+                  <!-- 个人签名 -->
+                  <textarea class="edit_type" style="margin: 10px 0px 0px 100px;width: 500px;height: 60px;">{{perInfo.signature}}</textarea>
+                  <!-- 性别 -->
+                  <div style="margin: 28px 0px 0px 100px;">
+                    <input type="radio" name="girl">女
+                    <input type="radio" name="boy" >男
+                    <input type="radio" name="unknow">保密
+                  </div>
+                  <!-- 电话号码 -->
+                  <input class="edit_type" style="margin: 75px 0px 0px 100px;width: 500px;" type="text" name="">
+                  <!-- 电子邮箱 -->
+                  <input class="edit_type" style="margin: 70px 0px 0px 100px;width: 500px;" type="text" name="">
+                  <!-- 居住地址 -->
+                  <textarea class="edit_type" style="margin: 70px 0px 0px 100px;width: 500px;height: 60px;"></textarea>
+                  <!-- 毕业院校 -->
+                  <input class="edit_type" style="margin: 20px 0px 0px 100px;width: 500px;" type="text" name="">
+                  <!-- 职业经历 -->
+                  <input class="edit_type" style="margin: 70px 0px 0px 100px;width: 500px;" type="text" name="">
+                  <!-- 主要编程语言 -->
+                  <div style="height: auto;margin:70px 0px 0px 100px;">
+                    <select v-model="selectval" class="edit_type">
+                      <option value="">请选择主要编程语言</option>
+                      <option value="C">C</option>
+                      <option value="JAVA">JAVA</option>
+                      <option value="PYTHON">PYTHON</option>
+                      <option value="C++">C++</option>
+                      <option value="C#">C#</option>
+                      <option value="JAVASCRIPT">JAVASCRIPT</option>
+                      <option value="SWIFT">SWIFT</option>
+                      <option value="GO">GO</option>
+                    </select>
+                  </div>
+                  <!-- 个人域名 -->
+                  <input class="edit_type" style="margin: 70px 0px 0px 100px;width: 500px;" type="text" name="">
+                </div>
+                <!-- 按钮组 -->
+              </div>
+              <div style="height:auto;width:600px;margin: 0 auto 0;">
+                <button v-bind:disabled="isShowBatchSend" class="follow_button" type="" @click="">保存</button>
+              </div>
+              <!-- 网页页面下扩展 -->
+              <div style="width:1000px;height:auto;margin: 10px auto 40px;overflow:auto;">
+              </div>
             </div>
             <!-- 头像 -->
             <img style="width:150px;height:150px;position:absolute;left:20px;top:180px;border-radius:10px;border:5px solid #FFFFFF;" :src="perInfo.img">
           </div>
-          <div style="width:1000px;height:auto;margin: 10px auto 40px;overflow:auto;">
-            <!-- 左侧栏位 -->
-            <div style="float:left;width:700px;min-height:300px;box-shadow: 1px 1px 3px #DCDFE6;background-color:#FFFFFF;text-align:left;padding: 0px 0px 20px 0px;">
-              <!-- 发布过的帖子 -->
-              <!-- 标题 -->
-              <h1 style="margin:10px 0px 0px 10px;font-size:16px;">关注的话题</h1>
-              <!-- 分割线 -->
-              <hr color= #DCDFE6 size="1" style="margin: 8px 0px 8px 0px;">
-              <!-- 内容 -->
-              <div v-if="pertopic && pertopic.length > 0" v-for="topic in pertopic" style="padding: 10px 0px 0px 20px;overflow:auto;position:relative;margin-bottom: 10px;">
-                <div style="position:relative;height:65px;margin-top:10px;overflow: hidden;">
-                  <div style="float: left;width: 650px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
-                    <a class="pl_a" :href="topic.url">{{topic.title}}</a>
-                  </div>
-                  <!-- 关注数量 -->
-                  <div class="noselect" style="width:110px;height:30px;padding: 0px;line-height: 30px;text-align: right;position: absolute;right:440px;bottom: 0px;font-size: 13px;font-weight:600;color: #99a2aa;">
-                    关注：{{topic.collect}}
-                  </div>
-                   <!-- 评论数量 -->
-                  <div class="noselect" style="width:110px;height:30px;padding: 0px;line-height: 30px;text-align: right;position: absolute;right:320px;bottom: 0px;font-size: 13px;font-weight:600;color: #99a2aa;">
-                    评论：{{topic.comments}}
-                  </div>
-                  <!-- 浏览次数 -->
-                  <div class="noselect" style="width:110px;height:30px;padding: 0px;line-height: 30px;text-align: right;position: absolute;right:200px;bottom: 0px;font-size: 13px;font-weight:600;color: #99a2aa;">
-                    浏览：{{topic.browse}}
-                  </div>
-                  <!-- 日期/发布提前时间 -->
-                  <div class="noselect" style="width:210px;height:30px;padding: 0px;line-height: 30px;text-align: right;position: absolute;right:20px;bottom: 0px;font-size: 13px;font-weight:600;color: #99a2aa;">
-                    发布于：{{topic.time}}
-                  </div>
-                </div>
-              </div>
-              <div v-else style="text-align:center;">
-                <h1 class="noselect" style="font-size:16px;font-weight:400;color:#C0C4CC;margin-top:100px;">暂无发布话题</h1>
-              </div>
-            </div>
-            <!-- 右侧栏位 -->
-            <div style="width:290px;min-height:300px;float:right;">
-              <!-- 经验&关注数量&点赞数量 -->
-              <div style="width: 100%;min-height:200px;box-shadow: 1px 1px 3px #DCDFE6;background-color:#FFFFFF;">
-                <!-- 标题 -->
-                <h1 style="margin:0px;font-size:16px;padding:10px 0px 0px 10px;text-align: left;">创作板块</h1>
-                <!-- 分割线 -->
-                <hr color= #DCDFE6 size="1" style="margin: 8px 0px 8px 0px;">
-                <!-- 经验 -->
-                <div style="width:100%;height:40px;margin-bottom: 20px;">
-                  <div style="text-align:left;padding: 0px 0px 0px 15px;">
-                    <font style="color: #303133;font-weight:800;font-size:16px;">经验：</font>
-                  </div>
-                  <div style="text-align:left;padding: 5px 0px 0px 15px;">
-                    <font style="color:#606266;font-weight:600;font-size:15px;">1000 / 5000</font>
-                  </div>
-                </div>
-                <div style="width:260px;height:100px;margin:0 auto 0;background-color:#F2F6FC;border-radius:3px;">
-                  <!-- 关注 -->
-                  <div style="width:129px;height:100px;text-align:center;float:left;">
-                    <p style="margin:10px 0px 0px 0px;color: #606266;font-size:13px;font-weight:600;">今日阅读(播放)数</p>
-                    <p style="margin:5px 0px 0px 0px;color: #000000;font-size:22px;font-weight:900;">1</p>
-                    <p style="margin:5px 0px 0px 0px;color: #6385A6;font-size:12.5px;font-weight:600;">昨日数据 <font style="color: #303133;font-weight:900;">63</font></p>
-                  </div>
-                  <div style="width:1px;height:70px;background-color: #DCDFE6;float:left;margin: 15px 0px 0px 0.5px;"></div>
-                  <!-- 点赞 -->
-                  <div style="width:129px;height:100px;text-align:center;float:right;">
-                    <p style="margin:10px 0px 0px 0px;color: #606266;font-size:13px;font-weight:600;">今日关注数</p>
-                    <p style="margin:5px 0px 0px 0px;color: #000000;font-size:22px;font-weight:900;">0</p>
-                    <p style="margin:5px 0px 0px 0px;color: #6385A6;font-size:12.5px;font-weight:600;">昨日数据 <font style="color: #303133;font-weight:900;">0</font></p>
-                  </div>
-                </div>
-                <!-- 按钮 -->
-                <button id="rbutton" type="submit" class="rbutton" @click="huati()">进入创作中心 ></button>
-              </div>
-              <!-- 个人成就 -->
-              <div style="width: 100%;min-height:100px;margin-top: 10px;box-shadow: 1px 1px 3px #DCDFE6;background-color:#FFFFFF;">
-                <!-- 关注 -->
-                  <div style="width:144px;height:100px;text-align:center;float:left;">
-                    <p style="margin:23px 0px 0px 0px;color: #606266;font-size:14px;font-weight:600;">关注了</p>
-                    <p style="margin:8px 0px 0px 0px;color: #000000;font-size:18px;font-weight:900;">
-                      <a @click="personal()" href="javascript:void(0)" class="guanzhu">847</a>
-                    </p>
-                  </div>
-                  <div style="width:1px;height:70px;background-color: #DCDFE6;float:left;margin: 15px 0px 0px 0.5px;"></div>
-                  <!-- 点赞 -->
-                  <div style="width:144px;height:100px;text-align:center;float:right;">
-                    <p style="margin:23px 0px 0px 0px;color: #606266;font-size:14px;font-weight:600;">关注者</p>
-                    <p style="margin:8px 0px 0px 0px;color: #000000;font-size:18px;font-weight:900;">
-                      <a @click="personal()" href="javascript:void(0)" class="guanzhu">201</a>
-                    </p>
-                  </div>
-              </div>
-            </div>
-          </div>
+          
         </div>
     </div>
   </div>
@@ -233,6 +205,7 @@ export default {
     return {
       // 页面高度
       pageheight: '',
+      selectval:'',
       // 个人信息
       perInfo:{
         uid: '100000001',
@@ -331,54 +304,14 @@ export default {
           url:'/platform_article'
         },
       ],
-      // 发布话题列表
-      pertopic:[
-        {
-          title:'这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1',
-          time:'2021-09-12',
-          comments:'7823',
-          browse:'28347',
-          collect:'82',
-          types:1,
-          url: '/platform_article',
-        },
-        {
-          title:'这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1',
-          time:'2021-09-12',
-          comments:'7823',
-          browse:'28347',
-          collect:'82',
-          types:1,
-          url: '/platform_article',
-        },
-        {
-          title:'这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1',
-          time:'2021-09-12',
-          comments:'7823',
-          browse:'28347',
-          collect:'82',
-          types:1,
-          url: '/platform_article',
-        },
-        {
-          title:'这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1',
-          time:'2021-09-12',
-          comments:'7823',
-          browse:'28347',
-          collect:'82',
-          types:1,
-          url: '/platform_article',
-        },
-        {
-          title:'这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1这个是测试标题1',
-          time:'2021-09-12',
-          comments:'7823',
-          browse:'28347',
-          collect:'82',
-          types:1,
-          url: '/platform_article',
-        },
-      ],
+
+
+
+
+
+
+
+
     }
   },
   methods: {
@@ -398,7 +331,8 @@ export default {
     },
     // 编辑个人资料
     edirpd(){
-       window.location.href="/platform_editpd/";
+      let routeData = this.$router.resolve("/platform_editpd/");
+      window.open(routeData.href, '_blank');
     },
 
   },
@@ -420,7 +354,7 @@ export default {
 }
 
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
    /* 无法选中属性 */
   .noselect {
@@ -494,39 +428,6 @@ export default {
     background-color: #F2F6FC;
     cursor:pointer;
   }
-  /* 写回答 */
-  .reply_button{
-    border-radius:5px;
-    background-color:#FFFFFF;
-    color:#303133;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1;
-    border: 1px solid #303133;
-    outline: none;
-    cursor: pointer;
-    transition: .5s;
-    margin: 0px 15px 0px 0px;
-    position: absolute;
-    right: 5px;
-    bottom: 20px;
-  }
-  .reply_button:hover{
-    border-radius:5px;
-    background-color:#C0C4CC;
-    color:#303133;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1;
-    border: 1px solid #303133;
-    outline: none;
-    cursor: pointer;
-    transition: .5s;
-    margin: 0px 15px 0px 0px;
-    position: absolute;
-    right: 5px;
-    bottom: 20px;
-  }
   /* 账户类型标签 */
   .userlab{
     font-weight: 900;
@@ -539,76 +440,51 @@ export default {
     float:left;
     margin: 10px 0px 0px 20px;
   }
-  /* 无法选中属性 */
-  .noselect {
-    -webkit-user-select: none;
-    /*WebKit内核私有属性*/
-    -moz-user-select: none;
-    /*Firefox私有属性*/
-    -ms-user-select: none;
-    /*IE私有属性(IE10及以后)*/
-    -khtml-user-select: none;
-    /*KHTML内核私有属性*/
-    -o-user-select: none;
-    /*Opera私有属性*/
-    user-select: none;
-    /*CSS3属性*/
+  /* 修改页面信息标题 */
+  .editTitle{
+    font-size:15px;
+    font-weight: 600;
+    margin:80px 0px 0px 0px;
   }
-  /* 话题标题 */
-  .pl_a{
-    text-decoration: none;
-    font-size: 18px;
-    color: #000000!important;
-    font-weight:600;
-    width: auto;
-    height: auto;
+  /* 选择框 */
+  .edit_type{
+    width: 200px;
+    height: 30px;
+    text-align: left;
+    border: 1px solid #C0C4CC;
+    font-size: 1em;
+    border-radius: 5px;
+    outline-color: #409EFF;
   }
-  .pl_a:hover{
-    text-decoration: underline;
-    font-size:18px;
-    color: #409EFF!important;
-    font-weight:600;
-    width: auto;
-    height: auto;
+  /* 发布按钮 */
+  .follow_button{
+    width:300px;
+    height:40px;
+    border-radius:5px;
+    background-color:#303133;
+    color:#FFFFFF;
+    font-size: 1.0rem;
+    font-weight: 600;
+    line-height: 1;
+    border: 0px solid #FFFFFF;
+    outline: none;
+    cursor: pointer;
+    transition: .5s;
+    margin: 60px 0px 40px 0px;
   }
-  /* 写回答 */
-.rbutton{
-  border-radius:5px;
-  background-color:#303133;
-  color:#FFFFFF;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
-  border: 1px solid #FFFFFF;
-  outline: none;
-  cursor: pointer;
-  transition: .5s;
-  margin: 15px auto 10px;
-  width:260px;
-  height:30px;
-}
-.rbutton:hover{
-  border-radius:5px;
-  background-color:#606266;
-  color:#FFFFFF;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
-  border: 1px solid #FFFFFF;
-  outline: none;
-  cursor: pointer;
-  transition: .5s;
-  margin: 15px auto 10px;
-  width:260px;
-  height:30px;
-}
-/* 关注连接 */
-.guanzhu{
-  color: #000000;
-  text-decoration:none;
-}
-.guanzhu:hover{
-  color: #409EFF;
-  text-decoration:none;
-}
+  .follow_button:hover{
+    width:300px;
+    height:40px;
+    border-radius:5px;
+    background-color:#909399;
+    color:#FFFFFF;
+    font-size: 1.0rem;
+    font-weight: 600;
+    line-height: 1;
+    border: 0px solid #FFFFFF;
+    outline: none;
+    cursor: pointer;
+    transition: .5s;
+    margin: 60px 0px 40px 0px;
+  }
 </style>

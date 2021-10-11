@@ -558,8 +558,9 @@ export default {
     },
     // 跳转个人中心
     personal(){
-      let routeData = this.$router.resolve("/platform_personal/");
-      window.open(routeData.href, '_blank');
+      // let routeData = this.$router.resolve("/platform_personal/");
+      // window.open(routeData.href, '_blank');
+      window.location.href="/platform_personal/";
     },
   },
   created() {

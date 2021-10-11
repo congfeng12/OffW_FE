@@ -56,10 +56,15 @@ function delCookie(name) {
 function alertMessage(in_th, in_title, in_text, in_type) {
   in_th.$notify({
     group: 'cmaple',
+    // 标题
     title: in_title,
+    // 内容
     text: in_text,
+    // 类型
     type: in_type,
+    // 持续时间
     duration:5000,
+    // 速度
     speed:500
   });
 }
