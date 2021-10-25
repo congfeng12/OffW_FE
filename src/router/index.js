@@ -12,7 +12,11 @@ import platform_add from '@/components/platform_add'
 import platform_article from '@/components/platform_article'
 import platform_personal from '@/components/platform_personal'
 import platform_editpd from '@/components/platform_editpd'
+import platform_proposal from '@/components/platform_proposal'
+import platform_advertisements from '@/components/platform_advertisements'
+import platform_userseting from '@/components/platform_userseting'
 import err_404 from '@/components/err_404'
+
 
 Vue.use(Router)
 
@@ -82,6 +86,25 @@ export default new Router({
       path: '/platform_editpd',
       name: 'platform_editpd',
       component: platform_editpd
+    },
+    {
+      // 投诉建议
+      path: '/platform_proposal',
+      name: 'platform_proposal',
+      component: platform_proposal
+    },
+    {
+      // 广告申请
+      path: '/platform_advertisements',
+      name: 'platform_advertisements',
+      component: platform_advertisements
+    },
+    // 用户设置
+    {
+      // 广告申请
+      path: '/platform_userseting',
+      name: 'platform_userseting',
+      component: platform_userseting
     },
     {
       //当访问了不存在的路由的时候

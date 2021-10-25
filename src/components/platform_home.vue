@@ -192,7 +192,7 @@
                   </p>
                 </div>
                 <div style="overflow: hidden;margin-top:20px;">
-                  <!-- 发布 -->
+                  <!-- 发布话题 -->
                   <div style="width:  60px;float:left;text-align:center;margin: 0px 0px 0px 15px;" >
                     <a class="seting_a" @click="add()" href="javascript:void(0)">
                       <div style="width: 40px;height:40px;border-radius:50px;margin: 0 auto 0;background-color: #e5edff;">
@@ -201,27 +201,27 @@
                       <p style="margin: 5px 0px 0px 0px;">发布话题</p>
                     </a>
                   </div>                 
-                  <!-- 管理 -->
+                  <!-- 广告申请 -->
                   <div style="width:  60px;float:left;text-align:center;margin: 0px 0px 0px 15px;" >
-                    <a class="seting_a" @click="dianzan()" href="javascript:void(0)">
+                    <a class="seting_a" @click="pl_adv()" href="javascript:void(0)">
                       <div style="width: 40px;height:40px;border-radius:50px;margin: 0 auto 0;background-color: #fff3e7;">
                         <img style="width: 25px;margin: 8px 0px 0px 0px;" src="../../static/huida.png">
                       </div>
-                      <p style="margin: 5px 0px 0px 0px;">回答问题</p>
+                      <p style="margin: 5px 0px 0px 0px;">广告申请</p>
                     </a>
                   </div>
-                  <!--  -->
+                  <!-- 投诉建议 -->
                   <div style="width:  60px;float:left;text-align:center;margin: 0px 0px 0px 15px;" >
-                    <a class="seting_a" @click="dianzan()" href="javascript:void(0)">
+                    <a class="seting_a" @click="proposal()" href="javascript:void(0)">
                       <div style="width: 40px;height:40px;border-radius:50px;margin: 0 auto 0;background-color: #fef9e7;">
                         <img style="width: 25px;margin: 8px 0px 0px 0px;" src="../../static/jianyi.png">
                       </div>
                       <p style="margin: 5px 0px 0px 0px;">投诉建议</p>
                     </a>
                   </div>
-                  <!--  -->
+                  <!-- 用户设置 -->
                   <div style="width:  60px;float:left;text-align:center;margin: 0px 0px 0px 15px;" >
-                    <a class="seting_a" @click="dianzan()" href="javascript:void(0)">
+                    <a class="seting_a" @click="userset()" href="javascript:void(0)">
                       <div style="width: 40px;height:40px;border-radius:50px;margin: 0 auto 0;background-color: #e9f7f7;">
                         <img style="width: 25px;margin: 8px 0px 0px 0px;" src="../../static/guanli.png">
                       </div>
@@ -561,6 +561,21 @@ export default {
       // let routeData = this.$router.resolve("/platform_personal/");
       // window.open(routeData.href, '_blank');
       window.location.href="/platform_personal/";
+    },
+    // 投诉建议
+    proposal(){
+      let routeData = this.$router.resolve("/platform_proposal/");
+      window.open(routeData.href, '_blank');
+    },
+    // 广告申请
+    pl_adv(){
+      let routeData = this.$router.resolve("/platform_advertisements/");
+      window.open(routeData.href, '_blank');
+    },
+    // 用户设置
+    userset(){
+      let routeData = this.$router.resolve("/platform_userseting/");
+      window.open(routeData.href, '_blank');
     },
   },
   created() {
