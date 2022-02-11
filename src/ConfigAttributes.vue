@@ -1,11 +1,11 @@
 <script type="text/javascript">
 //公共属性
 //后台服务前置名称
-const Back_End_Service = 'http://localhost:8080' //'http://www.cmaple.cn/MAIN_SERVICE'      'http://localhost:8080'
+const Back_End_Service = 'http://localhost:8081' //'http://www.cmaple.cn/MAIN_SERVICE'      'http://localhost:8081'
 //备案号
 const Record_No = '浙ICP备19041141号'
 //网站运行年限
-const Run_Time_Range = '@2019-2021'
+const Run_Time_Range = '@2019-2022'
 //网站域名
 const Domain_Name = 'CMAPLE.CN'
 //GitHubURL
@@ -29,6 +29,10 @@ const getContributionInfo = '/basic/contributionInfo'
 const getCases = '/basic/cases'
 //服务页面项目信息获取函数
 const getPrograms = '/basic/programs'
+// 获取帖子列表函数
+const selectArticles = '/platform/articles'
+// 获取帖子函数
+const selectArticleById = '/platform/article'
 //公共方法
 //保存cookie
 function setCookie(c_name, value, expiredays) {
@@ -86,6 +90,8 @@ export default {
   getContributionInfo,
   getCases,
   getPrograms,
+  selectArticles,
+  selectArticleById,
   //函数
   setCookie,
   getCookie,

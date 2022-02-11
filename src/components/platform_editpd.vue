@@ -68,6 +68,7 @@
                     <!-- 头像 -->
                     <div style="width:70px;height:70px;float:left;">
                       <img style="width: 40px;margin:15px auto 0px;border-radius: 5px;" :src="unmsg.head">
+                      <img style="width: 40px;margin:15px auto 0px;border-radius: 5px;background-color:red;" :src="selectImg">
                     </div>
                     <!-- 文字内容 -->
                     <div style="width:230px;height:70px;float:right;text-align: left;">
@@ -217,6 +218,8 @@ export default {
         lan:'JAVA',
         signature:'这个人很懒，啥都没写！',
       },
+      //
+      selectImg:'../../static/xiangji.jpg',
       // 用户弹窗显示标记
       isuserinfo: false,
       // 消息弹窗显示标记

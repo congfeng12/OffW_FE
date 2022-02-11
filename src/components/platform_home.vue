@@ -100,7 +100,7 @@
         <div style="margin: 0 auto 0;margin-top: 10px;width: 1024px;overflow: hidden;">
           <div style="width:700px;height: auto;margin:0px;float:left;">
             <!-- 列表 -->
-            <div class="pl_hone_menu" v-for="contribution in contributions.date" :key="contribution.id">
+            <div class="pl_hone_menu" v-for="contribution in Articlesdate" :key="contribution.id">
               <div style="padding: 5px;height: 130px;position: relative;">
                <!-- 标签 -->
                 <div class="noselect" style="width:50px;height:30px;padding: 0px;line-height: 25px!important;text-align: left;position: absolute;left:10px;top: 11px;font-weight: 900;font-size: 13.5px;">
@@ -110,7 +110,7 @@
                   </div>
                   <!-- 热点 -->
                   <div v-else-if="contribution.types == 2" class="label" style="background-color: #A16DAF;">
-                    公告
+                    热点
                   </div>
                   <!-- 精华 -->
                   <div v-else-if="contribution.types == 3" class="label" style="background-color: #FFAB00;">
@@ -118,9 +118,9 @@
                   </div>
                   <!-- 公告 -->
                   <div v-else-if="contribution.types == 4" class="label" style="background-color: #EA2D16;">
-                    热点
+                    公告
                   </div>
-                  <!-- 广告 -->
+                  <!-- 新闻 -->
                   <div v-else-if="contribution.types == 5" class="label" style="background-color: #909399;">
                     新闻
                   </div>
@@ -160,7 +160,7 @@
                   评论：{{contribution.comments}}
                 </div>
                 <!-- 浏览次数 -->
-                <div class="noselect" style="width:110px;height:30px;padding: 0px;line-height: 30px;text-align: right;position: absolute;right:170px;top: 105px;font-size: 13px;font-weight:600;color: #99a2aa;">
+                <div class="noselect" style="width:110px;height:30px;padding: 0px;line-height: 30px;text-align: right;position: absolute;right:175px;top: 105px;font-size: 13px;font-weight:600;color: #99a2aa;">
                   浏览：{{contribution.browse}}
                 </div>
                 <!-- 日期/发布提前时间 -->
@@ -173,7 +173,7 @@
             </div>
             <!-- 加载更多 -->
             <div class="pl_hone_menu" style="margin: 1px 0px 40px 0px;height:70px;">
-              <a href="" style="height:70px;line-height:70px;font-size:16px;text-decoration:none;color: #00c3ff;font-weight:600;">点击加载更多</a>
+              <a href="javascript:void(0);" @click="selectArticles()" style="height:70px;line-height:70px;font-size:16px;text-decoration:none;color: #00c3ff;font-weight:600;">点击加载更多</a>
             </div>
           </div>
           <!-- 侧面功能按钮 -->
@@ -230,7 +230,7 @@
                   </div>
                 </div>
                 <!-- 进入个人中心 -->
-                <button id="reply_button" type="submit" class="reply_button" @click="huati()">进入创作中心 ></button>
+                <button id="reply_button" type="submit" class="reply_button" @click="huati()">进入个人中心 ></button>
               </div>
               <!-- 侧面广告信息 -->
               <div style="width: 315px;height: auto;background-color: #FFFFFF;margin-top:8px;padding-bottom:10px;">
@@ -267,122 +267,25 @@ export default {
       // 页面高度
       pageheight: '',
       // 论坛目录
-      contributions: {
         // 分页数据
-        number:21,
+        number:10,
         here:1,
         // 数据
-        date:[
-          {
-            id:1,
-            img:'../../static/head/simanan.jpg',
-            name:'黑山老幺的好的哈',
-            types:1,
-            comments:'7823',
-            browse:'28347',
-            collect:'82',
-            title:'这个是测试标题，点击直接跳转1这个是测试标题，点击直接跳转1这个是测试标题，点击直接跳转1这个是测试标题，点击直接跳转1这个是测试标题，点击直接跳转1',
-            url: '/platform_article',
-            time:'2021-01-21'
-          },
-          {
-            id:2,
-            img:'../../static/head/simanan.jpg',
-            name:'黑山老幺的好的哈',
-            types:1,
-            comments:'7823',
-            browse:'28347',
-            collect:'82',
-            title:'这个是测试标题，点击直接跳转2',
-            url: '/platform_article',
-            time:'2021-01-21'
-          },
-          {
-            id:3,
-            img:'../../static/head/simanan.jpg',
-            name:'黑山老幺的好的哈',
-            types:2,
-             comments:'7823',
-            browse:'28347',
-            collect:'82',
-            title:'这个是测试标题，点击直接跳转3',
-            url: '/platform_article',
-            time:'2021-01-21'
-          },
-          {
-            id:4,
-            img:'../../static/head/simanan.jpg',
-            name:'黑山老幺的好的哈',
-            types:3,
-             comments:'7823',
-            browse:'28347',
-            collect:'82',
-            title:'这个是测试标题，点击直接跳转4',
-            url: '/platform_article',
-            time:'2021-01-21'
-          },
-          {
-            id:5,
-            img:'../../static/head/simanan.jpg',
-            name:'黑山老幺的好的哈',
-            types:4,
-             comments:'7823',
-            browse:'28347',
-            collect:'82',
-            title:'这个是测试标题，点击直接跳转5',
-            url: '/platform_article',
-            time:'2021-01-21'
-          },
-          {
-            id:6,
-            img:'../../static/head/simanan.jpg',
-            name:'黑山老幺的好的哈',
-            types:5,
-             comments:'7823',
-            browse:'28347',
-            collect:'82',
-            title:'这个是测试标题，点击直接跳转6',
-            url: '/platform_article',
-            time:'2021-01-21'
-          },
-          {
-            id:7,
-            img:'../../static/head/simanan.jpg',
-            name:'黑山老幺的好的哈',
-            types:6,
-             comments:'7823',
-            browse:'28347',
-            collect:'82',
-            title:'这个是测试标题，点击直接跳转7',
-            url: '/platform_article',
-            time:'2021-01-21'
-          },
-          {
-            id:8,
-            img:'../../static/head/simanan.jpg',
-            name:'黑山老幺的好的哈',
-            types:6,
-             comments:'7823',
-            browse:'28347',
-            collect:'82',
-            title:'这个是测试标题，点击直接跳转8',
-            url: '/platform_article',
-            time:'2021-01-21'
-          },
-          {
-            id:9,
-            img:'../../static/head/simanan.jpg',
-            name:'黑山老幺的好的哈',
-            types:6,
-             comments:'7823',
-            browse:'28347',
-            collect:'82',
-            title:'这个是测试标题，点击直接跳转9',
-            url: '/platform_article',
-            time:'2021-01-21'
-          },
-        ]
-      },
+        Articlesdate:[
+          // {
+          //   id:1,
+          //   img:'../../static/head/simanan.jpg',
+          //   name:'黑山老幺的好的哈',
+          //   types:1,
+          //   comments:'7823',
+          //   browse:'28347',
+          //   collect:'82',
+          //   title:'这个是测试标题，点击直接跳转1这个是测试标题，点击直接跳转1这个是测试标题，点击直接跳转1这个是测试标题，点击直接跳转1这个是测试标题，点击直接跳转1',
+          //   url: '/platform_article',
+          //   time:'2021-01-21'
+          // },
+          
+        ],
       // 广告
       advertisements:[
         {
@@ -577,9 +480,57 @@ export default {
       let routeData = this.$router.resolve("/platform_userseting/");
       window.open(routeData.href, '_blank');
     },
+    selectArticles(){
+      //设置必要参数
+      var that = this;
+      //获取团队管理信息
+        this.$Axios.post(this.$Config.Back_End_Service+this.$Config.selectArticles,
+        this.$qs.stringify({
+          uip: localStorage.getItem("cip"),
+          lastplace: localStorage.getItem("cname"),
+          page: this.here,
+          num: this.number
+        }))
+      .then(function(res){
+        if (res.data.RTCODE == 'success') {
+          // 帖子
+          for (var i = 0; i < res.data.RTDATA.length; ++i) {
+            var c_articles = new Object();
+            // 帖子id号
+            c_articles.id = res.data.RTDATA[i].id;
+            // 头像图片
+            c_articles.img = "../../static/head/zaker.jpg";
+            // 账户昵称
+            c_articles.name = res.data.RTDATA[i].operator;
+            // 类型
+            c_articles.types = res.data.RTDATA[i].atype;
+            // 评论
+            c_articles.comments = res.data.RTDATA[i].id;
+            // 浏览
+            c_articles.browse = res.data.RTDATA[i].id;
+            // 关注
+            c_articles.collect = res.data.RTDATA[i].id;
+            // 标题
+            c_articles.title = res.data.RTDATA[i].title;
+            // 域名
+            c_articles.url = "/platform_article?id="+res.data.RTDATA[i].id;
+            // 时间
+            c_articles.time = res.data.RTDATA[i].createtime.split(" ")[0];
+            that.Articlesdate.push(c_articles);
+          }
+          that.here += 1;
+        }else{
+          //异常结果显示
+          that.$Config.alertMessage(that, "获取帖子列表信息失败！", res.data.RTMSG, "error");
+        }
+      })
+      .catch(function(err){
+        that.$Config.alertMessage(that, "获取获取帖子列表信息函数异常！", err+'', "error");
+      });
+    },
   },
   created() {
-    
+    this.selectArticles();
   },
   destroyed() {},
   mounted() {

@@ -137,7 +137,7 @@
             <div style="float:left;width:700px;min-height:300px;box-shadow: 1px 1px 3px #DCDFE6;background-color:#FFFFFF;text-align:left;padding: 0px 0px 20px 0px;">
               <!-- 发布过的帖子 -->
               <!-- 标题 -->
-              <h1 style="margin:10px 0px 0px 10px;font-size:16px;">关注的话题</h1>
+              <h1 style="margin:10px 0px 0px 10px;font-size:16px;">发布的话题</h1>
               <!-- 分割线 -->
               <hr color= #DCDFE6 size="1" style="margin: 8px 0px 8px 0px;">
               <!-- 内容 -->
@@ -171,7 +171,7 @@
             <!-- 右侧栏位 -->
             <div style="width:290px;min-height:300px;float:right;">
               <!-- 经验&关注数量&点赞数量 -->
-              <div style="width: 100%;min-height:200px;box-shadow: 1px 1px 3px #DCDFE6;background-color:#FFFFFF;">
+              <div style="width: 100%;padding-bottom: 10px;min-height:200px;box-shadow: 1px 1px 3px #DCDFE6;background-color:#FFFFFF;">
                 <!-- 标题 -->
                 <h1 style="margin:0px;font-size:16px;padding:10px 0px 0px 10px;text-align: left;">创作板块</h1>
                 <!-- 分割线 -->
@@ -201,7 +201,7 @@
                   </div>
                 </div>
                 <!-- 按钮 -->
-                <button id="rbutton" type="submit" class="rbutton" @click="huati()">进入创作中心 ></button>
+                <!-- <button id="rbutton" type="submit" class="rbutton" @click="huati()">进入个人中心 ></button> -->
               </div>
               <!-- 个人成就 -->
               <div style="width: 100%;min-height:100px;margin-top: 10px;box-shadow: 1px 1px 3px #DCDFE6;background-color:#FFFFFF;">
