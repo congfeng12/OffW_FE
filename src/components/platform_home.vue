@@ -493,32 +493,36 @@ export default {
         }))
       .then(function(res){
         if (res.data.RTCODE == 'success') {
-          // 帖子
-          for (var i = 0; i < res.data.RTDATA.length; ++i) {
-            var c_articles = new Object();
-            // 帖子id号
-            c_articles.id = res.data.RTDATA[i].id;
-            // 头像图片
-            c_articles.img = "../../static/head/zaker.jpg";
-            // 账户昵称
-            c_articles.name = res.data.RTDATA[i].operator;
-            // 类型
-            c_articles.types = res.data.RTDATA[i].atype;
-            // 评论
-            c_articles.comments = res.data.RTDATA[i].id;
-            // 浏览
-            c_articles.browse = res.data.RTDATA[i].id;
-            // 关注
-            c_articles.collect = res.data.RTDATA[i].id;
-            // 标题
-            c_articles.title = res.data.RTDATA[i].title;
-            // 域名
-            c_articles.url = "/platform_article?id="+res.data.RTDATA[i].id;
-            // 时间
-            c_articles.time = res.data.RTDATA[i].createtime.split(" ")[0];
-            that.Articlesdate.push(c_articles);
+          if (res.data.RTDATA.length > 0) {
+            // 帖子
+            for (var i = 0; i < res.data.RTDATA.length; ++i) {
+              var c_articles = new Object();
+              // 帖子id号
+              c_articles.id = res.data.RTDATA[i].id;
+              // 头像图片
+              c_articles.img = "../../static/head/zaker.jpg";
+              // 账户昵称
+              c_articles.name = res.data.RTDATA[i].operator;
+              // 类型
+              c_articles.types = res.data.RTDATA[i].atype;
+              // 评论
+              c_articles.comments = res.data.RTDATA[i].id;
+              // 浏览
+              c_articles.browse = res.data.RTDATA[i].id;
+              // 关注
+              c_articles.collect = res.data.RTDATA[i].id;
+              // 标题
+              c_articles.title = res.data.RTDATA[i].title;
+              // 域名
+              c_articles.url = "/platform_article?id="+res.data.RTDATA[i].id;
+              // 时间
+              c_articles.time = res.data.RTDATA[i].createtime.split(" ")[0];
+              that.Articlesdate.push(c_articles);
+            }
+            that.here += 1;
+          }else{
+            that.$Config.alertMessage(that, "没有更多的帖子了！！！", res.data.RTMSG, "warn");
           }
-          that.here += 1;
         }else{
           //异常结果显示
           that.$Config.alertMessage(that, "获取帖子列表信息失败！", res.data.RTMSG, "error");

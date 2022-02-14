@@ -118,7 +118,7 @@
           <div style="height: 34px;font-size: 12px;font-weight: 700;color: #C0C4CC;margin: 0px 0px 0px 0px;float: right;margin: 0px 0px 0px 10px;line-height:34px;">关注：{{topic.follow}}次 ·</div>
         </div>
         <!-- 帖子内容 -->
-        <div >
+        <div>
           <div style="margin: 40px 0px 40px 0px;" v-html="topic.content"></div>
         </div>
         <!-- 按钮组 -->
