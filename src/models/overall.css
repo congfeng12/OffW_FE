@@ -1,0 +1,72 @@
+/* 
+	全局css属性
+	CMAPLE
+	2022年2月14日
+ */
+
+/* 无法选中属性 */
+.noselect {
+	-webkit-user-select: none;
+	/*WebKit内核私有属性*/
+	-moz-user-select: none;
+	/*Firefox私有属性*/
+	-ms-user-select: none;
+	/*IE私有属性(IE10及以后)*/
+	-khtml-user-select: none;
+	/*KHTML内核私有属性*/
+	-o-user-select: none;
+	/*Opera私有属性*/
+	user-select: none;
+	/*CSS3属性*/
+}
+/* 导航栏字体 */
+#menu_font {
+	color: #FFFFFF;
+	font-size: 16px;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	font-weight: 900;
+	text-decoration: none;
+}
+#menu_font:hover {
+	color: #FFFFFF;
+	font-size: 16px;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	font-weight: 900;
+	border-bottom: 1.5px solid #FFFFFF;
+}
+/* 平台搜索按钮 */
+.search_button{
+	width:99px;
+	height:34px;
+	border-radius:0px 20px 20px 0px;
+	background-color:#67C23A;
+	color:#FFFFFF;
+	font-size: 1.0rem;
+	font-weight: 600;
+	line-height: 1;
+	border: 0px solid #FFFFFF;
+	outline: none;
+	cursor: pointer;平台
+	transition: .5s;
+	float: left;
+	margin: 8px 0px 0px 0px;
+}
+.search_button:hover{
+	width:99px;
+	height:34px;
+	border-radius:0px 20px 20px 0px;
+	background-color:#2ea44f;
+	color:#FFFFFF;
+	font-size: 1.0rem;
+	font-weight: 600;
+	line-height: 1;
+	border: 0px solid #FFFFFF;
+	outline: none;
+	cursor: pointer;
+	transition: .5s;
+	float: left;
+	margin: 8px 0px 0px 0px;
+}
+
